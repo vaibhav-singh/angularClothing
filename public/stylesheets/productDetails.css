@@ -94,11 +94,9 @@ button[disabled]{
     right: 0;
 }
 .owl-nav{
-    top: 50%;
+    top: 42%;
     position: absolute;
-    width: 100%;
-    text-align: none;
-    padding: 150px 10px;
+    width: 96%;
 }
 .owl-theme .owl-nav .owl-next {
     right:0px;
