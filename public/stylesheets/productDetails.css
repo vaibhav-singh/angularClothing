@@ -1,0 +1,111 @@
+.no-padding{
+    padding:0;
+}
+.no-margin{
+    margin: 0;
+}
+.belowName{
+    color: rgba(0,0,0,.6);
+}
+.darkGray{
+    color: #A9A9A9;
+}
+.nameDisplay{
+    margin-bottom: 2px;
+    font-size: 16px;
+    line-height: 20px; 
+    font-family: Montserrat-Regular;
+
+}
+.margin-30-0{
+    margin: 30px 0;
+}
+.priceDiv{
+    color: rgba(0,0,0,.8);
+    font-size: 36px;
+    line-height: 45px;
+    font-family: Montserrat-Light;
+}
+.priceDiv i{
+    font-size: 23px;
+}
+.sizes{
+    line-height: 40px;
+    margin: 10px 0 40px 0;
+}
+.sizes ul{
+    display: flex;
+}
+.size-box{
+    margin:0 4px;
+    border-radius: 0;
+    background-color: transparent
+}
+.size-box:hover{
+    border:1px solid #EF6C00;
+    color: #EF6C00;
+}
+button[disabled]{
+    background-color: #ddd;
+    cursor: not-allowed;
+    text-decoration: line-through;
+    border:none;
+    background-color: #f5f5f5;
+    pointer-events: none;
+}
+.size-box:active, .size-box:focus,.size-box:focus:active, .size-box:visited{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+}
+.size-box.selectedSize{
+    border:1px solid #EF6C00;
+    color: #EF6C00;
+}
+.requestUnavailableSize small{
+    background: #ddd;
+    padding: 3px;
+}
+.buttonsinProductDetails button{
+    border-radius: 0px;
+    margin: 5px 10px 10px 0;
+    padding: 10px 0;
+}
+.buyNowBtn{
+    background: #EF6C00;
+    color: white;
+}
+.buttonsinProductDetails button:focus, .buttonsinProductDetails button:hover, .buttonsinProductDetails button:focus:hover{
+    color: white;
+    text-decoration: none;
+    outline: none;
+}
+.buttonsinProductDetails button.addToCart:focus, .buttonsinProductDetails button.addToCart:hover, .buttonsinProductDetails button.addToCart:focus:hover{
+    color: inherit;
+}
+.navButtonsCarousal{
+    position: absolute;
+    font-size: 40px;
+    top:0;
+    padding: 260px 17px;  
+    cursor:pointer; 
+}
+.navButtonsCarousal.right{
+    right: 0;
+}
+.owl-nav{
+    top: 50%;
+    position: absolute;
+    width: 100%;
+    text-align: none;
+    padding: 150px 10px;
+}
+.owl-theme .owl-nav .owl-next {
+    right:0px;
+    cursor:pointer;  
+    float:right;
+    margin-right:20px; 
+}
+.owl-theme .owl-nav .owl-prev {
+    float:left;
+}

@@ -1,0 +1,90 @@
+.productContainer{
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 5px;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+}
+.productContainer:hover{
+    margin-top: -2px;
+    margin-bottom: 12px;
+}
+.productContainer img{
+     width:100%;
+}
+.productDesctiption{
+    font-size: 12px;
+    font-family: Montserrat-Regular;
+    padding: 10px 4px;
+    line-height: 24px;
+}
+.category{
+    font-family: Montserrat-Medium;
+    font-size: 18px;
+    padding: 10px 0;
+    border-bottom:1px solid;
+    border-color: #ddd;
+}
+.categories li{
+    font-size: 12px;
+    cursor: pointer;
+    padding: 15px 10px 0 0px;
+    transition: all 0.3s;
+}
+.categories li:hover{
+    padding-left: 5px;
+}
+.categories li i{
+    font-size: 7px;
+    margin-top: 5px;
+    color: #EF6C00;
+}
+.productContainer a:hover, .productContainer a:visited, .productContainer a:active{
+    text-decoration: none;
+    color:#000;
+}
+.owl-carousel.categories{
+    font-size:13px;
+}
+.owl-carousel.categories div{
+    padding: 10px 0;
+}
+.owl-carousel.categories i{
+    color: #EF6C00;
+}
+.owl-carousel.categories .owl-stage-outer{
+    padding: 0;
+}
+.loadMore{
+    text-align: center;
+}
+.designerName{
+    position: absolute;
+    right: 7px;
+    font-size: 11px;
+    background-color: rgba(239,108,0, 0.6);
+    color: white;
+    padding: 1px 3px;
+}
+.goToTop{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    text-align: center;
+    border: 1px solid #adadad;
+    padding: 6px;
+    border-radius: 7px;
+    cursor:pointer;
+    
+}
+.topDisplayCat{
+    text-align: center;
+    margin-bottom: 35px;
+    text-transform: capitalize;
+    font-family: Montserrat-Bold;
+    font-size: 20px;
+}
+.topDisplayCat span{
+    font-family: Montserrat-Regular;
+    color:#777;
+}

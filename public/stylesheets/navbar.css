@@ -1,0 +1,26 @@
+.navbar-container .navbar.navbar-default{
+    border-radius: 0 !important;
+    font-family: headingsfont;
+}
+.navbar-container .navbar.navbar-default .navbar-header .navbar-brand{
+    color: #EF6C00;
+}
+.navbar.navbar-default .navbar-header .navbar-brand{
+    color: black;
+}
+.navbar-brand{
+    font-family: 'Montserrat-Bold', sans-serif !important;
+}
+.navbar{
+    border: none;
+}
+.navbar-nav li a{
+    font-size: 12px;
+    font-family: headingsFont; 
+}
+.tab-border{
+    position: absolute;
+    border-bottom: 2px solid #EF6C00;
+    height: 50px;
+    transition: left .2s ease-out,width .2s ease-out;
+}

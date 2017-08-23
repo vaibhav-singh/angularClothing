@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <base href="/">
+    <link rel="stylesheet" href="stylesheets/reset.css">
+    <link rel="stylesheet" href="bower_components/OwlCarousel2-2.2.1/dist/assets/owl.carousel.css">
+    <link rel="stylesheet" href="bower_components/OwlCarousel2-2.2.1/dist/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/font-awesome.min.css">
+    <!--<link href="https://fonts.googleapis.com/css?family=Montserrat:900" rel="stylesheet">-->
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1">
+    
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/products.css">
+    <link rel="stylesheet" href="stylesheets/productDetails.css">
+    <link rel="stylesheet" href="stylesheets/navbar.css">
+</head>
+
+<body ng-app="mainApp">
+    <header>        
+        <div ng-include="'html/header.html'"></div>
+    </header>
+    <ui-view></ui-view>
+    <footer>
+        <div ng-include="'html/footer.html'"></div>
+    </footer>
+</body>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/OwlCarousel2-2.2.1/dist/owl.carousel.min.js"></script>
+
+<script src="javascripts/app.js"></script>
+<script src="javascripts/router.js"></script>
+<script src="javascripts/locale.js"></script>
+<script src="javascripts/productDetails/productDetailsCtrl.js"></script>
+<script src="javascripts/services/productRelatedServices.js"></script>
+<script src="javascripts/products/products.js"></script>
+<script src="javascripts/login/loginController.js"></script>
+<script src="javascripts/productDetails/productDetailsCtrl.js"></script>
+<script src="javascripts/header/headerCtrl.js"></script>
+<script src="javascripts/cart/cartCtrl.js"></script>
+<script src="javascripts/home/home.js"></script>
+
+</html>

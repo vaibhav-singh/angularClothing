@@ -1,0 +1,39 @@
+<div ng-controller="productDetailsCtrl">
+    <div class="container no-padding">
+        <div class="owl-carousel owl-theme col-xs-12 col-sm-5">
+                <!--<div class="navButtonsCarousal" ng-click="prevImage()"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>-->
+            <div ng-repeat="img in details.images.additional">
+                <img ng-src={{"https://images.bewakoof.com/t540/"+img.name}}>
+            </div>
+                <!--<div class="navButtonsCarousal right" ng-click="nextImage()"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>-->
+        </div>
+        <div class="col-xs-12 col-sm-7">
+            <!--name-->
+            <div class="item_name nameDisplay">{{details.name}}</div>
+            <div class="item_fit belowName no-padding">
+                <p class="no-padding no-margin">{{details.fit}}</p>
+                <p class="no-padding no-margin darkGray">{{details.fit_description}}</p>
+            </div>
+            <!--price-->
+            <div class="margin-30-0">
+                <span class="priceDiv"><sub><i class="fa fa-inr" aria-hidden="true"></i></sub>{{details.price}}</span>
+            </div>
+            <!--error messages-->
+        </div>
+        <div class="sizes col-xs-12 col-sm-7">
+            <div>SIZE:</div>
+            <div>
+                <ul>
+                    <li ng-repeat="(key, size) in sizes">
+                        <button class="size-box btn" ng-click="selectSize(key)" ng-class="{selectedSize:selectedSize===key}" ng-disabled="size<=0">{{key}}</button>
+                    </li>
+                </ul>
+                <div class="requestUnavailableSize"><small> <b>Size not available?</b> Request for it at same price.</small></div>
+            </div>
+        </div>
+        <div class=" col-xs-12 col-sm-7 buttonsinProductDetails">
+            <button class="buyNowBtn btn col-xs-12 col-sm-6" ng-click="selectedSize && buyItNow()">Buy Now</button>
+            <button class="addToCart btn col-xs-12 col-sm-6" ng-click="selectedSize && addToCart()">Add To Cart</button>
+        </div>
+    </div>
+</div>
