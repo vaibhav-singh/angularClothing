@@ -10,7 +10,6 @@ mainModule.run(['$rootScope' ,'productService', 'cartRelatedServices' ,function(
     // if loggedIn - check cart and update from backend. If backend cart is empty check in localStorage
     // else if not loggedIn - check in local storage and update cart value
     var cart = JSON.parse(localStorage.getItem('cartDetails'));
-    console.log(cart)
     if(cart){
         cartRelatedServices.saveCart(cart);
         $rootScope.numberOfProductsInCart = cart.length;
