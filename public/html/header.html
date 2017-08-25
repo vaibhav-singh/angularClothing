@@ -1,11 +1,11 @@
 <div ng-controller="headerCtrl" class="">
     <div class="navbar-container">
-        <nav class="navbar navbar-default">
-            <div class="container">
-                <div class="container-fluid col-sm-12">
+        <nav class="navbar navbar-fixed-top navbar-default">
+            <div class="">
+                <div class="container-fluid no-padding col-sm-12">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header col-sm-3 col-lg-3 col-md-3">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                        <button type="button" class="navbar-toggle x collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
                             aria-expanded="false">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
@@ -14,7 +14,8 @@
                         </button>
                         <!--brand name-->
                         <!--<div class="col-lg-2 col-md-2">-->
-                        <a class="navbar-brand" href="/"><b>{{brandName}}<sup>&#174;</sup></b></a>
+                        <a  ng-click="$parent.hideCart()" class="navbar-brand" href="/"><b>{{brandName}}<sup>&#174;</sup></b></a>
+                        <div class="visible-xs pull-right cart-button" ng-class="{'cart-visible': cartDropDownVisible}" ng-click="viewCartDropDown()"><i class="fa fa-shopping-bag" aria-hidden="true"  title="Cart"></i><span class="" ng-class="{'numberOfProducts':cartDropDownVisible}">{{numberOfProductsInCart}}</span><i class="fa fa-plus" aria-hidden="true"  title="Cart"></i></div>
                         <!--</div>-->
                     </div>
 
@@ -22,30 +23,15 @@
                     <div class="col-sm-9">
                     <div class="collapse navbar-collapse no-padding" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav" ng-mouseover="hovering = true" ng-mouseleave="hovering = false">
-                            <a class="tab-border hidden-xs hidden-sm" ng-style="selectedMenu === 1 &amp;&amp; hovering &amp;&amp; {'width':'107px', 'left':'20px'}  || selectedMenu === 2 &amp;&amp; hovering &amp;&amp; {'width':'50px', 'left':'139px'} || selectedMenu === 3 &amp;&amp; hovering &amp;&amp; {'width':'127px', 'left':'200px'} || selectedMenu === 4 &amp;&amp; hovering &amp;&amp; {'width':'41px', 'left':'277px'} || selectedMenu === 5 &amp;&amp; hovering &amp;&amp; {'width':'119px', 'left':'337px'}"></a>
-                            <li ng-mouseover="selectedMenu = 1"><a href="/products?gender=unisex&superCategory=all&subCategory=all&src=just-arrived">JUST ARRIVED<span class="sr-only">(current)</span></a></li>
-                            <li ng-mouseover="selectedMenu = 2"><a href="/products?gender=men&superCategory=all&subCategory=all">MEN</a></li>
-                            <li ng-mouseover="selectedMenu = 3"><a href="/commingupnext">COMING UP NEXT!</a></li>
+                            <a class="tab-border hidden-xs hidden-sm" ng-style="selectedMenu === 1 &amp;&amp; hovering &amp;&amp; {'width':'125px', 'left':'20px'}  || selectedMenu === 2 &amp;&amp; hovering &amp;&amp; {'width':'55px', 'left':'157px'} || selectedMenu === 3 &amp;&amp; hovering &amp;&amp; {'width':'70px', 'left':'225px'} || selectedMenu === 4 &amp;&amp; hovering &amp;&amp; {'width':'151px', 'left':'310px'} || selectedMenu === 5 &amp;&amp; hovering &amp;&amp; {'width':'119px', 'left':'337px'}"></a>
+                            <li ng-mouseover="selectedMenu = 1" ng-click="$parent.hideCart();hideToggleMenu()"><a href="/products?gender=unisex&superCategory=all&subCategory=all&src=just-arrived">JUST ARRIVED<span class="sr-only">(current)</span></a></li>
+                            <li ng-mouseover="selectedMenu = 2" ng-click="$parent.hideCart();hideToggleMenu()"><a href="/products?gender=men&superCategory=all&subCategory=all">MEN</a></li>
+                            <li ng-mouseover="selectedMenu = 3" ng-click="$parent.hideCart();hideToggleMenu()"><a href="#" data-toggle="modal" data-target="#womenNotify">WOMEN</a></li>
+                            <li ng-mouseover="selectedMenu = 4" ng-click="$parent.hideCart();hideToggleMenu()"><a href="/commingupnext">COMING UP NEXT!</a></li>
                             <!--<li ng-mouseover="selectedMenu = 3"><a href="/products?gender=women&superCategory=all&subCategory=all">WOMEN</a></li>-->
                         </ul>
-                        <!--<form class="navbar-form navbar-left">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search">
-                            </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
-                        </form>-->
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">Link</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </li>
+                        <div class="hidden-xs pull-right cart-button" data-toggle="modal" data-target="#cartPopup"  ng-class="{'cart-visible': cartDropDownVisible}" ng-click="viewCartDropDown()"><i class="fa fa-shopping-bag" aria-hidden="true" title="Cart"></i><span  class=""  ng-class="{'numberOfProducts':cartDropDownVisible}">{{numberOfProductsInCart}}</span><i class="fa fa-plus" aria-hidden="true"  title="Cart"></i></div>
                         </ul>
                     </div>
                     </div>
@@ -54,7 +40,44 @@
                 <!-- /.container-fluid -->
         </nav>
         </div>
+<div class="cartwrapper col-xs-12 col-sm-5" ng-if="cartDropDownVisible">
+    <div class="cartDropDown col-xs-12">
+        <div class="cartDetail" ng-repeat="product in cart.cartDetails">
+            <div class="image-wrapper">
+                <div class="removeIcon" ng-click="removeItemFromCart(product)" title='Remove Product'><img src="images/cancel.svg" alt=""></div>
+                <img class="productImage img-responsive img-rounded" ng-src={{"https://images.bewakoof.com/t540/"+product.productDetails.images.additional[0].name}} alt="">
+            </div>
+            <div class="productDescription">{{product.productDetails.name}} . <b>{{product.size}}</b></div>
+            <div class="productPrice"><i class="fa fa-inr" aria-hidden="true"></i>{{product.productDetails.price}}</div>
+        </div>
+    </div>
+    <div ng-if="cart.cartDetails.length<=0" class="noProducts">
+        <p>Shopping Bag Empty :'(</p>
+        <!--Select Products From Our Super Cool Collection :)-->
+    </div>
+    <div class="checkoutButton" ng-if="cart.cartDetails.length>0">
+        <button class="btn">Checkout</button>
+    </div>
+</div>
+    
+<!-- Modal -->
+<div id="womenNotify" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="images/ladiesTshirt.jpg" alt="">
+        <div class="notifyWomen">
+            <form name="notifyMeForm" novalidate>
+                <span class="textInNotify">We're almost ready for you, ladies.</span>
+                <input type="email" ng-model="notifyEmail" class="form-control notifyMeField" name="emailid" placeholder="Email Address" required>
+            <button ng-disabled="!notifyMeForm.$valid" class="btn buyNowBtn">Notify Me</button>
+            </form>
+        </div>
+     </div>
     </div>
 
-    
+  </div>
+</div>
 </div>

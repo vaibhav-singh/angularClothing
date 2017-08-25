@@ -65,17 +65,21 @@ button[disabled]{
 .requestUnavailableSize small{
     background: #ddd;
     padding: 3px;
+    cursor: pointer;
 }
 .buttonsinProductDetails button{
     border-radius: 0px;
     margin: 5px 10px 10px 0;
     padding: 10px 0;
+    font-size: 20px;
+    padding: 10px;
 }
 .buyNowBtn{
     background: #EF6C00;
     color: white;
+    border-radius: 0px;
 }
-.buttonsinProductDetails button:focus, .buttonsinProductDetails button:hover, .buttonsinProductDetails button:focus:hover{
+.buttonsinProductDetails button:focus, .buttonsinProductDetails button:hover, .buttonsinProductDetails button:focus:hover, .buyNowBtn:focus, .buyNowBtn:hover, .buyNowBtn:focus:hover{
     color: white;
     text-decoration: none;
     outline: none;
@@ -94,7 +98,7 @@ button[disabled]{
     right: 0;
 }
 .owl-nav{
-    top: 42%;
+    top: 27%;
     position: absolute;
     width: 96%;
 }
@@ -103,7 +107,27 @@ button[disabled]{
     cursor:pointer;  
     float:right;
     margin-right:20px; 
+    padding: 116px 10px;
+    background: transparent;
 }
 .owl-theme .owl-nav .owl-prev {
     float:left;
+    padding: 116px 10px;
+    background: transparent;
+}
+.owl-theme .owl-nav{
+    height: 0px;
+}
+.owl-theme .owl-nav i{
+    color: black;
+}
+.requestForSizeDiv input{
+    border-radius: 0;
+    font-family: Montserrat-Regular;
+}
+.requestForSizeDiv span{
+    font-size: 11px;
+    line-height: 24px;
+    font-family: Montserrat-Regular;
+    font-weight: 600;
 }

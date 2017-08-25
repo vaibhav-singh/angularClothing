@@ -1,8 +1,7 @@
-angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$stateParams', 'productService', 'locale', function($scope, $stateParams, productService, locale){
+angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$stateParams', 'productService', 'locale', 'cartRelatedServices', '$rootScope', function($scope, $stateParams, productService, locale, cartRelatedServices, $rootScope){
     $scope.init = function(productId){
         // get product Details
         productService.getDetailsForProduct(productId).then(function(response){
-            console.log(response)         
             $scope.details = response;
             $(document).ready(function () {
                 $(".owl-carousel").owlCarousel({
@@ -37,6 +36,32 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
     $scope.prevImage = function(){
         $scope.owl.trigger('prev.owl.carousel');
     }
+    // add to cart
+    $scope.addToCart = function(product, selectedSize){
+        $scope.buyNowOrAddToCartClicked = true;
+        if(selectedSize){
+            productToAdd = {productId: product.id, quantity: 1, size: selectedSize, productDetails: product};
+            $scope.showSizeError = false;
+            cartRelatedServices.changeQuantityOfProductInCart(productToAdd, "+");
+        } else{
+            $scope.showSizeError = true;
+        }
+        $rootScope.numberOfProductsInCart = cartRelatedServices.cartDetails.length;
+    }
+    // selectSizeForRequest
+    $scope.selectSizeForRequest = function(size){
+        $scope.sizeForRequest = size;
+    }
+    // sendRequestForSize
+    $scope.sendRequestForSize = function(){
+        $scope.requestForSizeBtnClicked = true;
+        if(!sizeForRequest){
+            return false;
+        } else{
+
+        }
+    }
+    $scope.showSizeError = false;
     $scope.init($stateParams.productId);
     $scope.getSizes($stateParams.productId);
 }]);

@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="bower_components/OwlCarousel2-2.2.1/dist/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="stylesheets/font-awesome.min.css">
-    <!--<link href="https://fonts.googleapis.com/css?family=Montserrat:900" rel="stylesheet">-->
     <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
     
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1">
@@ -18,11 +17,12 @@
     <link rel="stylesheet" href="stylesheets/navbar.css">
 </head>
 
-<body ng-app="mainApp">
+<body ng-app="mainApp" ng-controller="parentCtrl" ng-style="cartDropDownVisible && {'overflow-y': 'hidden'}">
     <header>        
         <div ng-include="'html/header.html'"></div>
     </header>
     <ui-view></ui-view>
+    <div ng-if="cartDropDownVisible" ng-click="hideCart()" class="cartBackDrop modal-backdrop fade in"></div>
     <footer>
         <div ng-include="'html/footer.html'"></div>
     </footer>
@@ -37,8 +37,11 @@
 <script src="javascripts/app.js"></script>
 <script src="javascripts/router.js"></script>
 <script src="javascripts/locale.js"></script>
+<script src="javascripts/parentCtrl/parentCtrl.js"></script>
 <script src="javascripts/productDetails/productDetailsCtrl.js"></script>
 <script src="javascripts/services/productRelatedServices.js"></script>
+<script src="javascripts/services/cartRelatedServices.js"></script>
+<script src="javascripts/services/commonServices.js"></script>
 <script src="javascripts/products/products.js"></script>
 <script src="javascripts/login/loginController.js"></script>
 <script src="javascripts/productDetails/productDetailsCtrl.js"></script>

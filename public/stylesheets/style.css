@@ -34,3 +34,55 @@ body {
   /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
   font-family: Montserrat-Regular;
 }
+.margin_t_20{
+    margin-top: 20px;
+}
+.owl-theme .owl-nav [class*=owl-]:hover {
+    background: transparent;
+}
+.cartBackDrop.modal-backdrop.fade.in{
+    z-index: 999;
+}
+
+/*
+h2.shake,
+.shake.inline {
+	display:inline-block
+}*/
+/*h1,p,h2{
+  color:#FFF;
+}*/
+@-webkit-keyframes spaceboots {
+	0% { -webkit-transform: translate(0px, 0px) }
+	10% { -webkit-transform: translate(-1px, 0px) }
+	20% { -webkit-transform: translate(-3px, 0px) }
+	30% { -webkit-transform: translate(0px, 0px) }
+	40% { -webkit-transform: translate(1px, 0px) }
+	50% { -webkit-transform: translate(-1px, 0px) }
+	60% { -webkit-transform: translate(-3px, 0px) }
+	70% { -webkit-transform: translate(2px, 0px) }
+	80% { -webkit-transform: translate(-1px, 0px) }
+	90% { -webkit-transform: translate(2px, 0px) }
+	100% { -webkit-transform: translate(1px, 0px) }
+}
+.shake{
+	-webkit-animation-name: spaceboots;
+	-webkit-animation-duration: 0.8s;
+	-webkit-transform-origin:30% 30%;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;    
+}
+.shake:hover,
+.shake:focus {
+	-webkit-animation-name: none;
+}
+.sizes ul.showErrorBorder{
+    border: 2px solid rgba(255,0,51, 0.7);
+    display: inline-flex;
+}
+.sizes ul.showErrorBorder:hover{
+    border: none;
+}
+.requestForSizeDiv .sizes{
+        margin: 0 !important;
+}
