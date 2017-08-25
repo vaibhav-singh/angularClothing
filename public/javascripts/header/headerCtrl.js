@@ -19,5 +19,5 @@ angular.module('mainApp')
         $scope.cart.cartDetails = JSON.parse(localStorage.getItem('cartDetails'));
         $rootScope.numberOfProductsInCart = $scope.cart.cartDetails.length;
     }
-    $scope.cart.cartDetails = JSON.parse(localStorage.getItem('cartDetails'));
+    $scope.cart.cartDetails = JSON.parse(localStorage.getItem('cartDetails')) ? JSON.parse(localStorage.getItem('cartDetails')) : [];
 }]);
