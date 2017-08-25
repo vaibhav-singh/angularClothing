@@ -56,7 +56,7 @@ h2.shake,
 	0% { -webkit-transform: translate(0px, 0px) }
 	10% { -webkit-transform: translate(-1px, 0px) }
 	20% { -webkit-transform: translate(-3px, 0px) }
-	30% { -webkit-transform: translate(0px, 0px) }
+	30% { -webkit-transform: translate(2px, 0px) }
 	40% { -webkit-transform: translate(1px, 0px) }
 	50% { -webkit-transform: translate(-1px, 0px) }
 	60% { -webkit-transform: translate(-3px, 0px) }
@@ -67,8 +67,8 @@ h2.shake,
 }
 .shake{
 	-webkit-animation-name: spaceboots;
-	-webkit-animation-duration: 0.8s;
-	-webkit-transform-origin:30% 30%;
+	-webkit-animation-duration: 0.5s;
+	-webkit-transform-origin:50% 50%;
 	-webkit-animation-iteration-count: infinite;
 	-webkit-animation-timing-function: linear;    
 }
@@ -76,13 +76,117 @@ h2.shake,
 .shake:focus {
 	-webkit-animation-name: none;
 }
-.sizes ul.showErrorBorder{
-    border: 2px solid rgba(255,0,51, 0.7);
-    display: inline-flex;
+@keyframes instacol{
+    0% {
+        color: #525ece;
+    }
+
+    25% {
+        color: #df2d74;
+    }
+    50% {
+        color: #f78547;
+    }
+    75% {
+        color: #df2d74;
+    }
+    100% {
+        color: #525ece;
+    }
 }
-.sizes ul.showErrorBorder:hover{
-    border: none;
+footer{
+    border-top: 2px solid #eee;
+    position: relative;
+    height: 106px;
+    max-width: 1200px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
 }
-.requestForSizeDiv .sizes{
-        margin: 0 !important;
+footer nav{
+    margin-top: 50px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    text-align: center;
+}
+
+footer nav a{
+    font-family: "Montserrat-Regular", sans-serif;
+    font-weight: 400;
+    font-size: 1em;
+    color: #313a44 !important;
+    margin: 0 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+footer a.instagram{
+    animation: instacol 8s infinite;
+    -webkit-animation: instacol 8s infinite;
+    -moz-animation: instacol 8s infinite;
+}
+footer a.instagram:before {
+    content: ' ';
+    background: url(../images/icon-instagram.svg) no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: .4em;
+    margin-top: -3px;
+}
+#shipping, #refunds, #terms {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 7.2rem;
+}
+#privacy {
+    margin-top: 6.4rem;
+}
+footer nav a .dot {
+    display: inline-block;
+    background: #8596FF;
+    width: 6px;
+    height: 6px;
+    border-radius: 4px;
+    position: relative;
+    top: -3px;
+    margin-left: .3em;
+}
+.article h2 {
+    font-size: 2.215em;
+    margin: 0.6em 0;
+    text-align: left;
+}
+.article h2{
+    font-family: "Montserrat-Light", Georgia, serif;
+        font-weight: 300;
+    font-size: 3.25em;
+    line-height: 1.2em;
+    margin: .2em 0;
+    letter-spacing: -2px;
+    color: #313a44;
+}
+.article p.small {
+    font-size: 15px;
+    line-height: 1.8em;
+    margin-bottom: 1em;
+}
+.article p {
+    font-family: "Montserrat-Light", Georgia, serif;
+    text-align: left;
+    font-weight: 500;
+    font-size: 1.25em;
+    line-height: 1.7em;
+    margin-bottom: 1.25em;
+}
+.article h3 {
+    font-size: 1.325em;
+    margin-top: 1.2em;
+    text-align: left;
+       color: #313a44;
+    font-weight: 700;
 }

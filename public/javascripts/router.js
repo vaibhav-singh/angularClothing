@@ -19,6 +19,17 @@ angular.module('mainApp').config(['$stateProvider','$locationProvider',function(
         url:'/cartDetails',
         templateUrl: './html/cartDetails.html'
     });
+    $stateProvider.state({
+        name: 'terms',
+        url:'/terms',
+        templateUrl: './html/terms.html',
+        controller: function(){
+            this.scrollToTop = function(){
+                $('html, body').animate({ scrollTop: 0 }, 'fast');
+            }
+        },
+        controllerAs: 'terms'
+    });
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false

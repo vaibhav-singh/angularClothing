@@ -1,6 +1,6 @@
 angular.module('mainApp')
 .controller("headerCtrl", ['$scope', '$rootScope', '$stateParams', 'locale', 'CommonServices', 'cartRelatedServices', function($scope, $rootScope, $stateParams, locale, CommonServices, cartRelatedServices){
-    $scope.brandName = locale.brandName;
+    $rootScope.brandName = locale.brandName;
     $scope.cart = {};
     $scope.showComingSoon = function(){
         
