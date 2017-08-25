@@ -121,6 +121,7 @@ footer nav a{
     margin: 0 1.2em;
     text-transform: uppercase;
     letter-spacing: 1px;
+    line-height: 3;
 }
 footer a.instagram{
     animation: instacol 8s infinite;
