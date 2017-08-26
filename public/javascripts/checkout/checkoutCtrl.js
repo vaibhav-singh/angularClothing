@@ -10,7 +10,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
     $scope.onload = function () {
         for (var i = 0; i < $scope.cartDetails.length; i++) {
             $scope.cartDetailsRefined[i] = { productId: $scope.cartDetails[i].productId, quantity: $scope.cartDetails[i].quantity, size: $scope.cartDetails[i].size };
-            $scope.totalAmount += $scope.cartDetails[i].quantity + $scope.cartDetails[i].productDetails.price;
+            $scope.totalAmount += $scope.cartDetails[i].quantity*$scope.cartDetails[i].productDetails.price;
         }
     }
     $scope.checkForsizeAvailability = function (ObjectContainingProductId_size_size) {
