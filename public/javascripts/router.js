@@ -20,6 +20,11 @@ angular.module('mainApp').config(['$stateProvider','$locationProvider',function(
         templateUrl: './html/cartDetails.html'
     });
     $stateProvider.state({
+        name: 'checkout',
+        url:'/checkout/:src',
+        templateUrl: './html/checkOut.html'
+    });
+    $stateProvider.state({
         name: 'terms',
         url:'/terms',
         templateUrl: './html/terms.html',

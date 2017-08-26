@@ -1,0 +1,129 @@
+.checkoutHeader h1{
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.thanksMessage{
+        font-size: 18px;
+}
+.cartDetailsCheckOut{
+    margin-top:10px;
+    font-family: "Montserrat-Thin";
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.saperator{
+    color: #cfd9e6;
+    font-size: 4em;
+    padding: 0 9px;
+    height: 10px;
+    line-height: 0;
+}
+.checkOutParent{
+    max-width: 720px;
+    margin: 0 auto;
+    margin-top: 175px;
+}
+.totalAmount{
+    margin: 20px 0 10px 0;
+    font-size: 24px;
+    font-family: "Montserrat-bold";
+    color: #313a44;
+}
+.checkOutParent ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #cfd9e6;
+}
+.checkOutParent ::-moz-placeholder { /* Firefox 19+ */
+  color: #cfd9e6;
+}
+.checkOutParent :-ms-input-placeholder { /* IE 10+ */
+  color: #cfd9e6;
+}
+.checkOutParent :-moz-placeholder { /* Firefox 18- */
+  color: #cfd9e6;
+}
+.checkOutParent aside{
+    font-family: "PT_Sans_Narrow",sans-serif;
+}
+input.checkout{
+    width: 100%;
+    border: 1px solid #cfd9e6;
+    font-family: "PT_Sans_Narrow",sans-serif;
+    font-size: 1.125em;
+    padding: 1em;
+    margin: -1px 0 0;
+    border-radius: 0;
+    z-index: 1;
+    letter-spacing: 1px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    box-shadow: none;
+    outline: none;
+    -webkit-box-shadow: none; 
+    border-collapse: collapse;
+}
+input.checkout.error{
+    border-left: 0.25em solid #ef3d4f;
+}
+input.checkout:focus{
+    outline: none;
+}
+.addressForm{
+    margin-top: 20px;
+}
+.addressForm aside::before{
+    content: "+91";
+    max-width: 2em;
+    left: 1em;
+}
+.addressForm aside{
+    display: inline-block;
+    position: absolute;
+    left: 1em;
+    bottom: 1em;
+    font-size: 1.125em;
+    margin: 0;
+    padding: 0;
+    color: #c3ccd9;
+}
+.addressForm form div{
+    position: relative;
+}
+.checkout.phoneNo{
+    padding-left: 3em;
+}
+.second-section{
+    margin-top: 40px;
+}
+.flexDisplay{
+        display: flex;
+}
+.flexDisplay input.checkout:first-child{
+    border-right: 0px;
+}
+.checkoutAndPay{
+    margin-top: 20px;
+    font-family: "Montserrat-Regular";
+    font-size: 20px;
+    width: 100%;
+}
+.differentAddressBtn, .differentAddressBtn:hover, .differentAddressBtn:focus, .differentAddressBtn:active, .differentAddressBtn:active:focus{
+    color: #6e80d9;
+    background-color: transparent;
+    text-align: left;
+    width: 100%;
+    padding:0;
+    font-size: 18px;
+    font-family: PT_Sans_Narrow;
+    outline: none;
+    -webkit-box-shadow: none; 
+     box-shadow: none; 
+     margin-top: 20px;
+}
+@media only screen and (max-width: 991px){
+    .checkOutParent{
+        text-align: center;
+        margin: 24px;
+    }
+    .differentAddressBtn{
+        text-align: center;
+    }
+}

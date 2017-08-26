@@ -71,10 +71,12 @@
     bottom: 30px;
     right: 30px;
     text-align: center;
-    border: 1px solid #adadad;
+    border: 1px solid #313a44;
     padding: 6px;
     border-radius: 7px;
+    color: #313a44
     cursor:pointer;
+    z-index: 1041;
     
 }
 .topDisplayCat{

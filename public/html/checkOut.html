@@ -1,0 +1,61 @@
+<div ng-controller="checkoutCtrl" class="checkOutParent">
+    <div class="checkoutHeader">
+        <h1>You're gonna love your new Tees.</h1>
+        <span class="thanksMessage">Thanks for getting &nbsp<b>{{cartDetailsRefined.length}}</b> 😄</span>  
+    </div>
+    <div class="cartDetailsCheckOut">
+        <div ng-repeat="product in cartDetails" class="">
+            <span class="productQuantity">{{product.quantity}}</span>
+            <span class="saperator">.</span>{{product.productDetails.name}}</span>
+            <span class="saperator">.</span>{{product.size}}
+        </div>
+        <div class="totalAmount">
+            <i class="fa fa-inr" aria-hidden="true"></i> {{totalAmount}}
+        </div>
+        <section class="addressForm" ng-if="newAddress">
+            <form name="forms.addressForm" novalidate>
+               <section>
+                <div>
+                    <input type="text" name="fullName" ng-class="{'error': forms.addressForm.fullName.$invalid && showErrors}" ng-model="addressDetails.fullName" class="checkout" placeholder="Full Name" required>
+                </div>
+                <div>
+                    <input type="email" ng-model="addressDetails.emailId" name="emailId" ng-class="{'error': forms.addressForm.emailId.$invalid && showErrors}" class="checkout" placeholder="Email Address" required>
+                </div>
+                <div>
+                    <aside>
+                    </aside>
+                    <input type="number" name="phoneNumber" class="checkout phoneNo" ng-class="{'error': forms.addressForm.phoneNumber.$invalid && showErrors}" ng-model="addressDetails.phoneNumber" placeholder="Phone Number" required>
+                </div>
+               </section>
+               <section class="second-section">
+                <div>
+                    <input type="text" name="address" class="checkout" ng-model="addressDetails.address" ng-class="{'error': forms.addressForm.address.$invalid && showErrors}" placeholder="Address" required>
+                </div>
+                <div>
+                    <input type="number" name="pinCode" ng-class="{'error': forms.addressForm.pinCode.$invalid && showErrors}" class="checkout" ng-model="addressDetails.pinCode" placeholder="Pin Code" required>
+                </div>
+                <div class="flexDisplay">
+                    <input type="text" name="city" ng-class="{'error': forms.addressForm.city.$invalid && showErrors}" class="checkout" ng-model="addressDetails.city" placeholder="City" required>
+                    <input type="text" name="state" ng-class="{'error': forms.addressForm.state.$invalid && showErrors}" class="checkout" ng-model="addressDetails.state" placeholder="State" required>
+                </div>
+                <div>
+                    <input type="text" class="checkout" placeholder="India" value="India" ng-disabled="true">
+                </div>
+               </section>
+               <button class="btn buyNowBtn checkoutAndPay" ng-click="placeOrderAndPayButtonClicked()">Place Order and Pay</button>
+            </form>
+        </section>
+    </div>
+        <section ng-if="!newAddress" class="addressForm">
+            <div class="thanksMessage"> You'll get it At -</div>
+            <div class="addressForm">
+                <div>{{addressDetails.fullName}}</div>
+                <div>{{addressDetails.address}}</div>
+                <div>{{addressDetails.city}}, {{addressDetails.state}}, {{addressDetails.pinCode}}, India </div>
+                <div>PH. {{addressDetails.phoneNumber}}</div>
+            </div> 
+            <div>
+                <button class="btn differentAddressBtn" ng-click="differentAddressButton()">Different Address?</button>
+            </div>
+        </section>
+</div>

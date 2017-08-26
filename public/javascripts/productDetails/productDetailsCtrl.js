@@ -42,7 +42,11 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
         if(selectedSize){
             productToAdd = {productId: product.id, quantity: 1, size: selectedSize, productDetails: product};
             $scope.showSizeError = false;
+            $scope.showSizeError = false;
+            $scope.buyNowOrAddToCartClicked = false;
             cartRelatedServices.changeQuantityOfProductInCart(productToAdd, "+");
+            $rootScope.cartDropDownVisible = true;
+            delete $scope.selectedSize;
         } else{
             $scope.showSizeError = true;
         }
@@ -55,13 +59,22 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
     }
     // sendRequestForSize
     $scope.sendRequestForSize = function(){
-        $scope.requestForSizeBtnClicked = true;
+        if($scope.sizeForRequest){
+            $scope.showRequestForSizeDiv = false;
+            $scope.requestForSizeBtnClicked = false;
+            delete $scope.sizeForRequest;
+        } else{
+            $scope.requestForSizeBtnClicked = true;
+        }
         $timeout(()=>revertClickFlags(), 1000);
         if(!$scope.sizeForRequest){
             return false;
         } else{
 
         }
+    }
+    $scope.proceedToCheckOut = function(cart){
+        $state.go('checkout', {cart: cart});
     }
     var revertClickFlags = function(){
         $scope.buyNowOrAddToCartClicked = false;

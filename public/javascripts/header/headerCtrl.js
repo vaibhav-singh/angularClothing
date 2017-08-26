@@ -1,5 +1,5 @@
 angular.module('mainApp')
-.controller("headerCtrl", ['$scope', '$rootScope', '$stateParams', 'locale', 'CommonServices', 'cartRelatedServices', function($scope, $rootScope, $stateParams, locale, CommonServices, cartRelatedServices){
+.controller("headerCtrl", ['$scope', '$rootScope', '$stateParams', 'locale', 'CommonServices', 'cartRelatedServices', '$state', function($scope, $rootScope, $stateParams, locale, CommonServices, cartRelatedServices, $state){
     $rootScope.brandName = locale.brandName;
     $scope.cart = {};
     $scope.showComingSoon = function(){
@@ -18,6 +18,11 @@ angular.module('mainApp')
         cartRelatedServices.removeProduct(product);
         $scope.cart.cartDetails = JSON.parse(localStorage.getItem('cartDetails'));
         $rootScope.numberOfProductsInCart = $scope.cart.cartDetails.length;
+        localStorage.setItem('finalCart', JSON.stringify($scope.cart.cartDetails));
+    }
+    $scope.proceedToCheckOut = function(cart){
+        localStorage.setItem('finalCart', JSON.stringify(cart));
+        $state.go('checkout', {src:"cart"});
     }
     $scope.cart.cartDetails = JSON.parse(localStorage.getItem('cartDetails')) ? JSON.parse(localStorage.getItem('cartDetails')) : [];
 }]);
