@@ -1,4 +1,4 @@
-angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$stateParams', 'productService', 'locale', 'cartRelatedServices', '$rootScope', '$timeout', function($scope, $stateParams, productService, locale, cartRelatedServices, $rootScope, $timeout){
+angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$stateParams', 'productService', 'locale', 'cartRelatedServices', '$rootScope', '$timeout', '$state', function($scope, $stateParams, productService, locale, cartRelatedServices, $rootScope, $timeout, $state){
     $scope.init = function(productId){
         // get product Details
         productService.getDetailsForProduct(productId).then(function(response){
@@ -53,6 +53,22 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
         }
         $rootScope.numberOfProductsInCart = cartRelatedServices.cartDetails.length;
         $timeout(()=>revertClickFlags(), 1000);
+    };
+    $scope.buyItNow = function(product, selectedSize){
+         $scope.buyNowOrAddToCartClicked = true;
+          if(selectedSize){
+            productToAdd = {productId: product.id, quantity: 1, size: selectedSize, productDetails: product};
+            $scope.showSizeError = false;
+            $scope.showSizeError = false;
+            $scope.buyNowOrAddToCartClicked = false;
+            localStorage.setItem('finalCart', JSON.stringify([productToAdd]));
+            $state.go('checkout', {src:"buyNow"});
+            delete $scope.selectedSize;
+        } else{
+            $scope.showSizeError = true;
+        }
+        // $rootScope.numberOfProductsInCart = cartRelatedServices.cartDetails.length;
+        $timeout(()=>revertClickFlags(), 1000);
     }
     // selectSizeForRequest
     $scope.selectSizeForRequest = function(size){
@@ -81,6 +97,14 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
         $scope.buyNowOrAddToCartClicked = false;
         $scope.requestForSizeBtnClicked = false;
     }
+
+    $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
+        if(toState.name === "products" && toParams.src !== localStorage.getItem('anchor')){
+            toParams.src = localStorage.getItem('anchor');
+            event.preventDefault();
+            $state.go(toState.name, toParams);
+        }
+    })
     $scope.showSizeError = false;
     $scope.init($stateParams.productId);
     $scope.getSizes($stateParams.productId);

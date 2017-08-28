@@ -1,0 +1,64 @@
+<div ng-controller='orderStatusCtrl' class="row orderStatusParent">
+    <h2>Order Details
+    </h2>
+    <div class=" col-sm-6 col-xs-12 bill billPart1 no-padding">
+        <div class="billWrapper">
+            <div class="heading">
+                <b>Orange Clips</b>
+                <span class="pull-right">Order: {{orderDetails.orderId}}</span>
+            </div>
+            <div class="padding_border">
+                <div><b>{{orderDetails.orderedBy.name}}</b></div>
+                <div>{{orderDetails.deliveryDetails.addressLine}}</div>
+                <div>{{orderDetails.deliveryDetails.city}}, {{orderDetails.deliveryDetails.state}},{{orderDetails.deliveryDetails.pinCode}}
+                </div>
+                <div>{{orderDetails.deliveryDetails.country}} </div>
+            </div>
+            <div class="padding_border">
+                <div ng-repeat="product in orderDetails.products">
+                    {{product.quantity}} . {{product.productDetails.name}} . {{product.size}}
+                    <span class="pull-right"><i class="fa fa-inr" aria-hidden="true"></i> {{product.productDetails.price}}</span>
+                </div>
+            </div>
+            <div class="padding_border no-border">
+                {{orderDetails.paymentStatus}}
+                <div class="pull-right">
+                    <i class="fa fa-inr" aria-hidden="true"></i> {{orderDetails.totalAmount}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" col-sm-6 col-xs-12 bill billPart2 no-padding">
+        <div class="billWrapper">
+            <div class="heading">
+                <b>Orange Clips</b>
+                <span class="pull-right">Order: {{orderDetails.orderId}}</span>
+            
+            </div>
+            <div ng-if="!orderDetails.shipped">
+                <div class="trackingDetails">
+                    <div>On the way to courier service</div>
+                </div>
+            </div>
+            <div ng-if="orderDetails.shipped" class="no-padding">
+                <div class="shippingDates">
+                    <div class="col">
+                        <div>Shipped</div>
+                        <b>{{orderDetails.shippingDetails.shippedOn | date:'LLLL d'}}</b>
+                    </div>
+                    <div class="col">
+                        <div>Arriving</div>
+                        <b>{{orderDetails.shippingDetails.expectedDelivery | date:'LLLL d'}}</b>
+                    </div>
+                </div>
+                <div class="trackingDetails">
+                    <div>Courier</div>
+                    <b>{{(orderDetails.shippingDetails.couriourName ? orderDetails.shippingDetails.couriourName : "-")}}</b>
+                </div>
+                <div class="trackingDetails">
+                    <div>Tracking Number</div>
+                    <b>{{(orderDetails.shippingDetails.tracking_number ? orderDetails.shippingDetails.tracking_number : "-")}}</b>
+                </div>
+            </div>
+        </div>
+    </div>

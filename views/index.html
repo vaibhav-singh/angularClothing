@@ -15,12 +15,13 @@
     <link rel="stylesheet" href="stylesheets/products.css">
     <link rel="stylesheet" href="stylesheets/productDetails.css">
     <link rel="stylesheet" href="stylesheets/navbar.css">
+    <link rel="stylesheet" href="stylesheets/orderStatus.css">
     <link rel="stylesheet" href="stylesheets/linksPage.css">
     <link rel="stylesheet" href="stylesheets/checkOut.css">
 </head>
 
 <body ng-app="mainApp" ng-controller="parentCtrl" ng-style="cartDropDownVisible && {'overflow-y': 'hidden'}">
-    <header>        
+    <header ng-if="!hideHeader">        
         <div ng-include="'html/header.html'"></div>
     </header>
     <ui-view></ui-view>
@@ -48,6 +49,8 @@
 <script src="javascripts/login/loginController.js"></script>
 <script src="javascripts/productDetails/productDetailsCtrl.js"></script>
 <script src="javascripts/header/headerCtrl.js"></script>
+<script src="javascripts/orderStatus/orderStatusCtrl.js"></script>
+
 <script src="javascripts/cart/cartCtrl.js"></script>
 <script src="javascripts/checkout/checkoutCtrl.js"></script>
 <script src="javascripts/home/home.js"></script>

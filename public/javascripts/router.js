@@ -25,6 +25,12 @@ angular.module('mainApp').config(['$stateProvider','$locationProvider',function(
         templateUrl: './html/checkOut.html'
     });
     $stateProvider.state({
+        name: 'orderStatus',
+        url: '/orderStatus?orderId',
+        templateUrl: './html/orderStatus.html'
+    });
+
+    $stateProvider.state({
         name: 'terms',
         url:'/terms',
         templateUrl: './html/terms.html',

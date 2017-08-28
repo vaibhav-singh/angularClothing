@@ -1,11 +1,13 @@
-angular.module("mainApp").controller("productsCtrl", ['$scope', '$stateParams', 'productService', function($scope, $stateParams, productService){
+angular.module("mainApp").controller("productsCtrl", ['$scope', '$stateParams', 'productService', '$location', '$anchorScroll', '$state', function($scope, $stateParams, productService, $location,  $anchorScroll,$state){
     $scope.init = function(gender, superCategory, subCategory, src, tagsSelected, pageNo){
         // tags from local storage
         // fetch products
         pageNo++;
+        localStorage.setItem('pageNo', pageNo);
         productService.getproductsToDisplay(gender, superCategory, subCategory, src, tagsSelected, pageNo).then(function(response){
             $scope.productsToDisplay = response.products;
             $scope.totalCount = response.totalCount;
+            localStorage.setItem('totalProducts', $scope.totalCount);
             if(response.totalCount > $scope.productsToDisplay.length){
                 $scope.moreItemsAvailable = true;
             } else{
@@ -13,8 +15,8 @@ angular.module("mainApp").controller("productsCtrl", ['$scope', '$stateParams', 
             }
             for(var i=0;i<$scope.productsToDisplay.length;i++){
                 $scope.fetchAvailableSizes($scope.productsToDisplay[i], i);
-
             }
+            localStorage.setItem("products", JSON.stringify($scope.productsToDisplay));
         }, function(response){
             
         });
@@ -22,9 +24,11 @@ angular.module("mainApp").controller("productsCtrl", ['$scope', '$stateParams', 
     // load more products
     $scope.loadMore = function(){
         pageNo++;
+        localStorage.setItem('pageNo', pageNo);
         productService.getproductsToDisplay($scope.params.gender, $scope.params.superCategory, $scope.params.subCategory, $scope.params.src, $scope.tagsSelected, pageNo).then(function(response){
             var noOfProductsBeforeConctination = $scope.productsToDisplay.length;
             $scope.totalCount = response.totalCount;
+            localStorage.setItem('totalProducts', $scope.totalCount);
             $scope.productsToDisplay = $scope.productsToDisplay.concat(response.products);
             if(response.totalCount > $scope.productsToDisplay.length){
                 $scope.moreItemsAvailable = true;
@@ -33,8 +37,8 @@ angular.module("mainApp").controller("productsCtrl", ['$scope', '$stateParams', 
             }
             for(var i=noOfProductsBeforeConctination;i<$scope.productsToDisplay.length;i++){
                 $scope.fetchAvailableSizes($scope.productsToDisplay[i], i);
-
             }
+            localStorage.setItem("products", JSON.stringify($scope.productsToDisplay));
         }, function(response){
             
         });
@@ -53,24 +57,53 @@ angular.module("mainApp").controller("productsCtrl", ['$scope', '$stateParams', 
     $scope.fetchAvailableSizes = function(productId, index){
         productService.fetchAvailableSizes(productId).then(function(response){
             $scope.productsToDisplay[index].sizes = Object.keys(response.sizes);
-            console.log(response)
         }, function(response){
 
         })
     };
+    $scope.openProduct = function(url, id, index){
+        localStorage.setItem('anchor', id+index);
+        $state.go('productDetails', {productId: id})
+    }
     // scroll to top
     $scope.scrollToTop = function(){
         $('html, body').animate({ scrollTop: 0 }, 'fast');
     }
 // initializations
-    var pageNo = 0;
-    $scope.totalCount = 0;
+if(!$stateParams.src){
     $scope.params = $stateParams;
+    console.log("sdsdsd")
+    var pageNo = 0;
+    localStorage.setItem('pageNo', pageNo);
+    $scope.totalCount = 0;
+    localStorage.setItem('totalProducts', $scope.totalCount);
     $scope.tagsSelected = [];
     $scope.moreItemsAvailable = true;
     $scope.loadingItems = false;
     $scope.tags = JSON.parse(localStorage.getItem('tags'));
     $scope.init($scope.params.gender, $scope.params.superCategory, $scope.params.subCategory, $scope.params.src, $scope.tagsSelected, pageNo);
+} else if($stateParams.src === "chef"){
+    console.log("sasasas")
+
+} else{
+    $scope.params = $stateParams;
+    // from product
+    var pageNo = localStorage.getItem('pageNo');
+    var anchor = $stateParams.src;
+    $scope.productsToDisplay = JSON.parse(localStorage.getItem('products'));
+    $(document).ready(function () {
+    $location.hash(anchor);
+     $anchorScroll();
+
+    })
+    $scope.totalCount = localStorage.getItem('totalProducts');
+            if($scope.totalCount > $scope.productsToDisplay.length){
+                $scope.moreItemsAvailable = true;
+            } else{
+                $scope.moreItemsAvailable = false;
+            }
+
+}
     $(document).ready(function () {
         $(".owl-carousel.categories").owlCarousel({
             items: 2,

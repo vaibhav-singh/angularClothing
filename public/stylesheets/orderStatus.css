@@ -1,0 +1,46 @@
+.orderStatusParent{
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: Montserrat-Regular;
+    font-size: 15px;
+    color: #313a44;
+    display: table;
+}
+.orderStatusParent h2{
+    padding: 0 30px;
+}
+.orderStatusParent h2 img{
+    width: 100px;
+    float:right;
+    height: 100px;
+}
+.bill{
+    padding: 25px;
+    width: 100%;
+}
+.bill .heading, .padding_border{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #313a44
+}
+.padding_border{
+    padding: 15px 0;
+}
+.billWrapper{
+    padding: 20px;
+    box-shadow: 0px 6px 8px rgba(0,0,0,0.2), 0px 1px 0px rgba(0,0,0,0.1) inset;
+}
+.no-border{
+    border: none;
+}
+.shippingDates{
+    padding: 15px 0;
+    display: flex;
+
+}
+.shippingDates div{
+    width:50%
+
+}
+.trackingDetails{
+    padding: 15px 0;
+}
