@@ -41,6 +41,28 @@ angular.module('mainApp').config(['$stateProvider','$locationProvider',function(
         },
         controllerAs: 'terms'
     });
+    $stateProvider.state({
+        name: 'care',
+        url:'/care',
+        templateUrl: './html/care.html',
+        controller: function(){
+            this.scrollToTop = function(){
+                $('html, body').animate({ scrollTop: 0 }, 'fast');
+            }
+        },
+        controllerAs: 'care'
+    });
+    $stateProvider.state({
+        name: 'returns',
+        url:'/returns',
+        templateUrl: './html/return.html',
+        controller: function(){
+            this.scrollToTop = function(){
+                $('html, body').animate({ scrollTop: 0 }, 'fast');
+            }
+        },
+        controllerAs: 'return'
+    });
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
