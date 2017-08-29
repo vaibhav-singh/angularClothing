@@ -1,4 +1,4 @@
-angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', '$rootScope', function ($scope, $stateParams, $rootScope) {
+angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', '$rootScope', '$state', function ($scope, $stateParams, $rootScope, $state) {
     $scope.cartDetails = JSON.parse(localStorage.getItem('finalCart'));
     $scope.cartDetailsRefined = [];
     $scope.forms = {};
@@ -27,9 +27,13 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
     };
     $scope.placeOrderAndPayButtonClicked = function(){
         $scope.showErrors = true;
-        console.log($scope.forms.addressForm.$valid)
-        if($scope.forms.addressForm.$valid){
+        if(!$scope.newAddress || $scope.forms.addressForm.$valid){
             localStorage.setItem('address', JSON.stringify($scope.addressDetails));
+            // go to payment page get status if status is paid get order id and redirect to orderDetails page
+            var paymentsStatus = true;
+            if(paymentsStatus){
+                $state.go("orderStatus", {orderId: 'af'});
+            }
         } else{
 
         }
