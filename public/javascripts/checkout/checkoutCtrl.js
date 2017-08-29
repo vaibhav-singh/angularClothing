@@ -32,6 +32,12 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
             // go to payment page get status if status is paid get order id and redirect to orderDetails page
             var paymentsStatus = true;
             if(paymentsStatus){
+                 localStorage.removeItem('finalCart');
+                if($stateParams.src !== "buyNow")
+                    {
+                        localStorage.setItem('cartDetails', JSON.stringify([]));
+                        $rootScope.numberOfProductsInCart = 0;
+                    }
                 $state.go("orderStatus", {orderId: 'af'});
             }
         } else{
