@@ -37,7 +37,7 @@
 .categories li i{
     font-size: 7px;
     margin-top: 5px;
-    color: #EF6C00;
+    color: #FF5722;
 }
 .productContainer a:hover, .productContainer a:visited, .productContainer a:active{
     text-decoration: none;
@@ -50,7 +50,7 @@
     padding: 10px 0;
 }
 .owl-carousel.categories i{
-    color: #EF6C00;
+    color: #FF5722;
 }
 .owl-carousel.categories .owl-stage-outer{
     padding: 0;

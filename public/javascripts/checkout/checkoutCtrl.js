@@ -11,6 +11,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
         for (var i = 0; i < $scope.cartDetails.length; i++) {
             $scope.cartDetailsRefined[i] = { productId: $scope.cartDetails[i].productId, quantity: $scope.cartDetails[i].quantity, size: $scope.cartDetails[i].size };
             $scope.totalAmount += $scope.cartDetails[i].quantity*$scope.cartDetails[i].productDetails.price;
+            // $scope.checkForsizeAvailability();
         }
     }
     $scope.checkForsizeAvailability = function (ObjectContainingProductId_size_size) {
@@ -53,6 +54,11 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
         $scope.addressDetails = {};
     };
     // flow
+    console.log($scope.cartDetails)
+    if($scope.cartDetails === null){
+            $state.go("homePage");
+    } else{
     $scope.onload();
     $scope.checkIfAddressIsAlreadyStoredInDevice();
+    }
 }])

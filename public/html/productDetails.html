@@ -1,6 +1,6 @@
 <div ng-controller="productDetailsCtrl">
     <div class="container no-padding">
-        <div class="owl-carousel owl-theme col-xs-12 col-sm-5">
+        <div class="owl-carousel productDetails owl-theme col-xs-12 col-sm-5">
             <!--<div class="navButtonsCarousal" ng-click="prevImage()"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>-->
             <div ng-repeat="img in details.images.additional">
                 <img ng-src={{"https://images.bewakoof.com/t540/"+img.name}}>

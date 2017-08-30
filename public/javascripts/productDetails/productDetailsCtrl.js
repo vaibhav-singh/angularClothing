@@ -4,7 +4,7 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
         productService.getDetailsForProduct(productId).then(function(response){
             $scope.details = response;
             $(document).ready(function () {
-                $(".owl-carousel").owlCarousel({
+                $(".owl-carousel.productDetails").owlCarousel({
                     items:1,
                     nav:true,
                     dots: false,

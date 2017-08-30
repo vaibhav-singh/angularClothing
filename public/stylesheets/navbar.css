@@ -17,7 +17,7 @@
 }
 }
 .navbar-container .navbar.navbar-default .navbar-header .navbar-brand{
-    color: #EF6C00;
+    color: #FF5722;
 }
 .navbar.navbar-default .navbar-header .navbar-brand{
     color: black;
@@ -34,7 +34,7 @@
 }
 .tab-border{
     position: absolute;
-    border-bottom: 2px solid #EF6C00;
+    border-bottom: 2px solid #FF5722;
     height: 50px;
     transition: left .2s ease-out,width .2s ease-out;
 }
@@ -97,7 +97,7 @@
     font-size: 18px;
 }
 #womenNotify  button[disabled]{
-    background-color:#EF6C00 ;
+    background-color:#FF5722 ;
     opacity: 0.8;
     text-decoration: none; 
 }
@@ -236,7 +236,7 @@ nav.navbar.navbar-fixed-top.navbar-default{
 .checkoutButton button, .checkoutButton button:hover, .checkoutButton button:visited, .checkoutButton button:focus{
     width: 100%;
     /*background-color: #334759;*/
-    background-color: #EF6C00   ;
+    background-color: #FF5722   ;
     font-size: 20px;
     padding: 10px;
     border-radius: 0px;

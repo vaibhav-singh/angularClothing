@@ -42,8 +42,8 @@
     background-color: transparent
 }
 .size-box:hover{
-    border:1px solid #EF6C00;
-    color: #EF6C00;
+    border:1px solid #FF5722;
+    color: #FF5722;
 }
 button[disabled]{
     background-color: #ddd;
@@ -59,8 +59,8 @@ button[disabled]{
     outline: none;
 }
 .size-box.selectedSize{
-    border:1px solid #EF6C00;
-    color: #EF6C00;
+    border:1px solid #FF5722;
+    color: #FF5722;
 }
 .requestUnavailableSize small{
     background: #ddd;
@@ -75,7 +75,7 @@ button[disabled]{
     padding: 10px;
 }
 .buyNowBtn{
-    background: #EF6C00;
+    background: #FF5722;
     color: white;
     border-radius: 0px;
 }

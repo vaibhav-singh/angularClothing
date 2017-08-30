@@ -4,7 +4,7 @@
             <div class="">
                 <div class="container-fluid no-padding col-sm-12">
                     <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header col-sm-3 col-lg-3 col-md-3">
+                    <div class="navbar-header">
                         <button type="button" class="navbar-toggle x collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
                             aria-expanded="false">
                             <span class="sr-only">Toggle navigation</span>
@@ -20,14 +20,14 @@
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="col-sm-9">
+                    <div class="col-sm-10">
                     <div class="collapse navbar-collapse no-padding" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav" ng-mouseover="hovering = true" ng-mouseleave="hovering = false">
-                            <a class="tab-border hidden-xs hidden-sm" ng-style="selectedMenu === 1 &amp;&amp; hovering &amp;&amp; {'width':'115px', 'left':'20px'}  || selectedMenu === 2 &amp;&amp; hovering &amp;&amp; {'width':'75px', 'left':'150px'} || selectedMenu === 3 &amp;&amp; hovering &amp;&amp; {'width':'78px', 'left':'235px'} || selectedMenu === 4 &amp;&amp; hovering &amp;&amp; {'width':'141px', 'left':'325px'} || selectedMenu === 5 &amp;&amp; hovering &amp;&amp; {'width':'119px', 'left':'337px'}"></a>
-                            <li ng-mouseover="selectedMenu = 1" ng-click="$parent.hideCart();hideToggleMenu()"><a href="/products?gender=unisex&superCategory=all&subCategory=all&src=chef">Chef's Choice<span class="sr-only">(current)</span></a></li>
-                            <li ng-mouseover="selectedMenu = 2" ng-click="$parent.hideCart();hideToggleMenu()"><a href="/products?gender=men&superCategory=all&subCategory=all">UNISEX</a></li>
+                            <a class="tab-border hidden-xs hidden-sm" ng-style="selectedMenu === 1 &amp;&amp; hovering &amp;&amp; {'width':'115px', 'left':'20px'}  || selectedMenu === 2 &amp;&amp; hovering &amp;&amp; {'width':'84.66px', 'left':'15px'} || selectedMenu === 3 &amp;&amp; hovering &amp;&amp; {'width':'90.13px', 'left':'99.66px'} || selectedMenu === 4 &amp;&amp; hovering &amp;&amp; {'width':'141px', 'left':'325px'} || selectedMenu === 5 &amp;&amp; hovering &amp;&amp; {'width':'119px', 'left':'337px'}"></a>
+                            <!--<li ng-mouseover="selectedMenu = 1" ng-click="$parent.hideCart();hideToggleMenu()"><a href="/products?gender=unisex&superCategory=all&subCategory=all&src=chef">CHEF'S CHOICE<span class="sr-only">(current)</span></a></li>-->
+                            <li ng-mouseover="selectedMenu = 2" ng-click="$parent.hideCart();hideToggleMenu()"><a href="/products?gender=men&superCategory=all&subCategory=Unisex">UNISEX</a></li>
                             <li ng-mouseover="selectedMenu = 3" ng-click="$parent.hideCart();hideToggleMenu()"><a href="#" data-toggle="modal" data-target="#womenNotify">WOMEN</a></li>
-                            <li ng-mouseover="selectedMenu = 4" ng-click="$parent.hideCart();hideToggleMenu()"><a href="/commingupnext">COMING UP NEXT!</a></li>
+                            <!--<li ng-mouseover="selectedMenu = 4" ng-click="$parent.hideCart();hideToggleMenu()"><a href="/commingupnext">COMING UP NEXT!</a></li>-->
                             <!--<li ng-mouseover="selectedMenu = 3"><a href="/products?gender=women&superCategory=all&subCategory=all">WOMEN</a></li>-->
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
