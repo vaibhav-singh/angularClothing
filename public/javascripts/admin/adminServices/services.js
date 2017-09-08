@@ -1,5 +1,5 @@
 angular.module('mainAdminApp').service('adminServices', function($http){
-    this.backendUrl = 'http://localhost:3000/admin'
+    this.backendUrl = '/admin'
     this.login = function(loginCredentials){
         return $http({
             method: "POST",
