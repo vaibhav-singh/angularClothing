@@ -1,9 +1,9 @@
 angular.module('mainApp').service('productService', ['$http', '$q', function ($http, $q) {
-    this.backendUrl = "https://www.orangeclips.com/api"
+    this.backendUrl = "http://localhost:3000/api"
     this.getproductsToDisplay = function (gender, superCategory, subCategory, src,tagsSelected, pageNo) {
         console.log(pageNo)
         return $http({
-            url: this.backendUrl+'/fetchProducts?pageNo='+pageNo,
+            url: '/api/fetchProducts?pageNo='+pageNo,
             mehtod:'GET'
         });
     // var details = [{
@@ -145,7 +145,7 @@ angular.module('mainApp').service('productService', ['$http', '$q', function ($h
     this.getDetailsForProduct = function (productId) {
         return $http({
             method: 'GET',
-            url: '/getProductDetails?id='+productId
+            url: '/api/getProductDetails?id='+productId
         });
         // var response = {
         //     "id": 121471,
