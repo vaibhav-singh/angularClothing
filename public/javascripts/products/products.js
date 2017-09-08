@@ -1,21 +1,21 @@
 angular.module("mainApp").controller("productsCtrl", ['$scope', '$stateParams', 'productService', '$location', '$anchorScroll', '$state', function($scope, $stateParams, productService, $location,  $anchorScroll,$state){
-    $scope.init = function(gender, superCategory, subCategory, src, tagsSelected, pageNo){
+    $scope.init = function(gender, superCategory, subCategory, src, tagsSelected){
         // tags from local storage
         // fetch products
         pageNo++;
         localStorage.setItem('pageNo', pageNo);
         productService.getproductsToDisplay(gender, superCategory, subCategory, src, tagsSelected, pageNo).then(function(response){
-            $scope.productsToDisplay = response.products;
-            $scope.totalCount = response.totalCount;
+            $scope.productsToDisplay = response.data.products;
+            $scope.totalCount = response.data.totalCount;
             localStorage.setItem('totalProducts', $scope.totalCount);
-            if(response.totalCount > $scope.productsToDisplay.length){
+            if(response.data.totalCount > $scope.productsToDisplay.length){
                 $scope.moreItemsAvailable = true;
             } else{
                 $scope.moreItemsAvailable = false;
             }
-            for(var i=0;i<$scope.productsToDisplay.length;i++){
-                $scope.fetchAvailableSizes($scope.productsToDisplay[i], i);
-            }
+            // for(var i=0;i<$scope.productsToDisplay.length;i++){
+            //     $scope.fetchAvailableSizes($scope.productsToDisplay[i], i);
+            // }
             localStorage.setItem("products", JSON.stringify($scope.productsToDisplay));
         }, function(response){
             
@@ -24,20 +24,21 @@ angular.module("mainApp").controller("productsCtrl", ['$scope', '$stateParams', 
     // load more products
     $scope.loadMore = function(){
         pageNo++;
+        console.log(pageNo, "loadmore")
         localStorage.setItem('pageNo', pageNo);
         productService.getproductsToDisplay($scope.params.gender, $scope.params.superCategory, $scope.params.subCategory, $scope.params.src, $scope.tagsSelected, pageNo).then(function(response){
             var noOfProductsBeforeConctination = $scope.productsToDisplay.length;
-            $scope.totalCount = response.totalCount;
+            $scope.totalCount = response.data.totalCount;
             localStorage.setItem('totalProducts', $scope.totalCount);
-            $scope.productsToDisplay = $scope.productsToDisplay.concat(response.products);
-            if(response.totalCount > $scope.productsToDisplay.length){
+            $scope.productsToDisplay = $scope.productsToDisplay.concat(response.data.products);
+            if(response.data.totalCount > $scope.productsToDisplay.length){
                 $scope.moreItemsAvailable = true;
             } else{
                 $scope.moreItemsAvailable = false;
             }
-            for(var i=noOfProductsBeforeConctination;i<$scope.productsToDisplay.length;i++){
-                $scope.fetchAvailableSizes($scope.productsToDisplay[i], i);
-            }
+            // for(var i=noOfProductsBeforeConctination;i<$scope.productsToDisplay.length;i++){
+            //     $scope.fetchAvailableSizes($scope.productsToDisplay[i], i);
+            // }
             localStorage.setItem("products", JSON.stringify($scope.productsToDisplay));
         }, function(response){
             
@@ -54,13 +55,13 @@ angular.module("mainApp").controller("productsCtrl", ['$scope', '$stateParams', 
         $scope.init($scope.params.gender, $scope.params.superCategory, $scope.params.subCategory, $scope.params.src, $scope.tagsSelected,pageNo);
     }
     // fetch sizes
-    $scope.fetchAvailableSizes = function(productId, index){
-        productService.fetchAvailableSizes(productId).then(function(response){
-            $scope.productsToDisplay[index].sizes = Object.keys(response.sizes);
-        }, function(response){
+    // $scope.fetchAvailableSizes = function(productId, index){
+    //     productService.fetchAvailableSizes(productId).then(function(response){
+    //         $scope.productsToDisplay[index].sizes = Object.keys(response.sizes);
+    //     }, function(response){
 
-        })
-    };
+    //     })
+    // };
     $scope.openProduct = function(url, id, index){
         localStorage.setItem('anchor', id+index);
         $state.go('productDetails', {productId: id})
@@ -72,7 +73,6 @@ angular.module("mainApp").controller("productsCtrl", ['$scope', '$stateParams', 
 // initializations
 if(!$stateParams.src){
     $scope.params = $stateParams;
-    console.log("sdsdsd")
     var pageNo = 0;
     localStorage.setItem('pageNo', pageNo);
     $scope.totalCount = 0;

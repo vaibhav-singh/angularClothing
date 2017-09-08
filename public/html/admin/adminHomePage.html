@@ -1,0 +1,22 @@
+<div ng-controller="adminHomeCtrl" class="admin-login col-xs-12"
+    style="margin-top: 100px;">
+    <div ng-show="!adminLoggedIn" class="col-md-4 col-xs-12 col-md-offset-4">
+        <div ng-bind="loginResponse.message" style="color: red">{{loginResponse.message}}</div>
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">User Name</span>
+            <input type="text" class="form-control" autocomplete="off" aria-describedby="basic-addon1" ng-model="adminDetails.userName">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">Password</span>
+            <input type="password" class="form-control" autocomplete="off" aria-describedby="basic-addon1" ng-model="adminDetails.password">
+        </div>
+        <br>
+        <div class="btn-group admin-login-btn" role="group" aria-label="...">
+            <button type="button" class="btn btn-success btn-group-justified" ng-click="adminDetails.userName && adminDetails.password && adminLoginCheck()">LOGIN</button>
+        </div>
+    </div>
+    <div ng-show="adminLoggedIn">
+       
+    </div>
+</div>

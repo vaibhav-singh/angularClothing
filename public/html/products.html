@@ -1,39 +1,41 @@
-<div ng-controller="productsCtrl" class="container">
-    <!--<div class="col-xs-12 container">
-<div class="col-xs-2">&nbsp</div>
-<ol class="breadcrumb col-xs-10">
-  <li ng-repeat="crumb in breadCrumb" class="breadcrumb-item"><a href="crumb.url">{{crumb.name}}</a></li>
-  <li class="breadcrumb-item"><a href="#">Library</a></li>
-  <li class="breadcrumb-item active">Data</li>
+<div ng-controller="productsCtrl" class="container productDetailContainer">
+<!--<div class="col-xs-12 container">
+        <div class="col-xs-2">&nbsp</div>
+        <ol class="breadcrumb col-xs-10">
+        <li ng-repeat="crumb in breadCrumb" class="breadcrumb-item"><a href="crumb.url">{{crumb.name}}</a></li>
+        <li class="breadcrumb-item"><a href="#">Library</a></li>
+        <li class="breadcrumb-item active">Data</li>
 </ol>
     </div>-->
     <div class="topDisplayCat" ng-if="params.subCategory">{{params.subCategory}} <span>({{totalCount}})</span></div>
     <!--<div class="col-xs-12 hidden-sm hidden-md hidden-lg no-padding">Categories</div>
-    <div class="owl-carousel categories owl-theme col-xs-12 hidden-sm hidden-md hidden-lg no-padding">
-            <div ng-repeat="tag in tags" ng-click="changeTags(tag)">
-                <i class="fa fa-circle" aria-hidden="true" ng-if="tagsSelected.indexOf(tag) > -1"></i>
-                <span ng-if="tagsSelected.indexOf(tag) === -1"></span>{{tag}}
-            </div>
-    </div>
-    <div class="container col-sm-2 hidden-xs">
-        <div class="category"><span>CATEGORIES</span></div>
-        <ul class="categories">
-            <li ng-repeat="tag in tags" ng-click="changeTags(tag)">
-                <i class="fa fa-circle" aria-hidden="true" ng-if="tagsSelected.indexOf(tag) > -1"></i>
-                <span ng-if="tagsSelected.indexOf(tag) === -1">&nbsp&nbsp</span> {{tag}}
-            </li>
-        </ul>
-    </div>-->
+        <div class="owl-carousel categories owl-theme col-xs-12 hidden-sm hidden-md hidden-lg no-padding">
+                <div ng-repeat="tag in tags" ng-click="changeTags(tag)">
+                    <i class="fa fa-circle" aria-hidden="true" ng-if="tagsSelected.indexOf(tag) > -1"></i>
+                    <span ng-if="tagsSelected.indexOf(tag) === -1"></span>{{tag}}
+                </div>
+        </div>
+        <div class="container col-sm-2 hidden-xs">
+            <div class="category"><span>CATEGORIES</span></div>
+            <ul class="categories">
+                <li ng-repeat="tag in tags" ng-click="changeTags(tag)">
+                    <i class="fa fa-circle" aria-hidden="true" ng-if="tagsSelected.indexOf(tag) > -1"></i>
+                    <span ng-if="tagsSelected.indexOf(tag) === -1">&nbsp&nbsp</span> {{tag}}
+                </li>
+            </ul>
+        </div>-->
     <div class=" col-sm-12 col-xs-12 container">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 productContainer" id={{product.id}}{{$index}} ng-repeat="product in productsToDisplay track by $index"
             ng-if="productsToDisplay.length>0">
             <a ng-click="openProduct(product.url, product.id, $index)">
-                <span class="designerName">Design By {{product.designedBy}}</span>
-                <img ng-src="{{product.display_image}}" alt="" class="img-responsive">
+                <!--<span class="designerName">Design By {{product.designedBy}}</span>-->
+                <div class="displayimage">
+                    <img ng-src="{{product.images.display}}" alt="" class="img-responsive">
+                </div>
                 <div class="productDesctiption">
                     <div>{{product.name}}</div>
                     <div><i class="fa fa-inr" aria-hidden="true"></i>{{product.price}}</div>
-                    <div class="size">sizes:&nbsp<span ng-repeat="size in product.sizes">{{size}}&nbsp&nbsp</span></div>
+                    <div class="size">sizes:&nbsp<span ng-repeat="(key, value) in product.sizes"><span ng-if="value>0">{{key}}&nbsp&nbsp</span></span></div>
                 </div>
                 </a>
         </div>

@@ -2,9 +2,14 @@ angular.module('mainApp').controller("homePageCtrl", ["$scope", '$timeout', func
     $(document).ready(function () {
         $(".owl-carousel.homePage").owlCarousel({
             items: 1,
-            nav: true,
+            // nav: true,
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 6000,
+            smartSpeed:650,
             dots: false,
-            navText: ['<i class="fa fa-chevron-left" aria-hidden="true"></i>', '<i class="fa fa-chevron-right" aria-hidden="true"></i>']
+            autoplayHoverPause: true,
+            // navText: ['<i class="fa fa-chevron-left" aria-hidden="true"></i>', '<i class="fa fa-chevron-right" aria-hidden="true"></i>']
         });
         $scope.owl = $('.owl-carousel');
     });

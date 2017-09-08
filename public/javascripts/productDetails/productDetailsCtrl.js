@@ -2,7 +2,7 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
     $scope.init = function(productId){
         // get product Details
         productService.getDetailsForProduct(productId).then(function(response){
-            $scope.details = response;
+            $scope.details = response.data.productDetails;
             $(document).ready(function () {
                 $(".owl-carousel.productDetails").owlCarousel({
                     items:1,

@@ -1,0 +1,57 @@
+<html>
+<!-- 😄-->
+<head>
+    <base href="/">
+    <link rel="stylesheet" href="stylesheets/reset.css">
+    <link rel="stylesheet" href="bower_components/OwlCarousel2-2.2.1/dist/assets/owl.carousel.css">
+    <link rel="stylesheet" href="bower_components/OwlCarousel2-2.2.1/dist/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/font-awesome.min.css">
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1">
+    
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/products.css">
+    <link rel="stylesheet" href="stylesheets/productDetails.css">
+    <link rel="stylesheet" href="stylesheets/navbar.css">
+    <link rel="stylesheet" href="stylesheets/orderStatus.css">
+    <link rel="stylesheet" href="stylesheets/linksPage.css">
+    <link rel="stylesheet" href="stylesheets/checkOut.css">
+    <link rel="stylesheet" href="stylesheets/homePage.css">
+
+
+    <meta name="description" content="OrangeClips.com brings you trendy T-Shirts men/women. Visit today and unveil the funkiness in you.">
+</head>
+
+<body ng-app="mainAdminApp" ng-controller="parentAdminCtrl">
+    <!--<header ng-if="!hideHeader">        
+        <div ng-include="'html/header.html'"></div>
+    </header>-->
+     <div style="display:inline-flex; " ng-if="adminLoggedIn" class="pull-right">
+            <div><button style="border-radius: 0px" class="btn btn-primary" ng-click="showAllProducts()">All Products</button></div>
+            <div><button style="border-radius: 0px" class="btn btn-primary" ng-click="addProduct()">Add Products</button></div>
+            <button class="pull-right btn btn-danger"  style="border-radius: 0px" ng-click="logout()">LOG OUT</button>
+        </div>
+    <ui-view></ui-view>
+    <div ng-if="cartDropDownVisible" ng-click="hideCart()" class="cartBackDrop modal-backdrop fade in"></div>
+    <!--<footer>
+        <div ng-include="'html/linksPage.html'"></div>
+    </footer>-->
+</body>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/OwlCarousel2-2.2.1/dist/owl.carousel.min.js"></script>
+
+<script src="javascripts/admin/adminApp.js"></script>
+<script src="javascripts/admin/adminRouter.js"></script>
+<script src="javascripts/admin/homePage/home.js"></script>
+<script src="javascripts/admin/parentAdminCtrl.js"></script>
+<script src="javascripts/admin/adminServices/services.js"></script>
+<script src="javascripts/admin/productDetails/productDetails.js"></script>
+<script src="javascripts/admin/productDetails/adminProductsCtrl.js"></script>
+
+</html>

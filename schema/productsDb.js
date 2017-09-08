@@ -1,0 +1,35 @@
+var mongooseObject = require("../mongooseConfig");
+
+var productsSchema = mongooseObject.Schema({
+  id: { type: String, required: true, unique: true },
+  name: { type: String, required: true },
+  price: { type: Number, required: true },
+  fit: { type: String, default: "Fits just right - not too tight, not too loose." },
+  fitDescription: { type: String, required: true },
+  materialDescription: String,
+  shippingDescription: String,
+  limitedEdition: { type: Boolean, default: false },
+  mrp: { type: Number, required: true },
+  updatedAt: Date,
+  launchedAt: Date,
+  categoryInfo: {
+    gender: { type: String, required: true },
+    superCategory: { type: String, required: true },
+    subCategory: { type: String, required: true },
+    sleeve: { type: String, required: true },
+    fabric: { type: String , default: '100% Supima Cotton Mercerized. Pre-shrunk Reinforced.'},
+    brand: { type: String, default: "-1" },
+    model: { type: String, default: "-1" },
+    printed: { type: Boolean, default: true }
+  },
+  sizes: { XS: Number, S: Number, M: Number, L: Number, XL: Number, XXL: Number },
+  shipsIn: {type: String, Default: "Ships in 24 Hours"},
+  images: {
+    display: String,
+    additional: []
+  }
+});
+
+module.exports = {
+    productCollection : mongooseObject.model('products', productsSchema)
+}

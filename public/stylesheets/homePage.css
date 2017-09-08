@@ -1,8 +1,11 @@
 .orangeColor {
-    background: #FF5722;
+    /*background: #FF5722;*/
     width: 100%;
-    height: 80%;
-    overflow: hidden;
+    height: 85vh;
+    /*overflow: hidden;*/
+}
+.homePage .owl-nav{
+    width:100%;
 }
 @keyframes fade-in{
 0% {
@@ -51,24 +54,95 @@
     top: 14%;
     width: 100%;
     font-family: Montserrat-Light;
-    position: absolute;
+    /*position: absolute;*/
     font-size: 3.6em;
-    color: white;
+    color: #313a44;
+    /*color: white;*/
 }
 .teeImg{
     top: 10%;
     /*left: 28%;*/
-    /*position: relative;*/
+    width: 100%;
+        height: 50vw;
+    overflow: hidden;
+    position: relative;
 }
 .teeImg img{
     /*top: -110px;*/
-    /*position: relative;*/
+    position: relative;
     /*width: 42% !important;*/
     margin: 0 auto;
-        /*max-width: 600px;*/
+        max-width: 1200px;
+        width: 100%;
+        /*height: 100%;*/
+}
+.letsShop{
+    position: absolute;
+    margin: 0 auto;
+    width: 100%;
+    top: 250px;
+    z-index: 10;
+    color: #313a44;
+}
+.letsShop a{
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    box-shadow: 0px 6px 8px rgba(0,0,0,0.2), 0px 1px 0px rgba(0,0,0,0.1) inset;
+}
+.letsShop a:hover{
+    text-decoration: none;
+    color: #313a44;
+}
+@media screen and (max-width: 350px){
+    /*.owl-carousel.homePage .owl-item img{
+        width: 50%;
+    }*/
+    .letsShop a{
+        font-size: 30px;
+    }
+    .orangeColor{
+        /*min-height: 400px;*/
+    }
+    .orangeColor .text{
+            font-size: 2.6em;
+    }
+    .letsShop a{
+        font-size: 16px;
+    }
+    .orangeColor .text{
+        top:10%;
+    }
+}
+@media screen and (min-width: 350px) and (max-width: 900px){
+    .orangeColor .text{
+        top:10%;
+        font-size: 29px;
+    }
+        .orangeColor{
+        /*min-height: 500px;*/
+    }
+    /*.owl-carousel.homePage .owl-item img{
+        width: 100%;
+    }*/
+    .orangeColor{
+        font-size: 13px;
+    }
+}
+@media screen and (min-width: 500px) and (max-width: 900px){
+    .orangeColor .text{
+        font-size: 42px;
+    }
 }
 @media screen and (min-width: 900px){
     .owl-carousel.homePage .owl-item img{
-        width: 50%;
+        width: 100%;
+    }
+    .letsShop a{
+        font-size: 30px;
+    }
+    .teeImg img{
+      top: -100px;
     }
 }

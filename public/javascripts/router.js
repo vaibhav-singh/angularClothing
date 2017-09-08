@@ -1,4 +1,5 @@
-angular.module('mainApp').config(['$stateProvider','$locationProvider',function($stateProvider, $locationProvider){
+angular.module('mainApp').config(['$stateProvider','$locationProvider', '$urlRouterProvider',function($stateProvider, $locationProvider, $urlRouterProvider){
+    $urlRouterProvider.otherwise('/');
     $stateProvider.state({
         name: 'homePage',
         url:'/',
@@ -29,7 +30,6 @@ angular.module('mainApp').config(['$stateProvider','$locationProvider',function(
         url: '/orderStatus?orderId',
         templateUrl: './html/orderStatus.html'
     });
-
     $stateProvider.state({
         name: 'terms',
         url:'/terms',
