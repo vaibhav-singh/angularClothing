@@ -145,7 +145,7 @@ angular.module('mainApp').service('productService', ['$http', '$q', function ($h
     this.getDetailsForProduct = function (productId) {
         return $http({
             method: 'GET',
-            url: this.backendUrl+'/getProductDetails?id='+productId
+            url: '/getProductDetails?id='+productId
         });
         // var response = {
         //     "id": 121471,
