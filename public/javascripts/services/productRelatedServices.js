@@ -1,5 +1,5 @@
 angular.module('mainApp').service('productService', ['$http', '$q', function ($http, $q) {
-    this.backendUrl = "https://orangeclips:3000/api"
+    this.backendUrl = "https://www.orangeclips.com/api"
     this.getproductsToDisplay = function (gender, superCategory, subCategory, src,tagsSelected, pageNo) {
         console.log(pageNo)
         return $http({
