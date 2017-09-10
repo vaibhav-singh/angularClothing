@@ -7,7 +7,7 @@ angular.module('mainApp')
     };
     $scope.viewCartDropDown = function(){
         $rootScope.cart.cartDetails = JSON.parse(localStorage.getItem('cartDetails'));
-        console.log($rootScope.cart.cartDetails)
+        // console.log($rootScope.cart.cartDetails)
         $rootScope.cartDropDownVisible = !$rootScope.cartDropDownVisible;
         $scope.hideToggleMenu();
     }

@@ -24,7 +24,6 @@ angular.module("mainApp").controller("productsCtrl", ['$scope', '$stateParams', 
     // load more products
     $scope.loadMore = function(){
         pageNo++;
-        console.log(pageNo, "loadmore")
         localStorage.setItem('pageNo', pageNo);
         productService.getproductsToDisplay($scope.params.gender, $scope.params.superCategory, $scope.params.subCategory, $scope.params.src, $scope.tagsSelected, pageNo).then(function(response){
             var noOfProductsBeforeConctination = $scope.productsToDisplay.length;

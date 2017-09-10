@@ -54,7 +54,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
         $scope.addressDetails = {};
     };
     // flow
-    console.log($scope.cartDetails)
+    // console.log($scope.cartDetails)
     if($scope.cartDetails === null){
             $state.go("homePage");
     } else{

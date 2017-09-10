@@ -1,6 +1,5 @@
 angular.module("mainAdminApp").controller('parentAdminCtrl',['$scope', '$rootScope', '$state', function($scope, $rootScope, $state){
     $scope.logout = function(){
-        console.log("logout")
         $rootScope.adminLoggedIn = false; 
         localStorage.removeItem('adminLoggedIn');
         $state.go('homePage');

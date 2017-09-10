@@ -106,7 +106,6 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
         $scope.requestForSizeReceived = false;
     }
     $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
-        console.log($rootScope.goingToHeader)
         if(toState.name === "products" && toParams.src !== localStorage.getItem('anchor') && !$rootScope.goingToHeader){
             toParams.src = localStorage.getItem('anchor');
             event.preventDefault();

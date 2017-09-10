@@ -24,7 +24,6 @@ router.post('/saveRequestForSize', function(req, res){
 })
 
 router.get('/fetchProducts', function(req, res){
-  console.log("fetchProducts")
   var tags = req.query.tags;
   var pageNumber = req.query.pageNo;
   var skipProducts = (pageNumber-1)*6;
@@ -33,7 +32,6 @@ router.get('/fetchProducts', function(req, res){
   } else{
       var tagsArray = tags.split(',');
   }
-  console.log(typeof tags,tagsArray)
   if(tagsArray.length>0){
         productsDb.productCollection.count({'categoryInfo.filters' : {$in: tagsArray}}, function(err, count){
         productsDb.productCollection.find({'categoryInfo.filters' : {$in: tagsArray}}, null, {skip: skipProducts, limit:6}, function(err, response){
@@ -59,9 +57,7 @@ router.get('/fetchProducts', function(req, res){
 
 router.get("/getProductDetails", function(req, res){
     var productid = req.query.id;
-    console.log("getDetails Call", productid)
     productsDb.productCollection.findOne({id: productid}, function(err, response){
-        console.log(response)
         if(err){
             res.send({success: false, data: err});
         } else{

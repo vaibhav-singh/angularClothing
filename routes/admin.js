@@ -7,7 +7,6 @@ var productsDb = require('../schema/productsDb');
 router.post('/login', function(req, res){
     var username = req.body.userName;
     var password = req.body.password;
-    console.log("adminLogin", username, password)
     if(username === "admn" && password === "ocselec"){
         res.send({status: true, data: "login Success"})
     } else{
