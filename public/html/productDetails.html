@@ -1,11 +1,13 @@
 <div ng-controller="productDetailsCtrl">
     <div class="container no-padding">
-        <div class="owl-carousel productDetails owl-theme col-xs-12 col-sm-5">
-            <!--<div class="navButtonsCarousal" ng-click="prevImage()"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>-->
-            <div ng-repeat="img in details.images.additional">
-                <img ng-src={{img}}>
+        <div class="col-lg-5 col-sm-5 col-xs-12 ">
+            <div class="owl-carousel productDetails owl-theme">
+                <!--<div class="navButtonsCarousal" ng-click="prevImage()"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>-->
+                <div ng-repeat="img in details.images.additional">
+                    <img ng-src={{img}}>
+                </div>
+                <!--<div class="navButtonsCarousal right" ng-click="nextImage()"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>-->
             </div>
-            <!--<div class="navButtonsCarousal right" ng-click="nextImage()"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>-->
         </div>
         <!--details-->
         <div class="col-xs-12 col-sm-7 productDescriptionClass">
@@ -15,8 +17,8 @@
             <div class="item_fit belowName no-padding">
                 <p class="no-padding no-margin">{{details.fit}}</p>
                 <!--<p class="no-padding no-margin">{{details.fit_description}}</p>-->
-                <p class="no-padding no-margin">{{details.category_info.fabric}}</p>
-                <p class="no-padding no-margin">{{details.shipsIn}}</p>
+                <p class="no-padding no-margin">{{details.categoryInfo.fabric}}</p>
+                <p class="no-padding no-margin">Ships in 24 Hours</p>
             </div>
             <!--price-->
             <div class="margin-t-20">
@@ -28,11 +30,12 @@
             <div>SIZE:</div>
             <div>
                 <ul ng-class="{shake: buyNowOrAddToCartClicked && !selectedSize, showErrorBorder: buyNowOrAddToCartClicked && !selectedSize}">
-                    <li ng-repeat="(key, size) in sizes">
+                    <li ng-repeat="(key, size) in details.sizes">
                         <button class="size-box btn" ng-click="selectSize(key)" ng-class="{selectedSize:selectedSize===key}" ng-disabled="size<=0">{{key}}</button>
                     </li>
                 </ul>
                 <div ng-init="showRequestForSizeDiv= false" ng-click="showRequestForSizeDiv = !showRequestForSizeDiv" class="requestUnavailableSize"><small> <b>Size not available?</b> Request for it at same price.</small></div>
+                <div ng-if="requestForSizeReceived">Nice Choice! Will be in stock soon. Happy Shopping.😄</div>
                 <div ng-if="showRequestForSizeDiv" class="requestForSizeDiv no-padding col-xs-12 col-sm-7">
 
                     <span>How should Orange Clips contact you. 
@@ -42,12 +45,12 @@
                     <span>Select the size you want you request</span>
                     <div class="sizes">
                         <ul ng-class="{shake: requestForSizeBtnClicked && !sizeForRequest, showErrorBorder: requestForSizeBtnClicked && !sizeForRequest}">
-                            <li ng-repeat="(key, size) in sizes" ng-if="size<=0">
+                            <li ng-repeat="(key, size) in details.sizes" ng-if="size<=0">
                                 <button class="size-box btn " ng-class="{selectedSize:sizeForRequest===key}" ng-click="selectSizeForRequest(key)">{{key}}</button>
                             </li>
                         </ul>
                     </div>
-                    <button class="buyNowBtn btn col-xs-12 col-sm-8" ng-click="sendRequestForSize(requestForSizeContact, key)">Request Size</button>
+                    <button class="buyNowBtn btn col-xs-12 col-sm-8" ng-click="sendRequestForSize(requestForSizeContact, details.id, key)">Request Size</button>
                 </div>
             </div>
         </div>
@@ -57,6 +60,14 @@
                 ng-click="addToCart(details, selectedSize)">Add To Cart</button>
         </div>
         </div>
+    </div>
+    <div class="container additionalDetails">
+        <h1>Fabric</h1>
+        <div ng-bind-html="details.materialDescription"></div>
+    </div>
+    <div class="container additionalDetails">
+        <h1>Shipping</h1>
+        <div ng-bind-html="details.shippingDescription"></div>
     </div>
     <!--<div class="photos col-xs-12 col-lg-12">
             <div style="width:50%; height:600px" class="imageDiv  col-xs-6" ng-repeat="img in details.images.additional">

@@ -7,7 +7,21 @@ var productsDb = require('../schema/productsDb');
 //   res.sendFile(path.join(__dirname + '/../views/index.html'));
 // });
 
+router.post('/saveRequestForSize', function(req, res){
+    var details = {};
+    details.contact = req.body.contact;
+    details.productId = req.body.productId;
+    details.size = req.body.size;
+    var newRequest = new productsDb.requestedProductsCollection(details);
 
+    newRequest.save(function(err, response){
+        if(err){
+            res.send({success: false, data: err});
+        } else{
+            res.send({success: true, data: "success"})
+        }
+    })
+})
 
 router.get('/fetchProducts', function(req, res){
   console.log("fetchProducts")

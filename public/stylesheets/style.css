@@ -138,7 +138,7 @@ footer nav a{
     letter-spacing: 1px;
     line-height: 3;
 }
-footer a.instagram{
+.instagram{
     animation: instacol 8s infinite;
     -webkit-animation: instacol 8s infinite;
     -moz-animation: instacol 8s infinite;

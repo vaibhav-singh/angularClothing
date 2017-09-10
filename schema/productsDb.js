@@ -30,6 +30,14 @@ var productsSchema = mongooseObject.Schema({
   }
 });
 
+
+var requestedProductsSchema = mongooseObject.Schema({
+  contact: String,
+  productId: String,
+  size: String,
+  requestedOn: Date
+});
 module.exports = {
-    productCollection : mongooseObject.model('products', productsSchema)
+    productCollection : mongooseObject.model('products', productsSchema),
+    requestedProductsCollection: mongooseObject.model('requestedProducts', requestedProductsSchema)
 }

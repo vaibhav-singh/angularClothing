@@ -11,9 +11,10 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
                     navText: ['<i class="fa fa-chevron-left" aria-hidden="true"></i>','<i class="fa fa-chevron-right" aria-hidden="true"></i>']
                 });
                 $scope.owl = $('.owl-carousel');
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
             });
         }, function(response){
-
+            
         });
     };
     $scope.getSizes = function(productId){
@@ -75,8 +76,11 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
         $scope.sizeForRequest = size;
     }
     // sendRequestForSize
-    $scope.sendRequestForSize = function(){
+    $scope.sendRequestForSize = function(contact, productId){
         if($scope.sizeForRequest){
+            productService.sendRequestForSize(contact, productId, $scope.sizeForRequest).then(function(response){
+                $scope.requestForSizeReceived = true;
+            })
             $scope.showRequestForSizeDiv = false;
             $scope.requestForSizeBtnClicked = false;
             delete $scope.sizeForRequest;
@@ -84,11 +88,12 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
             $scope.requestForSizeBtnClicked = true;
         }
         $timeout(()=>revertClickFlags(), 1000);
-        if(!$scope.sizeForRequest){
-            return false;
-        } else{
+        $timeout(()=>hideResponse(), 3000);
+        // if(!$scope.sizeForRequest){
+        //     return false;
+        // } else{
 
-        }
+        // }
     }
     $scope.proceedToCheckOut = function(cart){
         $state.go('checkout', {cart: cart});
@@ -97,7 +102,9 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
         $scope.buyNowOrAddToCartClicked = false;
         $scope.requestForSizeBtnClicked = false;
     }
-
+    var hideResponse = function(){
+        $scope.requestForSizeReceived = false;
+    }
     $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
         if(toState.name === "products" && toParams.src !== localStorage.getItem('anchor')){
             toParams.src = localStorage.getItem('anchor');
@@ -107,5 +114,5 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
     })
     $scope.showSizeError = false;
     $scope.init($stateParams.productId);
-    $scope.getSizes($stateParams.productId);
+    // $scope.getSizes($stateParams.productId);
 }]);
