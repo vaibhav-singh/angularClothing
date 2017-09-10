@@ -1,4 +1,4 @@
-angular.module("mainApp").controller("productsCtrl", ['$scope', '$stateParams', 'productService', '$location', '$anchorScroll', '$state', function($scope, $stateParams, productService, $location,  $anchorScroll,$state){
+angular.module("mainApp").controller("productsCtrl", ['$scope', '$stateParams', 'productService', '$location', '$anchorScroll', '$state', '$rootScope', function($scope, $stateParams, productService, $location,  $anchorScroll,$state, $rootScope){
     $scope.init = function(gender, superCategory, subCategory, src, tagsSelected){
         // tags from local storage
         // fetch products
@@ -71,20 +71,19 @@ angular.module("mainApp").controller("productsCtrl", ['$scope', '$stateParams', 
         $('html, body').animate({ scrollTop: 0 }, 'fast');
     }
 // initializations
+$rootScope.goingToHeader = false;
 if(!$stateParams.src){
     $scope.params = $stateParams;
     var pageNo = 0;
     localStorage.setItem('pageNo', pageNo);
     $scope.totalCount = 0;
     localStorage.setItem('totalProducts', $scope.totalCount);
-    $scope.tagsSelected = [];
+    $scope.tagsSelected = $stateParams.tags;
     $scope.moreItemsAvailable = true;
     $scope.loadingItems = false;
     $scope.tags = JSON.parse(localStorage.getItem('tags'));
-    $scope.init($scope.params.gender, $scope.params.superCategory, $scope.params.subCategory, $scope.params.src, $scope.tagsSelected, pageNo);
+    $scope.init($scope.params.gender, $scope.params.superCategory, $scope.params.subCategory, $scope.params.src, $scope.tagsSelected);
 } else if($stateParams.src === "chef"){
-    console.log("sasasas")
-
 } else{
     $scope.params = $stateParams;
     // from product
@@ -92,16 +91,15 @@ if(!$stateParams.src){
     var anchor = $stateParams.src;
     $scope.productsToDisplay = JSON.parse(localStorage.getItem('products'));
     $(document).ready(function () {
-    $location.hash(anchor);
-     $anchorScroll();
-
+      $location.hash(anchor);
+      $anchorScroll();
     })
     $scope.totalCount = localStorage.getItem('totalProducts');
-            if($scope.totalCount > $scope.productsToDisplay.length){
-                $scope.moreItemsAvailable = true;
-            } else{
-                $scope.moreItemsAvailable = false;
-            }
+    if($scope.totalCount > $scope.productsToDisplay.length){
+        $scope.moreItemsAvailable = true;
+    } else{
+        $scope.moreItemsAvailable = false;
+    }
 
 }
     $(document).ready(function () {

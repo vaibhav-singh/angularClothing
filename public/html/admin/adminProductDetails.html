@@ -18,42 +18,44 @@
         <!--product mrp-->
         <div class="form-group col-xs-6">
             <label for="mrp">MRP</label>
-            <input id="mrp" class="form-control" type="number" name="mrp" ng-model="productDetails.mrp"  required>
+            <input id="mrp" class="form-control" type="number" name="mrp" ng-model="productDetails.mrp" required>
         </div>
         <!--fit-->
         <div class="form-group">
             <label for="fit">Fit</label>
-            <input id="fit" class="form-control" type="text" name="fit" ng-model="productDetails.fit" value="" placeholder="Fits just right - not too tight, not too loose." required>
+            <input id="fit" class="form-control" type="text" name="fit" ng-model="productDetails.fit" value="" placeholder="Fits just right - not too tight, not too loose."
+                required>
         </div>
         <!--fit desctiption-->
         <div class="form-group">
             <label for="fitDescription">Fit Desctiption will be shown below the product and buy now</label>
-            <input id="fitDescription" class="form-control" type="text" name="fitDescription" ng-model="productDetails.fitDescription" required>
+            <input id="fitDescription" class="form-control" type="text" name="fitDescription" ng-model="productDetails.fitDescription"
+                required>
         </div>
         <!--limited Edition-->
         <div class="form-group">
-           <label for="limitedEdition">Limited Edition Product</label>
-           <div id="limitedEdition">
+            <label for="limitedEdition">Limited Edition Product</label>
+            <div id="limitedEdition">
                 <label class="radio-inline">
                     <input type="radio" name="limitedEdition" id="inlineRadio1" ng-model="productDetails.limitedEdition" value="true"> TRUE
                 </label>
                 <label class="radio-inline">
                     <input type="radio" name="limitedEdition" id="inlineRadio2" ng-model="productDetails.limitedEdition" value="false"> FALSE
                 </label>
-           </div>
+            </div>
         </div>
         <div class="form-group" style="display: inline-block">
-        <!--updated at-->
+            <!--updated at-->
             <label for="updatedAt">Updated At</label>
             <input id="updatedAt" class="" type="date" name="updatedAt" ng-model="productDetails.updatedAt" value="" required>
-        <!--launched at-->
+            <!--launched at-->
             <label for="launchedAt">Launched At</label>
             <input id="launchedAt" class="" type="date" name="launchedAt" ng-model="productDetails.launchedAt" value="" required>
         </div>
         <!--gender-->
         <div class="form-group">
-           <label for="gender">Gender</label>
-           <div id="gender">
+            <label for="gender">Gender</label>
+            <div id="gender">
                 <label class="radio-inline">
                     <input type="radio" name="gender" id="inlineRadio1" value="men"  ng-model="productDetails.categoryInfo.gender" required> MEN
                 </label>
@@ -63,24 +65,24 @@
                 <label class="radio-inline">
                     <input type="radio" name="gender" id="inlineRadio2" value="unisex" ng-model="productDetails.categoryInfo.gender" required> UNISEX
                 </label>
-           </div>
+            </div>
         </div>
         <!--super category-->
         <div class="form-group">
-           <label for="superCategory">Super Category</label>
-           <div id="superCategory">
+            <label for="superCategory">Super Category</label>
+            <div id="superCategory">
                 <label class="radio-inline">
                     <input type="radio" name="superCategory" id="inlineRadio1" value="top-wear"  ng-model="productDetails.categoryInfo.superCategory" required> TOP WEAR
                 </label>
                 <label class="radio-inline">
                     <input type="radio" name="superCategory" id="inlineRadio2" value="bottom-wear" ng-model="productDetails.categoryInfo.superCategory" required> BOTTOM WEAR
                 </label>
-           </div>
+            </div>
         </div>
         <!--subCategory-->
         <div class="form-group">
-           <label for="subCategory">Sub Category</label>
-           <div id="subCategory">
+            <label for="subCategory">Sub Category</label>
+            <div id="subCategory">
                 <label class="radio-inline">
                     <input type="radio" name="subCategory" id="inlineRadio1" value="t-shirt"  ng-model="productDetails.categoryInfo.subCategory" required> T-SHIRT
                 </label>
@@ -96,12 +98,12 @@
                 <label class="radio-inline">
                     <input type="radio" name="subCategory" id="inlineRadio2" value="shoes" ng-model="productDetails.categoryInfo.subCategory" required> SHOES
                 </label>
-           </div>
+            </div>
         </div>
         <!--sleeve-->
         <div class="form-group">
-           <label for="sleeve">Sleeves</label>
-           <div id="sleeve">
+            <label for="sleeve">Sleeves</label>
+            <div id="sleeve">
                 <label class="radio-inline">
                     <input type="radio" name="sleeve" id="inlineRadio1" value="half"  ng-model="productDetails.categoryInfo.sleeve" required> HALF
                 </label>
@@ -114,32 +116,46 @@
                 <label class="radio-inline">
                     <input type="radio" name="sleeve" id="inlineRadio2" value="sleeve-less" ng-model="productDetails.categoryInfo.sleeve" required> NO-SLEEVES
                 </label>
-           </div>
+            </div>
         </div>
         <!--printed-->
+        <!--<div class="form-group">
+            <label for="printed">Printed Or Solid</label>
+            <div id="printed">
+                <label class="radio-inline">
+                    <input type="radio" name="printed" id="inlineRadio1" value="true"  ng-model="productDetails.categoryInfo.printed"> PRINTED
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="printed" id="inlineRadio1" value="false"  ng-model="productDetails.categoryInfo.printed"> SOLID
+                </label>
+            </div>
+        </div>-->
         <div class="form-group">
-           <label for="printed">Printed Or Solid</label>
-           <div id="printed">
-                <label class="radio-inline">
-                    <input type="radio" name="printed" id="inlineRadio1" value="true"  ng-model="productDetails.categoryInfo.printed" required> PRINTED
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="printed" id="inlineRadio1" value="false"  ng-model="productDetails.categoryInfo.printed" required> SOLID
-                </label>
-           </div>
+            <label for="Tags">Filters &nbsp</label>
+            <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox1" ng-click="pushInFilters('ocselect')" ng-checked="productDetails.categoryInfo.filters.indexOf('ocselect')>=0">OC select 
+            </label>
+            <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox2" ng-click="pushInFilters('solid')" ng-checked="productDetails.categoryInfo.filters.indexOf('solid')>=0">Solids
+            </label>
+            <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox2" ng-click="pushInFilters('printed')" ng-checked="productDetails.categoryInfo.filters.indexOf('printed')>=0">Printed
+            </label>
         </div>
         <!--sizes-->
         <div class="availableSizes" style="display: inline-flex">
             <div ng-repeat="(key, value) in productDetails.sizes">
                 <div>
-                <span>{{key}}</span><input type="number" ng-model="productDetails.sizes[key]" required>
+                    <span>{{key}}: </span><input style="width: 50px;" type="number" ng-model="productDetails.sizes[key]" required>&nbsp&nbsp&nbsp&nbsp
                 </div>
             </div>
         </div>
         <br>
         <br>
         <br>
-        <div><center><b>IMAGES</b></center></div>
+        <div>
+            <center><b>IMAGES</b></center>
+        </div>
         <!--material desctiption-->
         <div class="form-group">
             <label for="fitDescription">Material Desctiption will be shown below the product and buy now</label>
@@ -153,29 +169,35 @@
         <!--DISPLAY IMAGE-->
         <div class="form-group">
             <label for="displayImage">Display Image(URL)</label>
-            <input id="displayImage" class="form-control" type="text" name="displayImage" ng-model="productDetails.images.display" value="" required>
+            <input id="displayImage" class="form-control" type="text" name="displayImage" ng-model="productDetails.images.display" value=""
+                required>
         </div>
         <!--additional images-->
         <div class="form-group">
             <div><label for="additionalImage">Additional Image(URL)</label></div>
             <label for="image1">Image 1</label>
-            <input id="image1" class="form-control" type="" name="additionalImage" ng-value="productDetails.images.display" ng-model="productDetails.images.additional[0]" value="" required>
+            <input id="image1" class="form-control" type="" name="additionalImage" ng-value="productDetails.images.display" ng-model="productDetails.images.additional[0]"
+                value="" required>
             <br>
             <label for="image2">Image 2</label>
-            <input id="image2" class="form-control" type="" name="additionalImage" ng-model="productDetails.images.additional[1]" value="" required>
+            <input id="image2" class="form-control" type="" name="additionalImage" ng-model="productDetails.images.additional[1]" value=""
+                required>
             <br>
             <label for="image3">Image 3</label>
-            <input id="image3" class="form-control" type="" name="additionalImage" ng-model="productDetails.images.additional[2]" value="" required>
+            <input id="image3" class="form-control" type="" name="additionalImage" ng-model="productDetails.images.additional[2]" value=""
+                required>
             <br>
             <label for="image4">Image 4</label>
-            <input id="image4" class="form-control" type="" name="additionalImage" ng-model="productDetails.images.additional[3]" value="" required>
+            <input id="image4" class="form-control" type="" name="additionalImage" ng-model="productDetails.images.additional[3]" value=""
+                required>
             <br>
             <label for="image5">Image 5</label>
             <input id="image5" class="form-control" type="" name="additionalImage" ng-model="productDetails.images.additional[4]" value="">
             <br>
             <label for="image6">Image 6</label>
-            <input id="additionalImage" class="form-control" type="" name="additionalImage" ng-model="productDetails.images.additional[5]" value="">
-            <br>    
+            <input id="additionalImage" class="form-control" type="" name="additionalImage" ng-model="productDetails.images.additional[5]"
+                value="">
+            <br>
         </div>
         <button class="btn btn-primary" style="border-radius: 0; width: 100%" ng-click="productDetailsForm.$valid && addProduct()">Add Product</button>
         <div ng-repeat="src in productDetails.images.additional" style="display: inline-flex">

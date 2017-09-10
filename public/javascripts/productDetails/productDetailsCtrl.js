@@ -106,13 +106,15 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
         $scope.requestForSizeReceived = false;
     }
     $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
-        if(toState.name === "products" && toParams.src !== localStorage.getItem('anchor')){
+        console.log($rootScope.goingToHeader)
+        if(toState.name === "products" && toParams.src !== localStorage.getItem('anchor') && !$rootScope.goingToHeader){
             toParams.src = localStorage.getItem('anchor');
             event.preventDefault();
             $state.go(toState.name, toParams);
         }
     })
     $scope.showSizeError = false;
+    $rootScope.goingToHeader = false;
     $scope.init($stateParams.productId);
     // $scope.getSizes($stateParams.productId);
 }]);

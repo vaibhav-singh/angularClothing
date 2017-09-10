@@ -3,7 +3,7 @@ angular.module('mainApp').service('productService', ['$http', '$q', function ($h
     this.getproductsToDisplay = function (gender, superCategory, subCategory, src,tagsSelected, pageNo) {
         console.log(pageNo)
         return $http({
-            url: '/api/fetchProducts?pageNo='+pageNo,
+            url: '/api/fetchProducts?tags='+tagsSelected+'&pageNo='+pageNo,
             mehtod:'GET'
         });
     };

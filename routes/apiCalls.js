@@ -25,17 +25,36 @@ router.post('/saveRequestForSize', function(req, res){
 
 router.get('/fetchProducts', function(req, res){
   console.log("fetchProducts")
+  var tags = req.query.tags;
   var pageNumber = req.query.pageNo;
   var skipProducts = (pageNumber-1)*6;
-  productsDb.productCollection.count({}, function(err, count){
-    productsDb.productCollection.find({}, null, {skip: skipProducts, limit:6}, function(err, response){
-        if(err){
-            res.send({success: false, data: err})
-        } else{
-            res.send({success: true, products: response, totalCount: count})
-        }
-    })
-  });
+  if(tags === 'undefined'){
+      var tagsArray = [];
+  } else{
+      var tagsArray = tags.split(',');
+  }
+  console.log(typeof tags,tagsArray)
+  if(tagsArray.length>0){
+        productsDb.productCollection.count({'categoryInfo.filters' : {$in: tagsArray}}, function(err, count){
+        productsDb.productCollection.find({'categoryInfo.filters' : {$in: tagsArray}}, null, {skip: skipProducts, limit:6}, function(err, response){
+            if(err){
+                res.send({success: false, data: err})
+            } else{
+                res.send({success: true, products: response, totalCount: count})
+            }
+        })
+    });
+} else{
+    productsDb.productCollection.count({}, function(err, count){
+        productsDb.productCollection.find({}, null, {skip: skipProducts, limit:6}, function(err, response){
+            if(err){
+                res.send({success: false, data: err})
+            } else{
+                res.send({success: true, products: response, totalCount: count})
+            }
+        })
+    });
+}
 });
 
 router.get("/getProductDetails", function(req, res){

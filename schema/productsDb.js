@@ -20,7 +20,8 @@ var productsSchema = mongooseObject.Schema({
     fabric: { type: String , default: '100% Supima Cotton Mercerized. Pre-shrunk Reinforced.'},
     brand: { type: String, default: "-1" },
     model: { type: String, default: "-1" },
-    printed: { type: Boolean, default: true }
+    // printed: { type: String, default: "true" },
+    filters: []
   },
   sizes: { XS: Number, S: Number, M: Number, L: Number, XL: Number, XXL: Number },
   shipsIn: {type: String, Default: "Ships in 24 Hours"},

@@ -7,7 +7,7 @@ angular.module('mainApp').config(['$stateProvider','$locationProvider', '$urlRou
     });
     $stateProvider.state({
         name: 'products',
-        url:'/products?gender&superCategory&subCategory&src',
+        url:'/products?gender&superCategory&subCategory&src&tags&header',
         templateUrl: './html/products.html'
     });
     $stateProvider.state({

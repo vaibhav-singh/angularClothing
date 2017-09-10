@@ -25,5 +25,8 @@ angular.module('mainApp')
         localStorage.setItem('finalCart', JSON.stringify(cart));
         $state.go('checkout', {src:"cart"});
     }
+    $scope.redirectTo = function(){
+      $rootScope.goingToHeader = true;  
+    }
     $rootScope.cart.cartDetails = JSON.parse(localStorage.getItem('cartDetails')) ? JSON.parse(localStorage.getItem('cartDetails')) : [];
 }]);
