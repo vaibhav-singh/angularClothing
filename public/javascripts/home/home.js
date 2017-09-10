@@ -7,7 +7,7 @@ angular.module('mainApp').controller("homePageCtrl", ["$scope", '$timeout', func
             autoplay: true,
             autoplayTimeout: 6000,
             smartSpeed:650,
-            dots: false,
+            dots: true,
             autoplayHoverPause: true,
             // navText: ['<i class="fa fa-chevron-left" aria-hidden="true"></i>', '<i class="fa fa-chevron-right" aria-hidden="true"></i>']
         });

@@ -63,6 +63,17 @@ angular.module('mainApp').config(['$stateProvider','$locationProvider', '$urlRou
         },
         controllerAs: 'return'
     });
+    $stateProvider.state({
+        name: 'about',
+        url:'/about',
+        templateUrl: './html/aboutus.html',
+        controller: function(){
+            this.scrollToTop = function(){
+                $('html, body').animate({ scrollTop: 0 }, 'fast');
+            }
+        },
+        controllerAs: 'about'
+    });
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false

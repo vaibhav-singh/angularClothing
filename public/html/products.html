@@ -30,7 +30,7 @@
             <a ng-click="openProduct(product.url, product.id, $index)">
                 <!--<span class="designerName">Design By {{product.designedBy}}</span>-->
                 <div class="displayimage">
-                    <img ng-src="{{product.images.display}}" alt="" class="img-responsive">
+                    <img  ng-init="product.temp = product.images.display" ng-mouseover="product.temp=product.images.additional[1]" ng-mouseleave="product.temp=product.images.additional[0]" ng-src="{{product.temp}}" alt="" class="img-responsive">
                 </div>
                 <div class="productDesctiption">
                     <div>{{product.name}}</div>

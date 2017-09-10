@@ -49,7 +49,7 @@
     -webkit-animation-delay: 3s;
     -moz-animation-delay: 3s;
 }
-.orangeColor .text{
+.text{
     text-align: center;
     top: 14%;
     width: 100%;
@@ -95,6 +95,10 @@
     text-decoration: none;
     color: #313a44;
 }
+.cottonBall{
+    width:100%; 
+    max-width:400px
+}
 @media screen and (max-width: 350px){
     /*.owl-carousel.homePage .owl-item img{
         width: 50%;
@@ -105,18 +109,18 @@
     .orangeColor{
         /*min-height: 400px;*/
     }
-    .orangeColor .text{
+    .text{
             font-size: 2.6em;
     }
     .letsShop a{
         font-size: 16px;
     }
-    .orangeColor .text{
+    .text{
         top:10%;
     }
 }
 @media screen and (min-width: 350px) and (max-width: 900px){
-    .orangeColor .text{
+    .text{
         top:10%;
         font-size: 29px;
     }
@@ -131,7 +135,7 @@
     }
 }
 @media screen and (min-width: 500px) and (max-width: 900px){
-    .orangeColor .text{
+    .text{
         font-size: 42px;
     }
 }
