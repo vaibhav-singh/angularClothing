@@ -17,7 +17,8 @@
 }
 }
 .navbar-container .navbar.navbar-default .navbar-header .navbar-brand{
-    color: #FF5722;
+    /*color: #FF5722;*/
+    color: #313a44;
 }
 .navbar.navbar-default .navbar-header .navbar-brand{
     color: black;

@@ -11,6 +11,15 @@ angular.module('mainApp').controller("homePageCtrl", ["$scope", '$timeout', func
             autoplayHoverPause: true,
             // navText: ['<i class="fa fa-chevron-left" aria-hidden="true"></i>', '<i class="fa fa-chevron-right" aria-hidden="true"></i>']
         });
+        var waypoint = new Waypoint({
+            element: document.getElementById('collectionImage'),
+            handler: function() {
+                // alert("triggereed")
+                $scope.handPickedOnScreen = true;
+                $scope.$apply()
+            },
+            offset: 200
+        })
         $scope.owl = $('.owl-carousel');
     });
     $timeout(function(){

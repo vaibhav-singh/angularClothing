@@ -25,10 +25,26 @@
     -webkit-animation-delay: 1s;
     -moz-animation-delay: 1s;
 }
+.fade-in-0_3s{
+    animation: fade-in 1 ease 0.3s forwards;
+    -webkit-animation: fade-in 1 ease 0.3s forwards;
+    -moz-animation: fade-in  ease 0.3s forwards;
+    animation-delay: 0.3s;
+    -webkit-animation-delay: 0.3s;
+    -moz-animation-delay: 0.3s;
+}
+.fade-in-0_5s{
+    animation: fade-in 1 ease 0.5s forwards;
+    -webkit-animation: fade-in 1 ease 0.5s forwards;
+    -moz-animation: fade-in  ease 0.5s forwards;
+    animation-delay: 0.5s;
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+}
 .fade-in-1s{
     animation: fade-in 1 ease 1s forwards;
     -webkit-animation: fade-in 1 ease 1s forwards;
-    -moz-animation: fade-in 1 ease 1s forwards;
+    -moz-animation: fade-in  ease 1s forwards;
     animation-delay: 1s;
     -webkit-animation-delay: 1s;
     -moz-animation-delay: 1s;
@@ -51,13 +67,12 @@
 }
 .text{
     text-align: center;
-    top: 14%;
     width: 100%;
     font-family: Montserrat-Light;
-    /*position: absolute;*/
     font-size: 3.6em;
     color: #313a44;
-    /*color: white;*/
+    position: relative;
+    top: 70px;
 }
 .teeImg{
     top: 10%;
@@ -80,7 +95,9 @@
     position: absolute;
     margin: 0 auto;
     width: 100%;
-    top: 250px;
+    top: 450px;
+    text-align: center;
+    /*right: 10%;*/
     z-index: 10;
     color: #313a44;
 }
@@ -99,6 +116,14 @@
     width:100%; 
     max-width:400px
 }
+#collectionImage{
+    margin-top: 50px;
+    max-width: 300px;
+}
+
+
+
+
 @media screen and (max-width: 350px){
     /*.owl-carousel.homePage .owl-item img{
         width: 50%;
@@ -115,13 +140,10 @@
     .letsShop a{
         font-size: 16px;
     }
-    .text{
-        top:10%;
-    }
+    
 }
 @media screen and (min-width: 350px) and (max-width: 900px){
     .text{
-        top:10%;
         font-size: 29px;
     }
         .orangeColor{
