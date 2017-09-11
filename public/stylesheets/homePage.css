@@ -114,12 +114,10 @@
 }
 .cottonBall{
     width:100%; 
-    max-width:400px
+    max-width:400px;
+        height: 340px;
 }
-#collectionImage{
-    margin-top: 50px;
-    max-width: 300px;
-}
+
 
 
 

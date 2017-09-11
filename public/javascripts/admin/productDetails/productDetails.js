@@ -41,8 +41,8 @@ angular.module("mainAdminApp").controller("productDetailsCtrl", [
         $scope.productDetails.categoryInfo.filters = [];
         $scope.productDetails.sizes = { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0 };
         $scope.productDetails.fitDescription = "Slim Fit: Fits closer to the body, take your regular size. Size up if a looser fit is desired";
-        $scope.productDetails.materialDescription = '<span><b>Fabric</b> 100% cotton Pique Prewashed to impart a softer texture <b>WashCare Instructions</b> Machine wash cold Do not bleach or wash with chlorine based detergent or water Wash/dry inside out Do not iron directly on prints Dry promptly in shade Dry on a flat surface as hanging may cause measurement variations Product color may vary little due to photography Wash with similar clothes<a href="/faq?query=washcare">Know more</a></span>';
-        $scope.productDetails.shippingDescription = '<span>Free Shipping above ₹ 1000 COD charges applicable. Please, refer <a href="/faq">FAQ</a> for more information. All products, except boxers and nightwear shorts, are applicable for return. Customers can return their order within 15 days of the order delivery. Refunds for returned products will be given in your Bewakoof wallet.</span>';
+        $scope.productDetails.materialDescription = '<div> 100% cotton Pique Prewashed to impart a softer texture. <div><span><b>WashCare Instructions:</b> Machine wash cold Do not bleach or wash with chlorine based detergent or water Wash/dry inside out Do not iron directly on prints Dry promptly in shade Dry on a flat surface as hanging may cause measurement variations Product color may vary little due to photography Wash with similar clothes. <a href="/care">Know more</a></span>';
+        $scope.productDetails.shippingDescription = '<span>Free Shipping. COD charges applicable. All products, are applicable for return. Customers can return their order within 15 days of the order delivery. Refunds for returned products will be given in your bank account used for payment.</span>';
         $scope.productDetails.fit = "Fits just right - not too tight, not too loose.";
 
         // temp
