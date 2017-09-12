@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "ls | node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
@@ -19,6 +19,8 @@
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-css-condense": "^1.1.2",
     "webpack": "^3.5.1"
   }
 }
