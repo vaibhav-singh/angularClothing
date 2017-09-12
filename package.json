@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "ls | node ./bin/www"
+    "start": "gulp compress | gulp cssMinify | node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
@@ -21,6 +21,8 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-css-condense": "^1.1.2",
+    "gulp-uglify": "^3.0.0",
+    "pump": "^1.0.2",
     "webpack": "^3.5.1"
   }
 }

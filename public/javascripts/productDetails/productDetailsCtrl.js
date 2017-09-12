@@ -53,7 +53,9 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
             $scope.showSizeError = true;
         }
         $rootScope.numberOfProductsInCart = cartRelatedServices.cartDetails.length;
-        $timeout(()=>revertClickFlags(), 1000);
+        $timeout(function(){
+            revertClickFlags()
+        }, 1000);
     };
     $scope.buyItNow = function(product, selectedSize){
          $scope.buyNowOrAddToCartClicked = true;
@@ -69,7 +71,9 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
             $scope.showSizeError = true;
         }
         // $rootScope.numberOfProductsInCart = cartRelatedServices.cartDetails.length;
-        $timeout(()=>revertClickFlags(), 1000);
+        $timeout(function(){
+            revertClickFlags()
+        }, 1000);
     }
     // selectSizeForRequest
     $scope.selectSizeForRequest = function(size){
@@ -87,8 +91,12 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
         } else{
             $scope.requestForSizeBtnClicked = true;
         }
-        $timeout(()=>revertClickFlags(), 1000);
-        $timeout(()=>hideResponse(), 3000);
+        $timeout(function(){
+            revertClickFlags()
+        }, 1000);
+        $timeout(function(){
+            hideResponse()
+        }, 1000);
         // if(!$scope.sizeForRequest){
         //     return false;
         // } else{
