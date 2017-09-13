@@ -1,4 +1,4 @@
-angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', '$rootScope', '$state', 'productService', function ($scope, $stateParams, $rootScope, $state, productService) {
+angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', '$rootScope', '$state', 'productService', 'cartRelatedServices', function ($scope, $stateParams, $rootScope, $state, productService, cartRelatedServices) {
     $scope.cartDetails = JSON.parse(localStorage.getItem('finalCart'));
     $scope.cartDetailsRefined = [];
     $scope.forms = {};
@@ -16,6 +16,9 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
     $scope.checkForsizeAvailability = function () {
         $scope.getSizes($scope.productIds); 
     }
+    $scope.saveTempOrder = function() {
+        cartRelatedServices.saveTempOrder($scope.finalCartAvailable, $scope.addressDetails, $scope.totalAmount);
+    };
     $scope.getSizes = function(productIds){
         $scope.finalCartAvailable = [];
         $scope.finalCartNotAvailable = [];
@@ -52,13 +55,22 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
             $scope.newAddress = true;
         }
     };
+    $scope.makePayment = function(){
+        cartRelatedServices.makePayment($scope.finalCartAvailable, $scope.addressDetails, $scope.totalAmount).then(function(response){
+            console.log(response.data)
+            document.getElementById('placeHere').innerHTML = response.data;
+                document.getElementById("nonseamless").submit();
+        });
+    }
     $scope.placeOrderAndPayButtonClicked = function(){
         $scope.showErrors = true;
         if(!$scope.newAddress || $scope.forms.addressForm.$valid){
             localStorage.setItem('address', JSON.stringify($scope.addressDetails));
             // go to payment page get status if status is paid get order id and redirect to orderDetails page
             // check availability and hold products for some time 
-            
+            $scope.saveTempOrder();
+            $scope.makePayment();
+            paymentsStatus = false; 
             if(paymentsStatus){
                  localStorage.removeItem('finalCart');
                 if($stateParams.src !== "buyNow")

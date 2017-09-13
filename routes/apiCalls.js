@@ -65,7 +65,6 @@ router.get("/getProductDetails", function(req, res){
     });
 });
 router.post("/fetchAvailableSizes", function(req, res){
-    console.log('afa')
     var productidArray = req.body.productIds;
     productsDb.productCollection.find({id: {$in:productidArray}}, 'id sizes',function(err, response){
         if(err){
@@ -75,5 +74,7 @@ router.post("/fetchAvailableSizes", function(req, res){
         }
     });
 });
-
+router.post('/saveTempOrder', function(req, res){
+    res.send({a:'a'})
+});
 module.exports = router;

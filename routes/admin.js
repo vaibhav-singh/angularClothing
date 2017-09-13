@@ -54,7 +54,7 @@ router.get("/fetchProducts", function(req, res){
             res.send({success: true, products: response})
         }
     })
-})
+});
 router.get('/fetchProductDetails', function(req, res){
     var id = req.query.id;
     productsDb.productCollection.findOne({id: id}, function(err, response){
