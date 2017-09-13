@@ -11,8 +11,8 @@ angular.module("mainApp").service("cartRelatedServices", [
         order_id: "12"+ new Date(),
         currency: "INR",
         amount: 123,
-        redirect_url: "https://orangeclips.com",
-        cancel_url: "https://orangeclips.com",
+        redirect_url: "https://www.orangeclips.com",
+        cancel_url: "https://www.orangeclips.com",
         language: "en"
       });
       return $http({
