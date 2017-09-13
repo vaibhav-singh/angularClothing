@@ -15,7 +15,4 @@ router.post('/ccavRequestHandler', function (request, response){
 router.post('/ccavResponseHandler', function (request, response){
         ccavResHandler.postRes(request, response);
 });
-router.post('/afterPayment', function (request, response){
-        res.sendFile(path.join(__dirname + '/../views/index.html'));
-});
 module.exports = router;
