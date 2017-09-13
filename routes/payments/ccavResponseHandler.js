@@ -4,6 +4,7 @@ var http = require('http'),
     qs = require('querystring');
 
 exports.postRes = function(request,response){
+	console.log("handle innnn")
     var ccavEncResponse='',
 	ccavResponse='',	
 	workingKey = '43B1F1970CD906CB64390FC1C399385A',	//Put in the 32-Bit key shared by CCAvenues.
