@@ -13,6 +13,7 @@ router.post('/ccavRequestHandler', function (request, response){
 });
 
 router.post('/ccavResponseHandler', function (request, response){
+    console.log('response handler')
         ccavResHandler.postRes(request, response);
 });
 module.exports = router;

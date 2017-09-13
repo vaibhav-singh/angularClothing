@@ -10,11 +10,11 @@ exports.postRes = function(request,response){
 	ccavPOST = '';
 	
         request.on('data', function (data) {
-	    ccavEncResponse += data;
-	    ccavPOST =  qs.parse(ccavEncResponse);
-	    var encryption = ccavPOST.encResp;
-	    ccavResponse = ccav.decrypt(encryption,workingKey);
-		console.log(ccavEncResponse)
+			ccavEncResponse += data;
+			ccavPOST =  qs.parse(ccavEncResponse);
+			var encryption = ccavPOST.encResp;
+			ccavResponse = ccav.decrypt(encryption,workingKey);
+			console.log(ccavEncResponse)
         });
 
 	request.on('end', function () {
