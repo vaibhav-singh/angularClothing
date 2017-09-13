@@ -6,7 +6,7 @@ var fs = require('fs'),
     ccav = require('./ccavutil'),
     qs = require('querystring'),
     ccavReqHandler = require('./ccavRequestHandler.js'),
-    ccavResHandler = require('./ccavResponseHandler.js');
+    ccavResHandler = require('./ccavResponseHandler');
 
 router.post('/ccavRequestHandler', function (request, response){
 	ccavReqHandler.postReq(request, response);
