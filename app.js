@@ -24,21 +24,21 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 // app.use(logger('dev'));
 // 
-var http = require('http'),
-    fs = require('fs'),
-    ccav = require('./routes/payments/ccavutil'),
-    qs = require('querystring'),
-    ccavReqHandler = require('./routes/payments/ccavRequestHandler'),
-    ccavResHandler = require('./routes/payments/ccavResponseHandler');
+// var http = require('http'),
+//     fs = require('fs'),
+//     ccav = require('./routes/payments/ccavutil'),
+//     qs = require('querystring'),
+//     ccavReqHandler = require('./routes/payments/ccavRequestHandler'),
+//     ccavResHandler = require('./routes/payments/ccavResponseHandler');
 
-app.post('/ccavRequestHandler', function (request, response){
-	ccavReqHandler.postReq(request, response);
-});
+// app.post('/ccavRequestHandler', function (request, response){
+// 	ccavReqHandler.postReq(request, response);
+// });
 
 
-app.post('/ccavResponseHandler', function (request, response){
-    ccavResHandler.postRes(request, response);
-});
+// app.post('/ccavResponseHandler', function (request, response){
+//     ccavResHandler.postRes(request, response);
+// });
 
 
 
