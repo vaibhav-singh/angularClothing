@@ -1,7 +1,7 @@
 angular.module("mainApp").controller("productsCtrl", ['$scope', '$stateParams', 'productService', '$location', '$anchorScroll', '$state', '$rootScope', function($scope, $stateParams, productService, $location,  $anchorScroll,$state, $rootScope){
     $scope.init = function(gender, superCategory, subCategory, src, tagsSelected){
         // tags from local storage
-        // fetch products
+        // fetch products 
         pageNo++;
         localStorage.setItem('pageNo', pageNo);
         productService.getproductsToDisplay(gender, superCategory, subCategory, src, tagsSelected, pageNo).then(function(response){

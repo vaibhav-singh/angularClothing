@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "gulp compress | gulp cssMinify | node ./bin/www"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
+    "chokidar": "^1.7.0",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",
     "debug": "~2.6.3",
@@ -20,9 +21,13 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-batch": "^1.0.5",
     "gulp-css-condense": "^1.1.2",
+    "gulp-livereload": "^3.8.1",
     "gulp-uglify": "^3.0.0",
+    "gulp-watch": "^4.3.11",
     "pump": "^1.0.2",
+    "run-sequence": "^2.1.0",
     "webpack": "^3.5.1"
   }
 }

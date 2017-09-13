@@ -17,17 +17,7 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
             
         });
     };
-    $scope.getSizes = function(productId){
-        productService.fetchAvailableSizes(productId).then(function(response){
-            // $scope.sizes = response.sizes;
-             $scope.sizes = {};
-            for(var i = 0; i<locale.sizes.length; i++){
-                $scope.sizes[locale.sizes[i]+""] = response.sizes[locale.sizes[i]+""] ? response.sizes[locale.sizes[i]+""] : 0;
-            }
-        }, function(response){
-
-        })
-    };
+    
     $scope.selectSize = function(size){
         $scope.selectedSize = size;
     }

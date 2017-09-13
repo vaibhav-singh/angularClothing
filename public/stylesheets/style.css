@@ -1,43 +1,4 @@
-@font-face {
-    font-family: Baloo;
-    src: url("../fonts/BalooChettan-Regular.ttf");
-}
-@font-face {
-    font-family: PT_Sans_Narrow;
-    src: url("../fonts/PT_Sans-Narrow-Web-Regular.ttf");
-}
-@font-face {
-    font-family: headingsFont;
-    src: url("../fonts/ufonts.com_gotham-medium.woff");
-}
-@font-face {
-    font-family: Montserrat-Regular;
-    src: url("../fonts/Montserrat-Regular.ttf");
-}
-@font-face {
-    font-family: Montserrat-Light;
-    src: url("../fonts/Montserrat-Light.ttf");
-}
-@font-face {
-    font-family: Montserrat-Medium;
-    src: url("../fonts/Montserrat-Medium.ttf");
-}
-@font-face {
-    font-family: Montserrat-ExtraLight;
-    src: url("../fonts/Montserrat-ExtraLight.ttf");
-}
-@font-face {
-    font-family: Montserrat-Bold;
-    src: url("../fonts/Montserrat-Bold.ttf");
-}
-@font-face {
-    font-family: Montserrat-thin;
-    src: url("../fonts/Montserrat-Thin.ttf");
-}
-@font-face {
-    font-family: headingsFont;
-    src: url("../fonts/ufonts.com_gotham-medium.woff");
-}
+
 body {
   /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
   font-family: Montserrat-Regular;
@@ -178,7 +139,7 @@ footer nav a .dot {
     text-align: left;
 }
 .article h2{
-    font-family: "Montserrat-Light", Georgia, serif;
+    font-family: "Montserrat-Light", Georgia, serif;  
         font-weight: 300;
     font-size: 3.25em;
     line-height: 1.2em;

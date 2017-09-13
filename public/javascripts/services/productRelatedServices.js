@@ -1,7 +1,6 @@
 angular.module('mainApp').service('productService', ['$http', '$q', function ($http, $q) {
     this.backendUrl = "http://localhost:3000/api"
     this.getproductsToDisplay = function (gender, superCategory, subCategory, src,tagsSelected, pageNo) {
-        console.log(pageNo)
         return $http({
             url: '/api/fetchProducts?tags='+tagsSelected+'&pageNo='+pageNo,
             mehtod:'GET'
@@ -33,9 +32,11 @@ angular.module('mainApp').service('productService', ['$http', '$q', function ($h
             })
         })
     };
-    this.fetchAvailableSizes = function (productId) {
-        return $q(function (res, rej) {
-            res({ sizes: { "S": 11, "M": 2, "L": 3, "XL": 4 } })
+    this.fetchAvailableSizes = function (productIds) {
+        return $http({
+            method: "POST",
+            url: "/api/fetchAvailableSizes",
+            data: {productIds: productIds}
         })
     }
 }

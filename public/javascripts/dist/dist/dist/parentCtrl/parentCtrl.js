@@ -1,1 +1,0 @@
-angular.module("mainApp").controller("parentCtrl",["$scope","$rootScope","CommonServices",function(o,e,n){o.hideCart=function(){e.cartDropDownVisible=!1},o.hideMenu=function(){n.hideToggleMenu()}}]);

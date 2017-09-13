@@ -54,7 +54,6 @@ router.get('/fetchProducts', function(req, res){
     });
 }
 });
-
 router.get("/getProductDetails", function(req, res){
     var productid = req.query.id;
     productsDb.productCollection.findOne({id: productid}, function(err, response){
@@ -64,6 +63,17 @@ router.get("/getProductDetails", function(req, res){
             res.send({success: true, productDetails: response});
         }
     });
-})
+});
+router.post("/fetchAvailableSizes", function(req, res){
+    console.log('afa')
+    var productidArray = req.body.productIds;
+    productsDb.productCollection.find({id: {$in:productidArray}}, 'id sizes',function(err, response){
+        if(err){
+            res.send({success: false, data: err});
+        } else{
+            res.send({success: true, result: response, total: response.length});
+        }
+    });
+});
 
 module.exports = router;

@@ -1,10 +1,19 @@
 <div ng-controller="checkoutCtrl" class="checkOutParent">
+    <div ng-if="fewProductsUnavailable" style="color: #F44336">
+        <h3>Oh Snap!! Below product(s) went out of stock. 😞</h3>
+        <div ng-repeat="product in finalCartNotAvailable" class="">
+            <span class="productQuantity">{{product.quantity}}</span>
+            <span class="saperator">.</span>{{product.productDetails.name}}</span>
+            <span class="saperator">.</span>{{product.size}}
+            <!--<div ng-if='product.remainingQuantity>0'><button class="btn btn-primary"> Only, we have {{product.remainingQuantity}} pcs available</button></div>-->
+        </div>
+    </div>
     <div class="checkoutHeader">
         <h1>You're gonna love your new Tees.</h1>
-        <span class="thanksMessage">Thanks for getting &nbsp<b>{{cartDetailsRefined.length}}</b> 😄</span>  
+        <span class="thanksMessage">Thanks for getting &nbsp<b>{{availableProducts}}</b> 😄</span>  
     </div>
     <div class="cartDetailsCheckOut">
-        <div ng-repeat="product in cartDetails" class="">
+        <div ng-repeat="product in finalCartAvailable" class="">
             <span class="productQuantity">{{product.quantity}}</span>
             <span class="saperator">.</span>{{product.productDetails.name}}</span>
             <span class="saperator">.</span>{{product.size}}

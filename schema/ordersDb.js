@@ -1,0 +1,1 @@
+var mongooseObject = require("../mongooseConfig");
