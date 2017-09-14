@@ -11,8 +11,8 @@ angular.module("mainApp").service("cartRelatedServices", [
         order_id: "12asas",
         currency: "INR",
         amount: 123,
-        redirect_url: "https://www.orangeclips.com/payment/ccavResponseHandler",
-        cancel_url: "https://www.orangeclips.com/payment/ccavResponseHandler",
+        redirect_url: "https://www.orangeclips.com/payment/success",
+        cancel_url: "https://www.orangeclips.com/payment/success",
         language: "en"
       });
       return $http({

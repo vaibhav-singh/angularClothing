@@ -18,6 +18,19 @@ router.post('/ccavResponseHandler', function (request, response){
         ccavResHandler.postRes(request, response);
 });
 router.post('/success', function (request, response){
+    console.log(request.body);
+    var request = require("request");
+
+    request(
+      {
+        uri: "http://localhost/payment/ccavResponseHandler",
+        method: "POST",
+        form: request.body
+      },
+      function(error, response, body) {
+        console.log(body);
+      }
+    );
     console.log('response handler',request, response);
         
   res.sendFile(path.join(__dirname + '/../views/admin.html'));
