@@ -41,7 +41,7 @@ router.post('/success', function (request, res){
       res.send(str); // SEND ACTUAL RESPONSE HERE
     });
   }
-    http.request(options, callback);
+    req = http.request(options, callback);
     req.end();
     // console.log('response handler',request, response);
         
