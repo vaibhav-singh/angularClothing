@@ -26,7 +26,8 @@ router.post('/success', function (request, res){
   var options = {
     host: 'http://www.orangeclips.com',
     path: '/payment/ccavResponseHandler',
-
+    method:"POST",
+    headers: {"Content-Type": "application/x-www-form-urlencoded;charset=utf-8;" }
   };
 
   var callback = function(response) {
