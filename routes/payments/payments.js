@@ -24,14 +24,14 @@ router.post('/success', function (request, res){
     var str = '';
 
   var options = {
-    host: 'http://10.148.0.3:3000',
+    host: 'http://www.orangeclips.com',
     path: '/payment/ccavResponseHandler',
 
   };
 
   var callback = function(response) {
     response.on('data', function (chunk) {
-        console.log('asdasd', data)
+        console.log('asdasd')
       str += chunk;
     });
 
