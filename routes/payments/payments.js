@@ -17,33 +17,10 @@ router.post('/ccavRequestHandler', function (request, response){
 router.post('/ccavResponseHandler', function (request, response){
         ccavResHandler.postRes(request, response);
 });
-router.post('/success', function (request, res){
-    console.log(request.body);
-    
-    
-    var str = '';
-
-  var options = {
-    host: 'https://www.orangeclips.com',
-    path: '/payment/ccavResponseHandler',
-    method:"POST",
-    headers: {"Content-Type": "application/x-www-form-urlencoded;charset=utf-8;" }
-  };
-
-  var callback = function(response) {
-    response.on('data', function (chunk) {
-        console.log('asdasd')
-      str += chunk;
-    });
-
-    response.on('end', function () {
-      console.log(str);
-      res.send(str); // SEND ACTUAL RESPONSE HERE
-    });
-  }
-    req = http.request(options, callback);
-    req.end();
-    // console.log('response handler',request, response);
-        
+router.post('/success', function (request, response){
+        ccavResHandler.postRes(request, response);
+});
+router.post('/failure', function (request, response){
+        ccavResHandler.postRes(request, response);
 });
 module.exports = router;
