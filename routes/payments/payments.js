@@ -17,7 +17,7 @@ router.post('/ccavResponseHandler', function (request, response){
     console.log('response handler')
         ccavResHandler.postRes(request, response);
 });
-router.post('/success', function (request, response){
+router.post('/success', function (request, res){
     console.log(request.body);
     var request = require("request");
 
@@ -28,11 +28,12 @@ router.post('/success', function (request, response){
         form: request.body
       },
       function(error, response, body) {
-        console.log(body);
+          console.log("lalalala",response);
+          res.send(response)
       }
     );
-    console.log('response handler',request, response);
+    // console.log('response handler',request, response);
         
-  res.sendFile(path.join(__dirname + '/../views/admin.html'));
+//   res.sendFile(path.join(__dirname + '/../views/admin.html'));
 });
 module.exports = router;
