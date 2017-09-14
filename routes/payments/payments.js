@@ -29,11 +29,11 @@ router.post('/success', function (request, res){
       },
       function(error, response, body) {
           console.log("lalalala",response);
-          res.send(response)
+        //   res.send(response)
+        res.sendFile(path.join(__dirname + '/../views/admin.html'));
       }
     );
     // console.log('response handler',request, response);
         
-//   res.sendFile(path.join(__dirname + '/../views/admin.html'));
 });
 module.exports = router;
