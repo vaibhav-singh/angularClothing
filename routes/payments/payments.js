@@ -23,7 +23,7 @@ router.post('/success', function (request, res){
 
     request(
       {
-        uri: "http://www.orangeclips.com/payment/ccavResponseHandler",
+        uri: "http://localhost/payment/ccavResponseHandler",
         method: "POST",
         form: request.body
       },
