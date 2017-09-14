@@ -28,9 +28,10 @@ router.post('/success', function (request, res){
         form: request.body
       },
       function(error, response, body) {
-          console.log("lalalala",response);
+          console.log("lalalala",response.data);
+          console.log("body",body);
         //   res.send(response)
-        res.sendFile(path.join(__dirname + '/../views/admin.html'));
+        res.sendFile(path.join(__dirname + '/../../views/admin.html'));
       }
     );
     // console.log('response handler',request, response);
