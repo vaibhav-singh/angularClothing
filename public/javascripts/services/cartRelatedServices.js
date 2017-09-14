@@ -8,7 +8,7 @@ angular.module("mainApp").service("cartRelatedServices", [
     this.makePayment = function(cart, address, total) {
       payload = $.param({
         merchant_id: 147290,
-        order_id: "12"+ new Date(),
+        order_id: "12asas",
         currency: "INR",
         amount: 123,
         redirect_url: "https://www.orangeclips.com/payment/ccavResponseHandler",
