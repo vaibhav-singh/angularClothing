@@ -15,7 +15,7 @@ exports.postRes = function(request,response){
 			ccavPOST =  qs.parse(ccavEncResponse);
 			var encryption = ccavPOST.encResp;
 			ccavResponse = ccav.decrypt(encryption,workingKey);
-			console.log(ccavResponse)
+			console.log("from data->>>"+ccavResponse)
         });
 
 	request.on('end', function () {
