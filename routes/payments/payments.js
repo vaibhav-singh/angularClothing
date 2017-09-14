@@ -19,22 +19,29 @@ router.post('/ccavResponseHandler', function (request, response){
 });
 router.post('/success', function (request, res){
     console.log(request.body);
-    var request = require("request");
+    
+    
+    var str = '';
 
-    request(
-      {
-        uri: "http://localhost/payment/ccavResponseHandler",
-        method: "POST",
-        form: request.body
-      },
-      function(error, response, body) {
-          console.log("lalalala",response.data);
-          console.log("body",body);
-          res.write(body);
-          res.send();
-        // res.sendFile(path.join(__dirname + '/../../views/admin.html'));
-      }
-    );
+  var options = {
+    host: 'http://10.148.0.3:3000',
+    path: '/payment/ccavResponseHandler',
+
+  };
+
+  var callback = function(response) {
+    response.on('data', function (chunk) {
+        console.log('asdasd', data)
+      str += chunk;
+    });
+
+    response.on('end', function () {
+      console.log(str);
+      res.send(str); // SEND ACTUAL RESPONSE HERE
+    });
+  }
+    http.request(options, callback);
+    req.end();
     // console.log('response handler',request, response);
         
 });
