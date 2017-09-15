@@ -36,7 +36,8 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
             $scope.showSizeError = false;
             $scope.buyNowOrAddToCartClicked = false;
             cartRelatedServices.changeQuantityOfProductInCart(productToAdd, "+");
-            $rootScope.cart.cartDetails = JSON.parse(localStorage.getItem('cartDetails'))
+            $rootScope.cart.cartDetails = JSON.parse(localStorage.getItem('cartDetails'));
+            cartRelatedServices.cartDetails = $rootScope.cart.cartDetails;
             $rootScope.cartDropDownVisible = true;
             delete $scope.selectedSize;
         } else{

@@ -33,7 +33,7 @@ angular.module("mainApp").service("cartRelatedServices", [
         url: "/api/saveTempOrder",
         data: {
           details: {
-            cart: cart,
+            products: cart,
             address: address,
             total: total,
             time: new Date()
@@ -56,6 +56,7 @@ angular.module("mainApp").service("cartRelatedServices", [
     // };
     this.changeQuantityOfProductInCart = function(product, typeOfChange) {
       // check if product is already there, if not add it , else change quantity
+      
       for (var i = 0; i < this.cartDetails.length; i++) {
         if (this.cartDetails[i].productId === product.productId && this.cartDetails[i].size === product.size) {
           if (typeOfChange === "+") this.cartDetails[i].quantity += product.quantity;

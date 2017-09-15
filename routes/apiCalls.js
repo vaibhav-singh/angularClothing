@@ -81,6 +81,27 @@ router.post('/saveTempOrder', function(req, res){
     shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
     details.orderId = shortid.generate();
     var saveIt = ordersDb.tempOrderCollection(details);
+    // var productIdsArray = [];
+    // console.log(details.products)
+    for (var i = 0; i < details.products.length; i++) {
+        // productIdsArray.push(details.products[i].productId);
+        (function(i){
+            productsDb.productCollection.findOne({id: details.products[i].productId}, function(err, response){
+                if(err){
+                    res.send({success: false, details: err});
+                } else{
+                    response.sizes[details.products[i].size] = response.sizes[details.products[i].size] - details.products[i].quantity;
+                    response.save(function(err, success) {
+                    if (err) {
+                        res.send({ success: false, details: err });
+                    } else {
+                        //   continue;
+                    }
+                    });
+                }
+            });
+        }(i))
+    }
     saveIt.save(function(err, response){
         if(err){
             res.send({success: false, response: err});

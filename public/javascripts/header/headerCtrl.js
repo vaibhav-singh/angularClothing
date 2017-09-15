@@ -7,6 +7,7 @@ angular.module('mainApp')
     };
     $scope.viewCartDropDown = function(){
         $rootScope.cart.cartDetails = JSON.parse(localStorage.getItem('cartDetails'));
+        cartRelatedServices.cartDetails = $rootScope.cart.cartDetails;
         // console.log($rootScope.cart.cartDetails)
         $rootScope.cartDropDownVisible = !$rootScope.cartDropDownVisible;
         $scope.hideToggleMenu();
@@ -17,9 +18,10 @@ angular.module('mainApp')
     $scope.removeItemFromCart = function(product){
         cartRelatedServices.removeProduct(product);
         $rootScope.cart.cartDetails = JSON.parse(localStorage.getItem('cartDetails'));
+        cartRelatedServices.cartDetails = $rootScope.cart.cartDetails;
         $rootScope.numberOfProductsInCart = $rootScope.cart.cartDetails.length;
         localStorage.setItem('finalCart', JSON.stringify($rootScope.cart.cartDetails));
-        localStorage.setItem('finalCart', JSON.stringify($rootScope.cart.cartDetails));
+        // localStorage.setItem('finalCart', JSON.stringify($rootScope.cart.cartDetails));
     }
     $scope.proceedToCheckOut = function(cart){
         localStorage.setItem('finalCart', JSON.stringify(cart));
@@ -29,4 +31,5 @@ angular.module('mainApp')
       $rootScope.goingToHeader = true;  
     }
     $rootScope.cart.cartDetails = JSON.parse(localStorage.getItem('cartDetails')) ? JSON.parse(localStorage.getItem('cartDetails')) : [];
+    cartRelatedServices.cartDetails = $rootScope.cart.cartDetails;
 }]);

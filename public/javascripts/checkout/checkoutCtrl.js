@@ -43,6 +43,10 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
               }
             }
             localStorage.setItem('finalCart', JSON.stringify($scope.finalCartAvailable))
+            localStorage.setItem('cartDetails', JSON.stringify($scope.finalCartAvailable));
+            $rootScope.cart.cartDetails = $scope.finalCartAvailable;
+            cartRelatedServices.cartDetails = $scope.finalCartAvailable;
+            $rootScope.numberOfProductsInCart = $rootScope.cart.cartDetails.length;
         }, function(response){
 
         });
@@ -66,6 +70,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
             // go to payment page get status if status is paid get order id and redirect to orderDetails page
             // check availability and hold products for some time 
             $scope.saveTempOrder().then(function(response){
+                console.log(response)
                 if(response.data.success){
                     $scope.orderId = response.data.response.orderId;
                     $scope.makePayment().then(function(response) {
