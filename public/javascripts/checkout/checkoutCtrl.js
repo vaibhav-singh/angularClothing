@@ -17,7 +17,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
         $scope.getSizes($scope.productIds); 
     }
     $scope.saveTempOrder = function() {
-        cartRelatedServices.saveTempOrder($scope.finalCartAvailable, $scope.addressDetails, $scope.totalAmount);
+        return cartRelatedServices.saveTempOrder($scope.finalCartAvailable, $scope.addressDetails, $scope.totalAmount);
     };
     $scope.getSizes = function(productIds){
         $scope.finalCartAvailable = [];
@@ -42,6 +42,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
                   $scope.finalCartNotAvailable.push($scope.cartDetails[i]);
               }
             }
+            localStorage.setItem('finalCart', JSON.stringify($scope.finalCartAvailable))
         }, function(response){
 
         });
@@ -56,12 +57,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
         }
     };
     $scope.makePayment = function(){
-        cartRelatedServices.makePayment($scope.finalCartAvailable, $scope.addressDetails, $scope.totalAmount).then(function(response){
-            console.log(response.data)
-            document.getElementById('placeHere').innerHTML = response.data;
-            // alert("success");
-                document.getElementById("nonseamless").submit();
-        });
+        return cartRelatedServices.makePayment($scope.finalCartAvailable, $scope.addressDetails, $scope.totalAmount, $scope.orderId);
     }
     $scope.placeOrderAndPayButtonClicked = function(){
         $scope.showErrors = true;
@@ -69,18 +65,27 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
             localStorage.setItem('address', JSON.stringify($scope.addressDetails));
             // go to payment page get status if status is paid get order id and redirect to orderDetails page
             // check availability and hold products for some time 
-            $scope.saveTempOrder();
-            $scope.makePayment();
-            paymentsStatus = false; 
-            if(paymentsStatus){
-                 localStorage.removeItem('finalCart');
-                if($stateParams.src !== "buyNow")
-                    {
-                        localStorage.setItem('cartDetails', JSON.stringify([]));
-                        $rootScope.numberOfProductsInCart = 0;
-                    }
-                $state.go("orderStatus", {orderId: 'af'});
-            }
+            $scope.saveTempOrder().then(function(response){
+                if(response.data.success){
+                    $scope.orderId = response.data.response.orderId;
+                    $scope.makePayment().then(function(response) {
+                      document.getElementById("placeHere").innerHTML = response.data;
+                      document.getElementById("nonseamless").submit();
+                    }, function(){
+
+                    });
+                } 
+            }, function(){});
+            // paymentsStatus = false; 
+            // if(paymentsStatus){
+            //      localStorage.removeItem('finalCart');
+            //     if($stateParams.src !== "buyNow")
+            //         {
+            //             localStorage.setItem('cartDetails', JSON.stringify([]));
+            //             $rootScope.numberOfProductsInCart = 0;
+            //         }
+            //     $state.go("orderStatus", {orderId: $scope.orderId});
+            // }
         } else{
 
         }

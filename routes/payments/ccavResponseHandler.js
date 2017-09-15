@@ -30,9 +30,7 @@ exports.postRes = function(request,response){
 	    // response.write(htmlcode);
 		// var responseArray = ccavResponse.split("&");
 		var JsonRes = JSON.parse('{"' + decodeURI(ccavResponse).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
-		console.log(JsonRes);
-		console.log(typeof JsonRes);
-		console.log(JSON.stringify(JsonRes))
+		
 		response.sendFile(path.join(__dirname + '/../../views/paymentResponse.html'));
 	    // response.end();
 	}); 	

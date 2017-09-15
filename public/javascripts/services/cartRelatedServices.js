@@ -5,14 +5,20 @@ angular.module("mainApp").service("cartRelatedServices", [
     this.saveCart = function(cart) {
       this.cartDetails = cart;
     };
-    this.makePayment = function(cart, address, total) {
+    this.makePayment = function(cart, address, total, order_id) {
       payload = $.param({
-        order_id: "12asas",
+        order_id: order_id,
         currency: "INR",
         amount: 123,
-        // redirect_url: "https://www.orangeclips.com/payment/success",
-        // cancel_url: "https://www.orangeclips.com/payment/failure",
-        language: "en"
+        language: "en",
+        billing_name: address.fullName,
+        billing_address: address.address,
+        billing_city: address.city,
+        billing_state: address.state,
+        billing_zip: address.pinCode,
+        billing_country: "INDIA",
+        billing_tel: address.phoneNumber,
+        billing_email: address.emailId,
       });
       return $http({
         method: "POST",
