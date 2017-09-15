@@ -7,12 +7,11 @@ angular.module("mainApp").service("cartRelatedServices", [
     };
     this.makePayment = function(cart, address, total) {
       payload = $.param({
-        // merchant_id: 147290,
         order_id: "12asas",
         currency: "INR",
         amount: 123,
-        redirect_url: "https://www.orangeclips.com/payment/success",
-        cancel_url: "https://www.orangeclips.com/payment/failure",
+        // redirect_url: "https://www.orangeclips.com/payment/success",
+        // cancel_url: "https://www.orangeclips.com/payment/failure",
         language: "en"
       });
       return $http({
