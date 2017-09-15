@@ -18,7 +18,7 @@ angular.module("mainApp").service("cartRelatedServices", [
         billing_zip: address.pinCode,
         billing_country: "INDIA",
         billing_tel: address.phoneNumber,
-        billing_email: address.emailId,
+        billing_email: address.emailId
       });
       return $http({
         method: "POST",
