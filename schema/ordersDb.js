@@ -10,21 +10,23 @@ var placedOrdersSchema = mongooseObject.Schema({
   orderId: String,
   products: [],
   date: Date,
-  address: {},
   status: String,
+  amount: String,
   paymentStatus: String,
-  orderStatus: String,
-  shipped: Boolean,
+  orderStatus: {type: String, default: "processing"},
+  shipped: {type:Boolean, default: false},
+  tracking_id_payment: String,
   orderedBy: {
     name: String,
-    emailId: String
+    emailId: String,
+    phoneNo: String
   },
   deliveryDetails: {
     address: String,
     city: String,
     state: String,
     country: String,
-    pinCode: Number,
+    pinCode: String,
     preferredTiming: String
   },
   shippingDetails: {
