@@ -16,7 +16,7 @@ angular.module("mainApp").service("cartRelatedServices", [
         billing_city: address.city,
         billing_state: address.state,
         billing_zip: address.pinCode,
-        billing_country: "INDIA",
+        billing_country: "India",
         billing_tel: address.phoneNumber,
         billing_email: address.emailId
       });
