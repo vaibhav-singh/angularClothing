@@ -9,7 +9,7 @@ angular.module("mainApp").service("cartRelatedServices", [
       payload = $.param({
         order_id: order_id,
         currency: "INR",
-        amount: 123,
+        amount: total,
         language: "en",
         billing_name: address.fullName,
         billing_address: address.address,
