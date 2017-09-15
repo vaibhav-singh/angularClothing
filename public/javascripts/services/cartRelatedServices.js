@@ -7,7 +7,7 @@ angular.module("mainApp").service("cartRelatedServices", [
     };
     this.makePayment = function(cart, address, total) {
       payload = $.param({
-        merchant_id: 147290,
+        // merchant_id: 147290,
         order_id: "12asas",
         currency: "INR",
         amount: 123,
