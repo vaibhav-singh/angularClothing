@@ -53,10 +53,10 @@ exports.postRes = function(request, response) {
       // remove from temp orders and add to orders
       readModuleFile(path.join(__dirname + "/../../views/paymentResponseSuccess.html"), function(err, content) {
         content = content.replace("#orderId#", JsonRes.order_id);
-        response.writeHeader(200, { "Content-Type": "text/html" });
+        // response.writeHeader(200, { "Content-Type": "text/html" });
 		console.log(content)
-        response.write(content);
-        // response.sendFile(path.join(__dirname + '/../../views/paymentResponseSuccess.html'));
+        // response.write(content);
+        response.sendFile(path.join(__dirname + '/../../views/paymentResponseSuccess.html'));
       });
     } else {
       // failure
