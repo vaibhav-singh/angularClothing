@@ -49,7 +49,7 @@ exports.postRes = function(request, response) {
         '"}'
     );
     console.log(JsonRes);
-    if (JsonRes.order_status !== "Success") {
+    if (JsonRes.order_status === "Success") {
       // remove from temp orders and add to orders
       readModuleFile(path.join(__dirname + "/../../views/paymentResponseSuccess.html"), function(err, content) {
         content = content.replace("#orderId#", JsonRes.order_id);
