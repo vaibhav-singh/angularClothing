@@ -4,7 +4,7 @@ var http = require('http'),
     qs = require('querystring');
 
 exports.postReq = function(request,response){
-    var body = 'merchant_id=147290&redirect_url=https://www.orangeclips.com/payment/success&cancel_url=https://www.orangeclips.com/payment/failure',
+    var body = 'merchant_id=147290&redirect_url=https://www.orangeclips.com/payment/success&cancel_url=https://www.orangeclips.com/payment/failure&',
 	workingKey = '43B1F1970CD906CB64390FC1C399385A',	//Put in the 32-Bit key shared by CCAvenues.
 	accessCode = 'AVGF72EI98AQ63FGQA',			//Put in the Access Code shared by CCAvenues.
 	encRequest = '',
