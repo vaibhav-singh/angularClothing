@@ -49,7 +49,7 @@ exports.postRes = function(request, response) {
         '"}'
     );
     console.log(JsonRes);
-    if (JsonRes.order_status !== "Success") {
+    if (JsonRes.order_status === "Success") {
 		ordersDb.tempOrderCollection.findOne({orderId: JsonRes.order_id}, function(err, successResponse){
 			if(err){
 				
