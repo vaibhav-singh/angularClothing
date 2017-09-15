@@ -35,8 +35,6 @@ exports.encrypt = function (plainText, workingKey) {
 	encoded += cipher.final('hex');
     	return encoded;
 };
-
-
 exports.decrypt = function (encText, workingKey) {
     	var m = crypto.createHash('md5');
     	m.update(workingKey)

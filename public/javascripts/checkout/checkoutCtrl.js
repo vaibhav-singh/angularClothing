@@ -59,6 +59,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
         cartRelatedServices.makePayment($scope.finalCartAvailable, $scope.addressDetails, $scope.totalAmount).then(function(response){
             console.log(response.data)
             document.getElementById('placeHere').innerHTML = response.data;
+            // alert("success");
                 document.getElementById("nonseamless").submit();
         });
     }

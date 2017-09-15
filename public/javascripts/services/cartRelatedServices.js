@@ -17,7 +17,7 @@ angular.module("mainApp").service("cartRelatedServices", [
       });
       return $http({
         method: "POST",
-        url: "/payment/ccavRequestHandler",
+        url: "/payment/start",
         data: payload,
         headers: { "Content-Type": "application/x-www-form-urlencoded;charset=utf-8;" }
       });

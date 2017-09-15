@@ -9,7 +9,7 @@ var fs = require('fs'),
     ccavReqHandler = require('./ccavRequestHandler.js'),
     ccavResHandler = require('./ccavResponseHandler');
 
-router.post('/ccavRequestHandler', function (request, response){
+router.post('/start', function (request, response){
 	ccavReqHandler.postReq(request, response);
 });
 
