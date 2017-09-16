@@ -83,13 +83,11 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
             // go to payment page get status if status is paid get order id and redirect to orderDetails page
             // check availability and hold products for some time 
             $scope.getSizes($scope.productIds).then(function(res){
-                console.log(res);
                 if(!res.sizeUnavailableAtFinalStage){
                     $scope.saveTempOrder().then(function(response){
                         if(response.data.success){
                             $scope.orderId = response.data.response.orderId;
                             localStorage.setItem('orderid', $scope.orderId);
-                            alert(localStorage.getItem('orderid'));
                             $scope.makePayment().then(function(response) { 
                                 document.getElementById("placeHere").innerHTML = response.data;
                                 document.getElementById("nonseamless").submit();
