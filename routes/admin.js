@@ -45,6 +45,26 @@ router.post("/updateProduct", function(req, res){
         }
     })
 });
+router.post("/saveChangesInOrder", function(req, res){
+    var orderDetails = req.body.orderDetails;
+    delete orderDetails._id;
+    ordersDb.placedOrdersCollection.findOne({orderId: orderDetails.orderId}, function(err, response){
+        if(err){
+            res.send({success: false, data: err});
+        } else{
+            for(var index in orderDetails){
+                response[index] = orderDetails[index];
+            }
+            response.save(function(err, saveResponse){
+                if(err){
+                    res.send({success: false, data: err});
+                } else{
+                    res.send({success: true, data: saveResponse})
+                }
+            });
+        }
+    })
+});
 router.get("/fetchProducts", function(req, res){
     var pageNumber = req.query.pageNumber;
     var skipProducts = pageNumber*10;
@@ -59,6 +79,7 @@ router.get("/fetchProducts", function(req, res){
 router.get('/orders', function(req, res){
     var pageNumber = req.query.pageNumber;
     var skipOrders = pageNumber*10;
+    console.log("afaf")
     ordersDb.placedOrdersCollection.find({}, null, {skip: skipOrders, limit: 10, sort: {date: -1}}, function(err, response){
         if(err){
             res.send({success: false, data: err});

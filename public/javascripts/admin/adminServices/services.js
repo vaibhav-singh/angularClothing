@@ -40,4 +40,11 @@ angular.module('mainAdminApp').service('adminServices', function($http){
             url: this.backendUrl+'/fetchProductDetails?id='+id
         });
     }
+    this.saveChangesInOrder = function(order){
+        return $http({
+            method: "POST",
+            url: this.backendUrl+'/saveChangesInOrder',
+            data: {orderDetails: order}
+        })
+    }
 })
