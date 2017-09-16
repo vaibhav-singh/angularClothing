@@ -8,7 +8,7 @@
         <div class="col-xs-12 productContainer" ng-repeat="order in orderDetails"
             ng-if="orderDetails.length>0">
             <div class="col-xs-12 col-md-4"> Id - {{order.orderId}}</div>
-            <div class="col-xs-12 col-md-4">Date - {{order.date | date: 'hh:mm:ss dd-MMM-yy'}}</div>
+            <div class="col-xs-12 col-md-4">Date - {{order.date | date: 'h:mm:ss a  dd-MMM-yy'}}</div>
             <div class="col-xs-12 col-md-4">Payment Status - <b>{{order.paymentStatus}}</b></div>
             <div class="col-xs-12 col-md-4">Amount Paid - {{order.amount}}</div>
             <div class="col-xs-12 col-md-4">tracking_id_payment - {{order.tracking_id_payment}}</div>
