@@ -68,7 +68,7 @@ router.get("/getProductDetails", function(req, res){
 });
 router.get('/getOrderDetails', function(req, res){
     var orderId = req.query.orderId;
-    ordersDb.placedOrdersCollection.find({orderId: orderId}, null, {sort: {date: -1}}, function(err, order){
+    ordersDb.placedOrdersCollection.find({orderId: orderId}, null, {sort: {date: 1}}, function(err, order){
         if(err){
             res.send({success: false, response: err});
         } else{
