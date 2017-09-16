@@ -94,6 +94,7 @@ angular.module("mainApp").service("CommonServices", [
     //       totalAmount: 123
     //     });
 //   });
+console.log(orderId)
     return $http({
       method: "GET",
       url: '/api/getOrderDetails?orderId='+orderId
