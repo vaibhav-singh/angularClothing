@@ -17,7 +17,6 @@ function readModuleFile(path, callback) {
 }
 
 exports.postRes = function(request, response) {
-  console.log("handle innnn");
   var ccavEncResponse = "",
     ccavResponse = "",
     workingKey = "43B1F1970CD906CB64390FC1C399385A", //Put in the 32-Bit key shared by CCAvenues.
@@ -28,7 +27,6 @@ exports.postRes = function(request, response) {
     ccavPOST = qs.parse(ccavEncResponse);
     var encryption = ccavPOST.encResp;
     ccavResponse = ccav.decrypt(encryption, workingKey);
-    console.log("from data->>>" + ccavResponse);
   });
 
   request.on("end", function() {
@@ -40,10 +38,12 @@ exports.postRes = function(request, response) {
           .replace(/=/g, '":"') +
         '"}'
     );
-      https.get('https://control.msg91.com/api/sendhttp.php?authkey=139030Ag218mR2QtxS59351252&mobiles=' + JsonRes.billing_tel + '&message=' + 'success' + '&sender=OCshop&route=4&country=91', function (res) {
+    if (JsonRes.order_status === "Success") {
+      var messageBody = "Hi, \n We know you gonna love your tees. Just hold on till we deliver it to you. You can track your order at https://orangeclips.com/orderStatus?orderId="+JsonRes.order_id;
+      messageBody =  encodeURI(messageBody);
+      https.get('https://control.msg91.com/api/sendhttp.php?authkey=139030Ag218mR2QtxS59351252&mobiles=' + JsonRes.billing_tel + '&message=' + messageBody + '&sender=OCshop&route=4&country=91', function (res) {
 
       })
-    if (JsonRes.order_status === "Success") {
       ordersDb.tempOrderCollection.findOne({ orderId: JsonRes.order_id }, function(err, successResponse) {
         if (err) {
         } else {
