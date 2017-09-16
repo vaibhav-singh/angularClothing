@@ -12,11 +12,9 @@ angular.module("mainAdminApp").controller('adminOrderCtrl',['$scope', '$rootScop
       $scope.fetchOrders($scope.pageNumber);
     };
     $scope.changePage = function(type) {
-        if($scope.pageNumber >= 0){
-            if (type === "++") $scope.pageNumber++;
-            else $scope.pageNumber--;
-            $state.go("ordersDisplay", {pageNumber: $scope.pageNumber});
-        }
+        if (type === "++") $scope.pageNumber++;
+        else $scope.pageNumber--;
+        $state.go("ordersDisplay", {pageNumber: $scope.pageNumber});
     };
     $scope.totalProducts = 0;
     $scope.pageNumber = 0;

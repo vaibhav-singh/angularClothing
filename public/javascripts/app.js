@@ -18,4 +18,5 @@ mainModule.run(['$rootScope' ,'productService', 'cartRelatedServices', '$anchorS
         cartRelatedServices.saveCart([]);
         localStorage.setItem('cartDetails','[]')
     }
+    $rootScope.hideCartFromNavBar = false;
 }])

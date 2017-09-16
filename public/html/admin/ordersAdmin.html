@@ -9,8 +9,7 @@
             ng-if="orderDetails.length>0">
             <div class="col-xs-12 col-md-4"> Id - {{order.orderId}}</div>
             <div class="col-xs-12 col-md-4">Date - {{order.date | date}}</div>
-            <div class="col-xs-12 col-md-4">Status - {{order.date | date}}</div>
-            <div class="col-xs-12 col-md-4">Payment Status - {{order.paymentStatus}}</div>
+            <div class="col-xs-12 col-md-4">Payment Status - <b>{{order.paymentStatus}}</b></div>
             <div class="col-xs-12 col-md-4">Amount Paid - {{order.amount}}</div>
             <div class="col-xs-12 col-md-4">tracking_id_payment - {{order.tracking_id_payment}}</div>
             <div class="col-xs-12 col-md-4">Address - {{order.deliveryDetails.address}}</div>
