@@ -7,7 +7,7 @@ angular.module("mainApp").controller("orderStatusCtrl", [
     $rootScope.hideCartFromNavBar = true;
 console.log($stateParams.orderId)
     var orderId = "";
-    if ($stateParams.orderId === "" || $stateParams.orderId === undefined) {
+    if ($stateParams.orderId === "" || $stateParams.orderId === undefined || $stateParams.orderId === null) {
       orderId = localStorage.getItem("orderid");
     } else {
       orderId = $stateParams.orderId;
