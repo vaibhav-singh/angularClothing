@@ -9,7 +9,7 @@
             </div>
             <div class="padding_border">
                 <div><b>{{orderDetails.orderedBy.name}}</b></div>
-                <div>{{orderDetails.deliveryDetails.addressLine}}</div>
+                <div>{{orderDetails.deliveryDetails.address}}</div>
                 <div>{{orderDetails.deliveryDetails.city}}, {{orderDetails.deliveryDetails.state}},{{orderDetails.deliveryDetails.pinCode}}
                 </div>
                 <div>{{orderDetails.deliveryDetails.country}} </div>
@@ -23,7 +23,7 @@
             <div class="padding_border no-border">
                 {{orderDetails.paymentStatus}}
                 <div class="pull-right">
-                    <i class="fa fa-inr" aria-hidden="true"></i> {{orderDetails.totalAmount}}
+                    <i class="fa fa-inr" aria-hidden="true"></i> {{orderDetails.amount | number:0}}
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
             </div>
             <div ng-if="!orderDetails.shipped">
                 <div class="trackingDetails">
-                    <div>On the way to courier service</div>
+                    <div>Yet to be shipped. Shipping details will be available once shipped.</div>
                 </div>
             </div>
             <div ng-if="orderDetails.shipped" class="no-padding">

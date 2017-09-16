@@ -1,20 +1,20 @@
 angular.module("mainApp").controller("orderStatusCtrl", [
   "$scope",
-  "$state",
+  "$stateParams",
   "CommonServices",
   "$rootScope",
-  function($scope, $state, CommonServices, $rootScope) {
+  function($scope, $stateParams, CommonServices, $rootScope) {
     $rootScope.hideCartFromNavBar = true;
 
-    if ($state.orderId === "" || $state.orderId === undefined) {
+    if ($stateParams.orderId === "" || $stateParams.orderId === undefined) {
       var orderId = localStorage.getItem("orderid");
     } else {
-      orderId = $state.orderId;
+      orderId = $stateParams.orderId;
     }
     CommonServices.getOrderStatus(orderId).then(function(response) {
-      $scope.orderDetails = response;
+      $scope.orderDetails = response.data.orderDetails[0];
     });
-    $scope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams, options) {
+    $scope.$on("$stateParamsChangeStart", function(event, toState, toParams, fromState, fromParams, options) {
       $rootScope.hideCartFromNavBar = false;
     });
   }

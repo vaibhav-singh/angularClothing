@@ -94,9 +94,9 @@ angular.module("mainApp").service("CommonServices", [
     //       totalAmount: 123
     //     });
 //   });
-    $http({
+    return $http({
       method: "GET",
-      url: '/getOrderDetails?orderId='+orderId
+      url: '/api/getOrderDetails?orderId=r1yhXpK9W'
     });
 
 };
