@@ -98,7 +98,6 @@ angular.module("mainApp").service("CommonServices", [
       method: "GET",
       url: '/api/getOrderDetails?orderId='+orderId
     });
-
 };
   }
 ]);

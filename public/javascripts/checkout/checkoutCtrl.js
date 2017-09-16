@@ -1,4 +1,4 @@
-angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', '$rootScope', '$state', 'productService', 'cartRelatedServices', function ($scope, $stateParams, $rootScope, $state, productService, cartRelatedServices) {
+angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', '$rootScope', '$state', 'productService', 'cartRelatedServices', '$q', function ($scope, $stateParams, $rootScope, $state, productService, cartRelatedServices, $q) {
     $scope.cartDetails = JSON.parse(localStorage.getItem('finalCart'));
     $scope.cartDetailsRefined = [];
     $scope.forms = {};
@@ -20,6 +20,11 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
         return cartRelatedServices.saveTempOrder($scope.finalCartAvailable, $scope.addressDetails, $scope.totalAmount);
     };
     $scope.getSizes = function(productIds){
+        var promiseForSize = $q.defer();
+        $scope.totalAmount = 0;
+        $scope.availableProducts = 0;
+        $scope.sizeUnavailableAtFinalStage = false;
+        $scope.fewProductsUnavailable = false;
         $scope.finalCartAvailable = [];
         $scope.finalCartNotAvailable = [];
         productService.fetchAvailableSizes(productIds).then(function(response){
@@ -30,18 +35,25 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
             });
         // update size object 
             for (var i = 0; i < $scope.cartDetails.length; i++) {
+                console.log($scope.cartDetails[i])
               if($scope.sizesObject[$scope.cartDetails[i].productId][$scope.cartDetails[i].size] >= $scope.cartDetails[i].quantity){
+                  console.log(i);
                   $scope.cartDetails[i].available = true;
                   $scope.availableProducts++;
                   $scope.totalAmount += $scope.cartDetails[i].quantity * $scope.cartDetails[i].productDetails.price;
                   $scope.finalCartAvailable.push($scope.cartDetails[i]);
               } else{
+                  console.log(i);
                   $scope.cartDetails[i].available = false;
                   $scope.fewProductsUnavailable = true;
                   $scope.cartDetails[i].remainingQuantity = $scope.sizesObject[$scope.cartDetails[i].productId][$scope.cartDetails[i].size];
                   $scope.finalCartNotAvailable.push($scope.cartDetails[i]);
+                  $scope.sizeUnavailableAtFinalStage = true;
               }
             }
+            $scope.cartDetails = $scope.finalCartAvailable;
+            $scope.productIds = _.pluck($scope.finalCartAvailable, "productId");
+            promiseForSize.resolve({sizeUnavailableAtFinalStage: $scope.sizeUnavailableAtFinalStage});
             localStorage.setItem('finalCart', JSON.stringify($scope.finalCartAvailable))
             localStorage.setItem('cartDetails', JSON.stringify($scope.finalCartAvailable));
             $rootScope.cart.cartDetails = $scope.finalCartAvailable;
@@ -50,6 +62,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
         }, function(response){
 
         });
+            return promiseForSize.promise;
     };
     $scope.checkIfAddressIsAlreadyStoredInDevice = function(){
         var storedAddress = localStorage.getItem('address');
@@ -69,18 +82,23 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
             localStorage.setItem('address', JSON.stringify($scope.addressDetails));
             // go to payment page get status if status is paid get order id and redirect to orderDetails page
             // check availability and hold products for some time 
-            $scope.saveTempOrder().then(function(response){
-                if(response.data.success){
-                    $scope.orderId = response.data.response.orderId;
-                    localStorage.setItem('orderid', $scope.orderId);
-                    $scope.makePayment().then(function(response) {   
-                      document.getElementById("placeHere").innerHTML = response.data;
-                      document.getElementById("nonseamless").submit();
-                    }, function(){
+            $scope.getSizes($scope.productIds).then(function(res){
+                console.log(res);
+                if(!res.sizeUnavailableAtFinalStage){
+                    $scope.saveTempOrder().then(function(response){
+                        if(response.data.success){
+                            $scope.orderId = response.data.response.orderId;
+                            localStorage.setItem('orderid', $scope.orderId);
+                            $scope.makePayment().then(function(response) {   
+                            document.getElementById("placeHere").innerHTML = response.data;
+                            document.getElementById("nonseamless").submit();
+                            }, function(){
 
-                    });
-                } 
-            }, function(){});
+                            });
+                        } 
+                    }, function(){});
+                }
+            })
             // paymentsStatus = false; 
             // if(paymentsStatus){
             //      localStorage.removeItem('finalCart');
