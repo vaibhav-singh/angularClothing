@@ -96,7 +96,7 @@ angular.module("mainApp").service("CommonServices", [
 //   });
     return $http({
       method: "GET",
-      url: '/api/getOrderDetails?orderId=r1yhXpK9W'
+      url: '/api/getOrderDetails?orderId='+orderId
     });
 
 };
