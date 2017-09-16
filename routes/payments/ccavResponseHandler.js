@@ -2,9 +2,10 @@ var http = require("http"),
   fs = require("fs"),
   ccav = require("./ccavutil.js"),
   qs = require("querystring");
-path = require("path");
-ordersDb = require("./../../schema/ordersDb");
-productsDb = require("./../../schema/productsDb");
+  path = require("path");
+  ordersDb = require("./../../schema/ordersDb");
+  productsDb = require("./../../schema/productsDb");
+var https = require('https');
 
 function readModuleFile(path, callback) {
   try {
