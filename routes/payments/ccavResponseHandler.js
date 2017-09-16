@@ -80,6 +80,11 @@ exports.postRes = function(request, response) {
       });
 
     } else {
+      var messageBody = "Oh Snap!!, \nPayment failed. Dont worry try paying again. If you are unable to pay, write us at help.orangecips@gmail.com or call us at +91 7338706206";
+      messageBody =  encodeURI(messageBody);
+      https.get('https://control.msg91.com/api/sendhttp.php?authkey=139030Ag218mR2QtxS59351252&mobiles=' + JsonRes.billing_tel + '&message=' + messageBody + '&sender=OCshop&route=4&country=91', function (res) {
+
+      })
       // failure
       // get temp order and increase quantity of product
       ordersDb.tempOrderCollection.findOne({ orderId: JsonRes.order_id }, function(err, tempOrder) {
