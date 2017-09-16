@@ -90,8 +90,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
                             $scope.orderId = response.data.response.orderId;
                             localStorage.setItem('orderid', $scope.orderId);
                             
-                            $scope.makePayment().then(function(response) {
-                                console.log(response)   
+                            $scope.makePayment().then(function(response) { 
                                 document.getElementById("placeHere").innerHTML = response.data;
                                 document.getElementById("nonseamless").submit();
                                 }, function(){
