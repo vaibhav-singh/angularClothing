@@ -49,76 +49,74 @@ exports.postRes = function(request, response) {
         '"}'
     );
     if (JsonRes.order_status === "Success") {
-		ordersDb.tempOrderCollection.findOne({orderId: JsonRes.order_id}, function(err, successResponse){
-			if(err){
-				
-			} else{
-				var tosave = ordersDb.placedOrdersCollection({
-					orderId: JsonRes.order_id,
-					products: successResponse.products,
-					date: new Date(),
-					paymentStatus: JsonRes.order_status,
-					bank_ref_no: JsonRes.bank_ref_no,
-					orderedBy: {
-						name: JsonRes.billing_name,
-						emailId: JsonRes.billing_email,
-						phoneNo: JsonRes.billing_tel
-					},
-					deliveryDetails: {
-						address: JsonRes.billing_address,
-						city: JsonRes.billing_city,
-						state: JsonRes.billing_state,
-						country: JsonRes.billing_country,
-						pinCode: JsonRes.billing_zip
-					},
-					amount: JsonRes.amount,
-					tracking_id_payment: JsonRes.tracking_id
-				});
-				tosave.save(function(err, success){
-					if(err){
+      ordersDb.tempOrderCollection.findOne({ orderId: JsonRes.order_id }, function(err, successResponse) {
+        if (err) {
+        } else {
+          var tosave = ordersDb.placedOrdersCollection({
+            orderId: JsonRes.order_id,
+            products: successResponse.products,
+            date: new Date(),
+            paymentStatus: JsonRes.order_status,
+            bank_ref_no: JsonRes.bank_ref_no,
+            orderedBy: {
+              name: JsonRes.billing_name,
+              emailId: JsonRes.billing_email,
+              phoneNo: JsonRes.billing_tel
+            },
+            deliveryDetails: {
+              address: JsonRes.billing_address,
+              city: JsonRes.billing_city,
+              state: JsonRes.billing_state,
+              country: JsonRes.billing_country,
+              pinCode: JsonRes.billing_zip
+            },
+            amount: JsonRes.amount,
+            tracking_id_payment: JsonRes.tracking_id
+          });
+          tosave.save(function(err, success) {
+            if (err) {
+            } else {
+						  response.cookie('orderId', JsonRes.order_id, { maxAge: 900000});
+              response.sendFile(path.join(__dirname + "/../../views/paymentResponseSuccess.html"));
+            }
+          });
+        }
+      });
 
-					} else{
-				        response.sendFile(path.join(__dirname + '/../../views/paymentResponseSuccess.html'));
-					}
-				})
-			}
-		});
-		
       // remove from temp orders and add to orders
-			//   readModuleFile(path.join(__dirname + "/../../views/paymentResponseSuccess.html"), function(err, content) {
-				// content = content.replace("#orderId#", JsonRes.order_id);
-				// response.writeHeader(200, { "Content-Type": "text/html" });
-				// response.write(content);
-    //   });
+      //   readModuleFile(path.join(__dirname + "/../../views/paymentResponseSuccess.html"), function(err, content) {
+      // content = content.replace("#orderId#", JsonRes.order_id);
+      // response.writeHeader(200, { "Content-Type": "text/html" });
+      // response.write(content);
+      //   });
     } else {
       // failure
       // get temp order and increase quantity of product
-      ordersDb.tempOrderCollection.findOne({ orderId: JsonRes.order_id }, function(err, tempOrder){
-		  if(err){
-
-		  } else{
-			var details = tempOrder;
-			for (var i = 0; i < details.products.length; i++) {
-				// productIdsArray.push(details.products[i].productId);
-				(function(i) {
-				productsDb.productCollection.findOne({ id: details.products[i].productId }, function(err, response) {
-					if (err) {
-					res.send({ success: false, details: err });
-					} else {
-					response.sizes[details.products[i].size] = response.sizes[details.products[i].size] + details.products[i].quantity;
-					response.save(function(err, success) {
-						if (err) {
-						res.send({ success: false, details: err });
-						} else {
-						//   continue;
-						}
-					});
-					}
-				});
-				})(i);
-			}
-		  }
-	  });
+      ordersDb.tempOrderCollection.findOne({ orderId: JsonRes.order_id }, function(err, tempOrder) {
+        if (err) {
+        } else {
+          var details = tempOrder;
+          for (var i = 0; i < details.products.length; i++) {
+            // productIdsArray.push(details.products[i].productId);
+            (function(i) {
+              productsDb.productCollection.findOne({ id: details.products[i].productId }, function(err, response) {
+                if (err) {
+                  res.send({ success: false, details: err });
+                } else {
+                  response.sizes[details.products[i].size] = response.sizes[details.products[i].size] + details.products[i].quantity;
+                  response.save(function(err, success) {
+                    if (err) {
+                      res.send({ success: false, details: err });
+                    } else {
+                      //   continue;
+                    }
+                  });
+                }
+              });
+            })(i);
+          }
+        }
+      });
       response.sendFile(path.join(__dirname + "/../../views/paymentResponseFailed.html"));
     }
     // response.end();

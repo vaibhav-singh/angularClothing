@@ -1,4 +1,4 @@
-var mainModule = angular.module('mainApp', ['ui.router', 'ngSanitize']);
+var mainModule = angular.module('mainApp', ['ui.router', 'ngSanitize', 'ngCookies']);
 
 mainModule.run(['$rootScope' ,'productService', 'cartRelatedServices', '$anchorScroll', function($rootScope, productService, cartRelatedServices, $anchorScroll){
     // fetch tags
