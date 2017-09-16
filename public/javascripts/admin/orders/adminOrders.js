@@ -25,7 +25,7 @@ angular.module("mainAdminApp").controller('adminOrderCtrl',['$scope', '$rootScop
       var clone = angular.copy(order);
       clone.shipped = clone.shipped === "true"?  true: false;      
       adminServices.saveChangesInOrder(clone).then(function(response){
-
+        
       })
     }
     $scope.totalProducts = 0;

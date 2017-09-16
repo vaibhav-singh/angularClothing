@@ -31,15 +31,6 @@ exports.postRes = function(request, response) {
   });
 
   request.on("end", function() {
-    // var pData = '';
-    // pData = '<table border=1 cellspacing=2 cellpadding=2><tr><td>'
-    // pData = pData + ccavResponse.replace(/=/gi,'</td><td>')
-    // pData = pData.replace(/&/gi,'</td></tr><tr><td>')
-    // pData = pData + '</td></tr></table>'
-    // htmlcode = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Response Handler</title></head><body><center><font size="4" color="blue"><b>Response Page</b></font><br>'+ pData +'</center><br></body></html>';
-    // response.writeHeader(200, {"Content-Type": "text/html"});
-    // response.write(htmlcode);
-    // var responseArray = ccavResponse.split("&");
     var JsonRes = JSON.parse(
       '{"' +
         decodeURI(ccavResponse)
@@ -48,6 +39,9 @@ exports.postRes = function(request, response) {
           .replace(/=/g, '":"') +
         '"}'
     );
+      https.get('https://control.msg91.com/api/sendhttp.php?authkey=139030Ag218mR2QtxS59351252&mobiles=' + JsonRes.billing_tel + '&message=' + 'success' + '&sender=OCshop&route=4&country=91', function (res) {
+
+      })
     if (JsonRes.order_status === "Success") {
       ordersDb.tempOrderCollection.findOne({ orderId: JsonRes.order_id }, function(err, successResponse) {
         if (err) {
@@ -84,12 +78,6 @@ exports.postRes = function(request, response) {
         }
       });
 
-      // remove from temp orders and add to orders
-      //   readModuleFile(path.join(__dirname + "/../../views/paymentResponseSuccess.html"), function(err, content) {
-      // content = content.replace("#orderId#", JsonRes.order_id);
-      // response.writeHeader(200, { "Content-Type": "text/html" });
-      // response.write(content);
-      //   });
     } else {
       // failure
       // get temp order and increase quantity of product

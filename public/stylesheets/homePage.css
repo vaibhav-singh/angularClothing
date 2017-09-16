@@ -67,7 +67,7 @@
 }
 .text{
     text-align: center;
-    width: 100%;
+    /*width: 100%;*/
     font-family: Montserrat-Light;
     font-size: 3.6em;
     color: #313a44;
@@ -114,8 +114,8 @@
 }
 .cottonBall{
     width:100%; 
-    max-width:400px;
-    height: 340px;
+    max-width:350px;
+    height: 350px;
 }
 
 
