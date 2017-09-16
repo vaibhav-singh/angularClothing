@@ -14,6 +14,11 @@ angular.module('mainAdminApp').config(['$stateProvider','$locationProvider',func
         url: '/admin/products/:pageNumber',
         templateUrl: './html/admin/adminProducts.html'
     });
+    $stateProvider.state({
+        name: "ordersDisplay",
+        url: '/admin/orders/:pageNumber',
+        templateUrl: './html/admin/ordersAdmin.html'
+    });
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: true

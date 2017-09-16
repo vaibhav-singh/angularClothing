@@ -10,6 +10,9 @@ angular.module("mainAdminApp").controller('parentAdminCtrl',['$scope', '$rootSco
     $scope.showAllProducts = function(){
         $state.go("products", {pageNumber: 0});
     }
+    $scope.showAllOrders = function(){
+        $state.go('ordersDisplay', {pageNumber: 0});
+    }
      $scope.init = function(){
         if(localStorage.getItem("adminLoggedIn") === "true"){
             $rootScope.adminLoggedIn = true;

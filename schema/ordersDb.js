@@ -10,7 +10,6 @@ var placedOrdersSchema = mongooseObject.Schema({
   orderId: String,
   products: [],
   date: Date,
-  status: String,
   amount: String,
   paymentStatus: String,
   orderStatus: {type: String, default: "processing"},

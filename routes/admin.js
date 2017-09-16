@@ -3,6 +3,7 @@ var path  = require('path')
 var router = express.Router();
 var adminCollections = require('../schema/adminSchemas');
 var productsDb = require('../schema/productsDb');
+var ordersDb = require('../schema/ordersDb');
 
 router.post('/login', function(req, res){
     var username = req.body.userName;
@@ -52,6 +53,17 @@ router.get("/fetchProducts", function(req, res){
             res.send({success: false, data: err})
         } else{
             res.send({success: true, products: response})
+        }
+    })
+});
+router.get('/orders', function(req, res){
+    var pageNumber = req.query.pageNumber;
+    var skipOrders = pageNumber*10;
+    ordersDb.placedOrdersCollection.find({}, null, {skip: skipOrders, limit: 10}, function(err, response){
+        if(err){
+            res.send({success: false, data: err});
+        } else{
+            res.send({success: true, orders: response});
         }
     })
 });

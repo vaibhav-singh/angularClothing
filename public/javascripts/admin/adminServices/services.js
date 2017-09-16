@@ -7,8 +7,6 @@ angular.module('mainAdminApp').service('adminServices', function($http){
             data: loginCredentials
         });
     };
-    
-
     // product related
     this.addProduct = function(productDetails){
         return $http({
@@ -30,6 +28,12 @@ angular.module('mainAdminApp').service('adminServices', function($http){
             url :this.backendUrl+'/fetchProducts?pageNumber='+pageNumber
         });
     };
+    this.fetchOrders = function(pageNumber){
+        return $http({
+            method: "GET",
+            url: this.backendUrl+'/orders?pageNumber='+pageNumber
+        })
+    }
     this.fetchProductDetails = function(id){
         return $http({
             method: "GET",

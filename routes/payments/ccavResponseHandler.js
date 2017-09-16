@@ -57,7 +57,6 @@ exports.postRes = function(request, response) {
 					orderId: JsonRes.order_id,
 					products: successResponse.products,
 					date: new Date(),
-					status: JsonRes.order_id,
 					paymentStatus: JsonRes.order_status,
 					bank_ref_no: JsonRes.bank_ref_no,
 					orderedBy: {
