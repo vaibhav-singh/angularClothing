@@ -3,6 +3,9 @@ angular.module("mainAdminApp").controller('adminOrderCtrl',['$scope', '$rootScop
       adminServices.fetchOrders(pgNo).then(
         function(response) {
             $scope.orderDetails = response.data.orders;
+            for (var index = 0; index < $scope.orderDetails.length; index++) {
+              $scope.orderDetails[index].shipped = $scope.orderDetails[index].shipped+"";
+            }
         },
         function(response) {}
       );

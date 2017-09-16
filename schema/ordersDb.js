@@ -15,6 +15,8 @@ var placedOrdersSchema = mongooseObject.Schema({
   orderStatus: {type: String, default: "processing"},
   shipped: {type:Boolean, default: false},
   tracking_id_payment: String,
+  payment_mode: String,
+  bank_ref_no: String,
   orderedBy: {
     name: String,
     emailId: String,

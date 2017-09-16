@@ -57,6 +57,7 @@ exports.postRes = function(request, response) {
             products: successResponse.products,
             date: new Date(),
             paymentStatus: JsonRes.order_status,
+            payment_mode: JsonRes.payment_mode,
             bank_ref_no: JsonRes.bank_ref_no,
             orderedBy: {
               name: JsonRes.billing_name,
@@ -120,6 +121,7 @@ exports.postRes = function(request, response) {
             products: tempOrder.products,
             date: new Date(),
             paymentStatus: JsonRes.order_status,
+            payment_mode: JsonRes.payment_mode,
             bank_ref_no: JsonRes.bank_ref_no,
             orderedBy: {
               name: JsonRes.billing_name,
