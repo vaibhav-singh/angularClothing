@@ -7,22 +7,22 @@
      <div class=" col-sm-12 col-xs-12 container">
         <div class="col-xs-12 productContainer" ng-repeat="order in orderDetails"
             ng-if="orderDetails.length>0">
-            <div> Id - {{order.orderId}}</div>
-            <div>Date - {{order.date | date}}</div>
-            <div>Status - {{order.date | date}}</div>
-            <div>Payment Status - {{order.paymentStatus}}</div>
-            <div>Amount Paid - {{order.amount}}</div>
-            <div>tracking_id_payment - {{order.tracking_id_payment}}</div>
-            <div>Address - {{order.deliveryDetails.address}}</div>
-            <div>City - {{order.deliveryDetails.city}}</div>
-            <div>State - {{order.deliveryDetails.state}}</div>
-            <div>pinCode - {{order.deliveryDetails.pinCode}}</div>
-            <div>Name - {{order.orderedBy.name}}</div>
-            <div>emailId - {{order.orderedBy.emailId}}</div>
-            <div>phoneNo - {{order.orderedBy.phoneNo}}</div>
-            <div>orderStatus - {{order.orderStatus}}</div>
-            <div>shipped - {{order.shipped}}</div>
-            <div>No of Products - {{order.products.length}}</div>
+            <div class="col-xs-12 col-md-4"> Id - {{order.orderId}}</div>
+            <div class="col-xs-12 col-md-4">Date - {{order.date | date}}</div>
+            <div class="col-xs-12 col-md-4">Status - {{order.date | date}}</div>
+            <div class="col-xs-12 col-md-4">Payment Status - {{order.paymentStatus}}</div>
+            <div class="col-xs-12 col-md-4">Amount Paid - {{order.amount}}</div>
+            <div class="col-xs-12 col-md-4">tracking_id_payment - {{order.tracking_id_payment}}</div>
+            <div class="col-xs-12 col-md-4">Address - {{order.deliveryDetails.address}}</div>
+            <div class="col-xs-12 col-md-4">City - {{order.deliveryDetails.city}}</div>
+            <div class="col-xs-12 col-md-4">State - {{order.deliveryDetails.state}}</div>
+            <div class="col-xs-12 col-md-4">pinCode - {{order.deliveryDetails.pinCode}}</div>
+            <div class="col-xs-12 col-md-4">Name - {{order.orderedBy.name}}</div>
+            <div class="col-xs-12 col-md-4">emailId - {{order.orderedBy.emailId}}</div>
+            <div class="col-xs-12 col-md-4">phoneNo - {{order.orderedBy.phoneNo}}</div>
+            <div class="col-xs-12 col-md-4">orderStatus - {{order.orderStatus}}</div>
+            <div class="col-xs-12 col-md-4">shipped - {{order.shipped}}</div>
+            <div class="col-xs-12 col-md-4">No of Products - {{order.products.length}}</div>
             <div class="col-lg-12">
             <div ng-repeat="product in order.products"  class="col-lg-3">
                 <div style="width: 250px; height: 250px">
