@@ -115,6 +115,28 @@ exports.postRes = function(request, response) {
               });
             })(i);
           }
+          var tosave = ordersDb.placedOrdersCollection({
+            orderId: JsonRes.order_id,
+            products: tempOrder.products,
+            date: new Date(),
+            paymentStatus: JsonRes.order_status,
+            bank_ref_no: JsonRes.bank_ref_no,
+            orderedBy: {
+              name: JsonRes.billing_name,
+              emailId: JsonRes.billing_email,
+              phoneNo: JsonRes.billing_tel
+            },
+            deliveryDetails: {
+              address: JsonRes.billing_address,
+              city: JsonRes.billing_city,
+              state: JsonRes.billing_state,
+              country: JsonRes.billing_country,
+              pinCode: JsonRes.billing_zip
+            },
+            amount: JsonRes.amount,
+            tracking_id_payment: JsonRes.tracking_id
+          });
+          tosave.save(function(err, success) {});
         }
       });
       response.sendFile(path.join(__dirname + "/../../views/paymentResponseFailed.html"));
