@@ -72,7 +72,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
             $scope.saveTempOrder().then(function(response){
                 if(response.data.success){
                     $scope.orderId = response.data.response.orderId;
-                    localStorage.setItem('orderid') = $scope.orderId;
+                    localStorage.setItem('orderid', $scope.orderId);
                     $scope.makePayment().then(function(response) {   
                       document.getElementById("placeHere").innerHTML = response.data;
                       document.getElementById("nonseamless").submit();
