@@ -13,6 +13,10 @@ angular.module("mainApp").controller("orderStatusCtrl", [
     }
     CommonServices.getOrderStatus(orderId).then(function(response) {
       $scope.orderDetails = response.data.orderDetails[0];
+      if($scope.orderDetails.orderStatus === "processing"){
+          localStorage.removeItem('finalcart');
+          localStorage.removeItem('cartDetails');
+      }
     });
     $scope.$on("$stateParamsChangeStart", function(event, toState, toParams, fromState, fromParams, options) {
       $rootScope.hideCartFromNavBar = false;
