@@ -89,12 +89,14 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
                         if(response.data.success){
                             $scope.orderId = response.data.response.orderId;
                             localStorage.setItem('orderid', $scope.orderId);
-                            $scope.makePayment().then(function(response) {   
-                            document.getElementById("placeHere").innerHTML = response.data;
-                            document.getElementById("nonseamless").submit();
-                            }, function(){
+                            
+                            $scope.makePayment().then(function(response) {
+                                console.log(response)   
+                                document.getElementById("placeHere").innerHTML = response.data;
+                                document.getElementById("nonseamless").submit();
+                                }, function(){
 
-                            });
+                                });
                         } 
                     }, function(){});
                 }
