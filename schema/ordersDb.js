@@ -29,11 +29,11 @@ var placedOrdersSchema = mongooseObject.Schema({
     preferredTiming: String
   },
   shippingDetails: {
-    shippedOn: Date,
-    expectedDelivery: Date,
-    couriourName: String,
-    tracking_number: Number,
-    tracking_url: String
+    shippedOn: {type: Date, default: new Date()},
+    expectedDelivery: {type: Date, default: new Date()},
+    couriourName: {type: String, default: "Yet To Ship"},
+    tracking_number: {type: Number, default: 0},
+    tracking_url: {type: String, default: "yet to ship"}
   }
 });
 module.exports = {
