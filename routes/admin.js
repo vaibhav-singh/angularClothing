@@ -59,7 +59,7 @@ router.get("/fetchProducts", function(req, res){
 router.get('/orders', function(req, res){
     var pageNumber = req.query.pageNumber;
     var skipOrders = pageNumber*10;
-    ordersDb.placedOrdersCollection.find({}, null, {skip: skipOrders, limit: 10}, function(err, response){
+    ordersDb.placedOrdersCollection.find({}, null, {skip: skipOrders, limit: 10, sort: {date: 1}}, function(err, response){
         if(err){
             res.send({success: false, data: err});
         } else{
