@@ -88,7 +88,7 @@ router.post("/fetchAvailableSizes", function(req, res){
 });
 router.post('/saveTempOrder', function(req, res){
     var details = req.body.details;
-    shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
+    shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_');
     details.orderId = shortid.generate();
     var saveIt = ordersDb.tempOrderCollection(details);
     // var productIdsArray = [];
