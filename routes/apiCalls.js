@@ -67,7 +67,7 @@ router.get("/getProductDetails", function(req, res){
     });
 });
 router.get('/getOrderDetails', function(req, res){
-    var orderId = req.orderId;
+    var orderId = req.query.orderId;
     ordersDb.placedOrdersCollection.find({orderId: orderId}, function(err, order){
         if(err){
             res.send({success: false, response: err});
