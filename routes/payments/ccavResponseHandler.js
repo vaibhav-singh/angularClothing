@@ -48,7 +48,6 @@ exports.postRes = function(request, response) {
           .replace(/=/g, '":"') +
         '"}'
     );
-    console.log(JsonRes);
     if (JsonRes.order_status === "Success") {
 		ordersDb.tempOrderCollection.findOne({orderId: JsonRes.order_id}, function(err, successResponse){
 			if(err){

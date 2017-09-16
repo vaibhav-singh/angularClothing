@@ -29,7 +29,7 @@
         <div ng-include="'html/header.html'"></div>
     </header>
     <ui-view></ui-view>
-    <a href="/orderStatus?orderId=#orderId#" id="goToOrderStatus"></a>
+    <a href="/orderStatus?orderId=" id="goToOrderStatus"></a>
     <div ng-if="cartDropDownVisible" ng-click="hideCart()" class="cartBackDrop modal-backdrop fade in"></div>
     <footer class="col-xs-12 col-sm-12">
         <div ng-include="'html/linksPage.html'"></div>

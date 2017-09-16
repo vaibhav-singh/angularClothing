@@ -66,6 +66,16 @@ router.get("/getProductDetails", function(req, res){
         }
     });
 });
+router.get('getOrderDetails', function(req, res){
+    var orderId = req.orderId;
+    ordersDb.placedOrdersCollection.find({orderId: orderId}, function(err, order){
+        if(err){
+            res.send({success: false, response: err});
+        } else{
+            res.send({success: true, orderDetails: order}); 
+        }
+    })
+})
 router.post("/fetchAvailableSizes", function(req, res){
     var productidArray = req.body.productIds;
     productsDb.productCollection.find({id: {$in:productidArray}}, 'id sizes',function(err, response){
