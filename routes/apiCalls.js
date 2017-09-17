@@ -143,7 +143,7 @@ router.post('/saveTempOrder', function(req, res){
                 if (err) {
                 } else {
                   var details = tempOrder;
-                  if (details) {
+                  if (details !== null) {
                     for (var i = 0; i < details.products.length; i++) {
                       (function(i) {
                         revertSizesInProducts(details, i, res);

@@ -110,7 +110,7 @@ exports.postRes = function(request, response) {
         } else {
           var details = tempOrder;
           console.log(details)
-          if (details) {
+          if (details !== null) {
             for (var i = 0; i < details.products.length; i++) {
               (function(i) {
                 revertSizesInProducts(details, i);
