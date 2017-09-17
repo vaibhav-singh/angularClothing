@@ -3,8 +3,7 @@ var router = express.Router();
 var shortid = require('shortid')
 var productsDb = require('../schema/productsDb');
 var ordersDb = require('../schema/ordersDb');
-const util = require('util');
-const setTimeoutPromise = util.promisify(setTimeout);
+
 /* GET home page. */
 // router.get('/', function(req, res, next) {
 //   res.sendFile(path.join(__dirname + '/../views/index.html'));
@@ -135,7 +134,7 @@ router.post('/saveTempOrder', function(req, res){
             // timeout
           (function(orderId) {
             //   1800000
-            setTimeoutPromise(10000, orderId).then(function(orderId) {
+            setTimeout(function(orderId) {
               ordersDb.tempOrderCollection.findOne({ orderId: orderId }, function(err, tempOrder) {
                 if (err) {
                 } else {
@@ -147,7 +146,7 @@ router.post('/saveTempOrder', function(req, res){
                   }
                 }
               });
-            });
+            }, 10000);
           })(details.orderId);
           // timeout ends
           res.send({ success: true, response: response });
