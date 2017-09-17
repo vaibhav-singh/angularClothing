@@ -3,12 +3,28 @@ var router = express.Router();
 var shortid = require('shortid')
 var productsDb = require('../schema/productsDb');
 var ordersDb = require('../schema/ordersDb');
-
+const util = require('util');
+const setTimeoutPromise = util.promisify(setTimeout);
 /* GET home page. */
 // router.get('/', function(req, res, next) {
 //   res.sendFile(path.join(__dirname + '/../views/index.html'));
 // });
-
+  var revertSizesInProducts = function(details, i, res) {
+    productsDb.productCollection.findOne({ id: details.products[i].productId }, function(err, response) {
+      if (err) {
+        res.send({ success: false, details: err });
+      } else {
+        response.sizes[details.products[i].size] = response.sizes[details.products[i].size] + details.products[i].quantity;
+        response.save(function(err, success) {
+          if (err) {
+            res.send({ success: false, details: err });
+          } else {
+            //   continue;
+          }
+        });
+      }
+    });
+  };
 router.post('/saveRequestForSize', function(req, res){
     var details = {};
     details.contact = req.body.contact;
@@ -113,10 +129,28 @@ router.post('/saveTempOrder', function(req, res){
         }(i))
     }
     saveIt.save(function(err, response){
-        if(err){
-            res.send({success: false, response: err});
-        } else{
-            res.send({success: true, response: response})
+        if (err) {
+          res.send({ success: false, response: err });
+        } else {
+            // timeout
+          (function(orderId) {
+            //   1800000
+            setTimeoutPromise(10000, orderId).then(function(orderId) {
+              ordersDb.tempOrderCollection.findOne({ orderId: orderId }, function(err, tempOrder) {
+                if (err) {
+                } else {
+                  var details = tempOrder;
+                  for (var i = 0; i < details.products.length; i++) {
+                    (function(i) {
+                      revertSizesInProducts(details, i, res);
+                    })(i);
+                  }
+                }
+              });
+            });
+          })(details.orderId);
+          // timeout ends
+          res.send({ success: true, response: response });
         }
     });
 });
