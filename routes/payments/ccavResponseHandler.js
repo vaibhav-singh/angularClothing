@@ -119,7 +119,10 @@ exports.postRes = function(request, response) {
                 }
               })(i);
             }
+          } else {
+            tempOrder = { products: [] };
           }
+          
           var tosave = saveOrder(JsonRes, tempOrder);
           tosave.save(function(err, success) {});
         }

@@ -152,7 +152,7 @@ router.post('/saveTempOrder', function(req, res){
                         }
                       })(i);
                     }
-                  }
+                  } 
                 }
               });
             }, 10000);
