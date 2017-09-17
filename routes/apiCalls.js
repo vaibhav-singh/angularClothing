@@ -9,7 +9,7 @@ var ordersDb = require('../schema/ordersDb');
 //   res.sendFile(path.join(__dirname + '/../views/index.html'));
 // });
   var removeEntryFromTempOrder = function(id){
-    productsDb.tempOrderCollection.remove({orderId: id}, function(){})
+    ordersDb.tempOrderCollection.remove({orderId: id}, function(){})
   }
   var revertSizesInProducts = function(details, i, res) {
     productsDb.productCollection.findOne({ id: details.products[i].productId }, function(err, response) {
@@ -17,7 +17,7 @@ var ordersDb = require('../schema/ordersDb');
         res.send({ success: false, details: err });
       } else {
         response.sizes[details.products[i].size] = response.sizes[details.products[i].size] + details.products[i].quantity;
-        console.log("quantity reverted");
+        console.log("quantity reverted")
         response.save(function(err, success) {
           if (err) {
             res.send({ success: false, details: err });
