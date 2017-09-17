@@ -109,6 +109,7 @@ exports.postRes = function(request, response) {
         if (err) {
         } else {
           var details = tempOrder;
+          console.log(details)
           if (details) {
             for (var i = 0; i < details.products.length; i++) {
               (function(i) {
