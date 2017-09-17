@@ -132,14 +132,14 @@ router.post('/saveTempOrder', function(req, res){
           res.send({ success: false, response: err });
         } else {
             // timeout
-                console.log(details.orderId, "sasas")
+                console.log(details.orderId, "sasas");
           (function(orderId) {
-                console.log(details.orderId, "timeout de bahar")
+                console.log(details.orderId, "timeout de bahar");
             //   1800000
             setTimeout(function(orderId) {
-                console.log(orderId, "timeout start")
+                console.log(orderId, "timeout start");
               ordersDb.tempOrderCollection.findOne({ orderId: orderId }, function(err, tempOrder) {
-                console.log(tempOrder, "timeout funtion inn")
+                console.log(tempOrder, "timeout funtion inn");
                 if (err) {
                 } else {
                   var details = tempOrder;
