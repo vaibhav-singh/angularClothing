@@ -135,7 +135,9 @@ router.post('/saveTempOrder', function(req, res){
           (function(orderId) {
             //   1800000
             setTimeout(function(orderId) {
+                console.log(orderId, "timeout start")
               ordersDb.tempOrderCollection.findOne({ orderId: orderId }, function(err, tempOrder) {
+                console.log(tempOrder, "timeout funtion inn")
                 if (err) {
                 } else {
                   var details = tempOrder;
