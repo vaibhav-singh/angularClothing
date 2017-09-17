@@ -8,6 +8,9 @@ var ordersDb = require('../schema/ordersDb');
 // router.get('/', function(req, res, next) {
 //   res.sendFile(path.join(__dirname + '/../views/index.html'));
 // });
+  var removeEntryFromTempOrder = function(id){
+    productsDb.tempOrderCollection.remove({orderId: id}, function(){})
+  }
   var revertSizesInProducts = function(details, i, res) {
     productsDb.productCollection.findOne({ id: details.products[i].productId }, function(err, response) {
       if (err) {
@@ -132,20 +135,19 @@ router.post('/saveTempOrder', function(req, res){
           res.send({ success: false, response: err });
         } else {
             // timeout
-                console.log(details.orderId, "sasas");
           (function(orderId) {
-                console.log(details.orderId, "timeout de bahar");
-            //   1800000
+            //   1200000
             setTimeout(function() {
-                console.log(orderId, "timeout start");
               ordersDb.tempOrderCollection.findOne({ orderId: orderId }, function(err, tempOrder) {
-                console.log(tempOrder, "timeout funtion inn");
                 if (err) {
                 } else {
                   var details = tempOrder;
                   for (var i = 0; i < details.products.length; i++) {
                     (function(i) {
                       revertSizesInProducts(details, i, res);
+                      if(i === details.products.length - 1){
+                          removeEntryFromTempOrder(orderId);
+                      }
                     })(i);
                   }
                 }
