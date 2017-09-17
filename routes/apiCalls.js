@@ -132,7 +132,9 @@ router.post('/saveTempOrder', function(req, res){
           res.send({ success: false, response: err });
         } else {
             // timeout
+                console.log(details.orderId, "sasas")
           (function(orderId) {
+                console.log(details.orderId, "timeout de bahar")
             //   1800000
             setTimeout(function(orderId) {
                 console.log(orderId, "timeout start")
@@ -149,7 +151,7 @@ router.post('/saveTempOrder', function(req, res){
                 }
               });
             }, 10000);
-          })(details.orderId);
+          })(c);
           // timeout ends
           res.send({ success: true, response: response });
         }
