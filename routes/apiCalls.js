@@ -17,6 +17,7 @@ var ordersDb = require('../schema/ordersDb');
         res.send({ success: false, details: err });
       } else {
         response.sizes[details.products[i].size] = response.sizes[details.products[i].size] + details.products[i].quantity;
+        console.log("quantity reverted");
         response.save(function(err, success) {
           if (err) {
             res.send({ success: false, details: err });
