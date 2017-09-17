@@ -113,15 +113,34 @@
     color: #313a44;
 }
 .cottonBall{
-    width:100%; 
     max-width:350px;
-    height: 350px;
+    width:100%; 
+    /*height: 350px;*/
+}
+.cottonBall.gol_tshirt{
+    height: 450px;width: 450px;
+    max-width: 450px;
+}
+.differenceTypes{
+    margin-top: 70px; margin-bottom: 25px; line-height: initial
+}
+
+.descriptionHome{
+        font-size: 22px;
+        padding: 0 20px;
+        line-height: 2;
+        margin: 0 auto;
+        max-width: 750px;
+        font-family: Montserrat-Regular;
 }
 
 
-
-
-
+@media screen and (max-width: 500px){
+    .cottonBall.gol_tshirt{
+            height: 325px;
+    width: 325px;
+    }
+}
 @media screen and (max-width: 350px){
     /*.owl-carousel.homePage .owl-item img{
         width: 50%;
@@ -132,18 +151,18 @@
     .orangeColor{
         /*min-height: 400px;*/
     }
-    .text{
+    /*.text{
             font-size: 2.6em;
-    }
+    }*/
     .letsShop a{
         font-size: 16px;
     }
     
 }
 @media screen and (min-width: 350px) and (max-width: 900px){
-    .text{
+    /*.text{
         font-size: 29px;
-    }
+    }*/
         .orangeColor{
         /*min-height: 500px;*/
     }

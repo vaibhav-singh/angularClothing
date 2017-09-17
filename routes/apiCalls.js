@@ -155,7 +155,7 @@ router.post('/saveTempOrder', function(req, res){
                   } 
                 }
               });
-            }, 10000);
+            }, 1200000);
           })(details.orderId);
           // timeout ends
           res.send({ success: true, response: response });
