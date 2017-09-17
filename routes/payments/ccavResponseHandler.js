@@ -109,10 +109,15 @@ exports.postRes = function(request, response) {
         if (err) {
         } else {
           var details = tempOrder;
-          for (var i = 0; i < details.products.length; i++) {
-            (function(i) {
-              revertSizesInProducts(details, i);
-            })(i);
+          if (details) {
+            for (var i = 0; i < details.products.length; i++) {
+              (function(i) {
+                revertSizesInProducts(details, i);
+                if (i === details.products.length - 1) {
+                  removeEntryFromTempOrder(orderId);
+                }
+              })(i);
+            }
           }
           var tosave = saveOrder(JsonRes, tempOrder);
           tosave.save(function(err, success) {});

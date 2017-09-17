@@ -143,13 +143,15 @@ router.post('/saveTempOrder', function(req, res){
                 if (err) {
                 } else {
                   var details = tempOrder;
-                  for (var i = 0; i < details.products.length; i++) {
-                    (function(i) {
-                      revertSizesInProducts(details, i, res);
-                      if(i === details.products.length - 1){
+                  if (details) {
+                    for (var i = 0; i < details.products.length; i++) {
+                      (function(i) {
+                        revertSizesInProducts(details, i, res);
+                        if (i === details.products.length - 1) {
                           removeEntryFromTempOrder(orderId);
-                      }
-                    })(i);
+                        }
+                      })(i);
+                    }
                   }
                 }
               });
