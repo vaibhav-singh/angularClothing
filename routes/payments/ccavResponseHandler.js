@@ -46,7 +46,7 @@ exports.postRes = function(request, response) {
       tracking_id_payment: JsonRes.tracking_id
     });
   };
-  var revertSizesInProducts = function(details, i, res) {
+  var revertSizesInProducts = function(details, i) {
     productsDb.productCollection.findOne({ id: details.products[i].productId }, function(err, response) {
       if (err) {
         res.send({ success: false, details: err });
@@ -54,7 +54,7 @@ exports.postRes = function(request, response) {
         response.sizes[details.products[i].size] = response.sizes[details.products[i].size] + details.products[i].quantity;
         response.save(function(err, success) {
           if (err) {
-            res.send({ success: false, details: err });
+           
           } else {
             //   continue;
           }
@@ -111,7 +111,7 @@ exports.postRes = function(request, response) {
           var details = tempOrder;
           for (var i = 0; i < details.products.length; i++) {
             (function(i) {
-              revertSizesInProducts(details, i, res);
+              revertSizesInProducts(details, i);
             })(i);
           }
           var tosave = saveOrder(JsonRes, tempOrder);
