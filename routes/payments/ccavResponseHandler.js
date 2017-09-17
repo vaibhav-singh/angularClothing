@@ -115,7 +115,7 @@ exports.postRes = function(request, response) {
               (function(i) {
                 revertSizesInProducts(details, i);
                 if (i === details.products.length - 1) {
-                  removeEntryFromTempOrder(orderId);
+                  removeEntryFromTempOrder(details.orderId);
                 }
               })(i);
             }
