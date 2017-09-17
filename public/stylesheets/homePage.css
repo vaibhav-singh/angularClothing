@@ -168,6 +168,11 @@
     -webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
     box-shadow: 0 29px 41px #ddd;
 }
+.shadow2{
+        -moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+    -webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+    box-shadow: 0 10px 41px #ddd;
+}
 
     #lalala{
         background: url('./../images/backManSmall.jpg') left top no-repeat;

@@ -63,7 +63,7 @@ exports.postRes = function(request, response) {
     });
   };
   var removeEntryFromTempOrder = function(id){
-    productsDb.tempOrderCollection.remove({orderId: id}, function(){})
+    ordersDb.tempOrderCollection.remove({orderId: id}, function(){})
   }
   request.on("data", function(data) {
     ccavEncResponse += data;
