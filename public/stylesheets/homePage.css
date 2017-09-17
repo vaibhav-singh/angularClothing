@@ -121,24 +121,84 @@
     height: 450px;width: 450px;
     max-width: 450px;
 }
+
 .differenceTypes{
     margin-top: 70px; margin-bottom: 25px; line-height: initial
-}
 
+}
+.differenceHead{
+    margin: 0 auto;
+    max-width: 800px;
+    border: 2px solid #313a44; 
+    text-transform: uppercase;     
+    padding: 42px;
+    font-size: 35px;
+}
+.line_wala_text {
+    position: relative;
+    font-size: 25px;
+        top: 14px;
+    z-index: 1;
+    overflow: hidden;
+    text-align: center;
+}
+.line_wala_text:before, .line_wala_text:after {
+    position: absolute;
+    top: 51%;
+    overflow: hidden;
+    width: 50%;
+    height: 2px;
+    content: '\a0';
+    background-color: #313a44;
+}
+.line_wala_text:before {
+    margin-left: -50%;
+    text-align: right;
+}
 .descriptionHome{
         font-size: 22px;
-        padding: 0 20px;
+        /*padding: 0 20px;*/
         line-height: 2;
         margin: 0 auto;
         max-width: 750px;
         font-family: Montserrat-Regular;
 }
+.shadow{
+        -moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+    -webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+    box-shadow: 0 29px 41px #ddd;
+}
 
-
+    #lalala{
+        background: url('./../images/backManSmall.jpg') left top no-repeat;
+    box-shadow: 25px 25px 50px 0 white inset, -25px -25px 50px 0 white inset; 
+    width: 100%;
+    height: 500px;
+    /*background: url(http://pic2.ooopic.com/11/26/30/31b1OOOPIC48.jpg) left top no-repeat;
+    box-shadow: 25px 25px 50px 0 white inset, -25px -25px 50px 0 white inset; 
+    width: 300px;*/
+    }
 @media screen and (max-width: 500px){
     .cottonBall.gol_tshirt{
-            height: 325px;
-    width: 325px;
+            height: 320px;
+    width: 320px;
+    }
+    .differenceHead{
+        font-size: 20px;
+        padding: 20px 20px 30px 20px;
+        /*font-family: 'Montserrat-Bold', sans-serif !important;*/
+    }
+
+    .line_wala_text{
+        font-size: 14px;
+    }
+    .line_wala_text:before{
+        width: 28%;    
+        margin-left: -28%;
+    }
+    .line_wala_text:after{
+        width: 28%;    
+
     }
 }
 @media screen and (max-width: 350px){
