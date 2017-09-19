@@ -1,5 +1,5 @@
 <div ng-controller="productsCtrl" class="container productDetailContainer">
-<!--<div class="col-xs-12 container">
+    <!--<div class="col-xs-12 container">
         <div class="col-xs-2">&nbsp</div>
         <ol class="breadcrumb col-xs-10">
         <li ng-repeat="crumb in breadCrumb" class="breadcrumb-item"><a href="crumb.url">{{crumb.name}}</a></li>
@@ -30,18 +30,27 @@
             <a ng-click="openProduct(product.url, product.id, $index)">
                 <!--<span class="designerName">Design By {{product.designedBy}}</span>-->
                 <div class="displayimage">
-                    <img  ng-init="product.temp = product.images.display" ng-mouseover="product.temp=product.images.additional[1]" ng-mouseleave="product.temp=product.images.additional[0]" ng-src="{{product.temp}}" alt="" class="img-responsive">
+                    <img ng-init="product.temp = product.images.display" ng-mouseover="product.temp=product.images.additional[1]" ng-mouseleave="product.temp=product.images.additional[0]"
+                        ng-src="{{product.temp}}" alt="" class="img-responsive">
                 </div>
                 <div class="productDesctiption">
                     <div>{{product.name}}</div>
                     <div><i class="fa fa-inr" aria-hidden="true"></i>{{product.price}}</div>
-                    <div class="size">sizes:&nbsp<span ng-repeat="(key, value) in product.sizes"><span ng-if="value>0">{{key}}&nbsp&nbsp</span></span></div>
+                    <div class="size">sizes:&nbsp<span ng-repeat="(key, value) in product.sizes"><span ng-if="value>0">{{key}}&nbsp&nbsp</span></span>
+                    </div>
                 </div>
-                </a>
+            </a>
         </div>
         <div class="loadMore col-xs-12" ng-if="moreItemsAvailable && !loadingMoreItems"><button class="btn btn-default" ng-click="loadMore()">LOAD MORE</button></div>
+        <div class="col-xs-12" ng-if="!moreItemsAvailable">
+            <div class="line_wala_text dressQuote text-center" style="margin-bottom: 30px; max-width: 550px;"> &nbsp&nbsp Thats All folks &nbsp&nbsp</div>
+            <div class="descriptionHome text-center" style="max-width: 550px;">
+                <div>Uncontrolled variation is the enemy of quality. Stay tuned for next lot.</div>
+            </div>
+        </div>
     </div>
     <div class="goToTop" ng-click="scrollToTop()">
         <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
-        <div>TOP</div></div>
+        <div>TOP</div>
+    </div>
 </div>
