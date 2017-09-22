@@ -55,11 +55,13 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
             $scope.cartDetails = $scope.finalCartAvailable;
             $scope.productIds = _.pluck($scope.finalCartAvailable, "productId");
             promiseForSize.resolve({sizeUnavailableAtFinalStage: $scope.sizeUnavailableAtFinalStage});
-            localStorage.setItem('finalCart', JSON.stringify($scope.finalCartAvailable))
-            localStorage.setItem('cartDetails', JSON.stringify($scope.finalCartAvailable));
-            $rootScope.cart.cartDetails = $scope.finalCartAvailable;
-            cartRelatedServices.cartDetails = $scope.finalCartAvailable;
-            $rootScope.numberOfProductsInCart = $rootScope.cart.cartDetails.length;
+            localStorage.setItem('finalCart', JSON.stringify($scope.finalCartAvailable));
+            if($stateParams.src !== "buyNow"){
+                localStorage.setItem('cartDetails', JSON.stringify($scope.finalCartAvailable));
+                $rootScope.cart.cartDetails = $scope.finalCartAvailable;
+                $rootScope.numberOfProductsInCart = $rootScope.cart.cartDetails.length;
+                cartRelatedServices.cartDetails = $scope.finalCartAvailable;
+            }
         }, function(response){
 
         });

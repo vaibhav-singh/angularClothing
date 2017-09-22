@@ -53,7 +53,6 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
           if(selectedSize){
             productToAdd = {productId: product.id, quantity: 1, size: selectedSize, productDetails: product};
             $scope.showSizeError = false;
-            $scope.showSizeError = false;
             $scope.buyNowOrAddToCartClicked = false;
             localStorage.setItem('finalCart', JSON.stringify([productToAdd]));
             $state.go('checkout', {src:"buyNow"});
