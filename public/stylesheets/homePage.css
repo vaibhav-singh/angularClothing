@@ -211,6 +211,15 @@
         margin: 10px auto;
         max-width: 750px;
     }
+
+.owl-theme .owl-nav.disabled+.owl-dots {
+    margin-top: 10px;
+    /* top: -47px; */
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+}
 @media screen and (max-width: 500px){
     .line_wala_text.dressQuote{
             max-width: 300px;
