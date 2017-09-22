@@ -34,7 +34,7 @@ var placedOrdersSchema = mongooseObject.Schema({
     shippedOn: {type: Date, default: new Date()},
     expectedDelivery: {type: Date, default: new Date()},
     couriourName: {type: String, default: "Yet To Ship"},
-    tracking_number: {type: Number, default: 0},
+    tracking_number: {type: String, default: "-"},
     tracking_url: {type: String, default: "yet to ship"}
   }
 });

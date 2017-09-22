@@ -160,7 +160,7 @@ exports.postRes = function(request, response) {
     );
     if (JsonRes.order_status === "Success") {
 
-      var messageBody = "Hi, \n We know you gonna love your tees. Just hold on till we deliver it to you. You can track your order by clicking below link \n https://orangeclips.com/orderStatus?orderId=" + JsonRes.order_id;
+      var messageBody = "Hi, \nWe know you gonna love your tees. Just hold on till we deliver it to you. You can track your order by clicking below link \n https://orangeclips.com/orderStatus?orderId=" + JsonRes.order_id;
       messageBody = encodeURI(messageBody);
       https.get("https://control.msg91.com/api/sendhttp.php?authkey=139030Ag218mR2QtxS59351252&mobiles=" + JsonRes.billing_tel + "&message=" + messageBody + "&sender=OCshop&route=4&country=91", function(res) {});
       ordersDb.tempOrderCollection.findOne({ orderId: JsonRes.order_id }, function(err, successResponse) {
