@@ -17,15 +17,16 @@ let transporter = nodemailer.createTransport({
 exports.sendMail = function(sendMailTo, subject, mailContent) {
      var mailOptions = {
     from: " <contact@orangeclips.com>", // sender address
-    to: "shivanubhateja31@gmail.com", // list of receivers
-    subject: "Invitation From " + "adas" + " to join Clorda.com ✔", // Subject line
-    text: " Email", // plaintext body
-    html: "emailContent" // html body
+    to: sendMailTo, // list of receivers
+    subject: subject+" ✔", // Subject line
+    text: "Email", // plaintext body
+    html: mailContent // html body
   };
   transporter.sendMail(mailOptions, function(error, info) {
     if (error){
     } 
     else{
+      console.log("sent")
     } 
   });
 };
