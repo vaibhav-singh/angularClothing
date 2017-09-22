@@ -2,7 +2,8 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-var cors = require('cors')
+var cors = require('cors');
+
  
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -13,34 +14,14 @@ var error = require('./routes/error');
 var users = require('./routes/users');
 var apiCalls = require('./routes/apiCalls');
 var payment = require('./routes/payments/payments');
+var mail1 = require('./routes/sendMail');
 
 var app = express();
 
-app.use(cors())
+app.use(cors());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-// app.use(logger('dev'));
-// 
-// var http = require('http'),
-//     fs = require('fs'),
-//     ccav = require('./routes/payments/ccavutil'),
-//     qs = require('querystring'),
-//     ccavReqHandler = require('./routes/payments/ccavRequestHandler'),
-//     ccavResHandler = require('./routes/payments/ccavResponseHandler');
-
-// app.post('/ccavRequestHandler', function (request, response){
-// 	ccavReqHandler.postReq(request, response);
-// });
-
-
-// app.post('/ccavResponseHandler', function (request, response){
-//     ccavResHandler.postRes(request, response);
-// });
-
 
 
 app.use(cors())
@@ -54,6 +35,7 @@ var apiCall = app.use('/api', apiCalls);
 var admin = app.use('/admin', admin);
 var errorPage = app.use('/notfound', error);
 var payment = app.use('/payment', payment);
+var sendMail = app.use('/mail', mail1);
 var pageRequest = app.use('/', index);
 
 // catch 404 and forward to error handler
