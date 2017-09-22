@@ -18,8 +18,8 @@ angular.module("mainApp").controller("orderStatusCtrl", [
       $scope.orderDetails = response.data.orderDetails[0];
       console.log($scope.orderDetails);
       if ($scope.orderDetails.orderStatus === "processing") {
-        localStorage.removeItem("finalcart");
-        localStorage.removeItem("cartDetails");
+        localStorage.removeItem("finalCart");
+        // localStorage.removeItem("cartDetails");
       }
     });
     $scope.$on("$stateParamsChangeStart", function(event, toState, toParams, fromState, fromParams, options) {
