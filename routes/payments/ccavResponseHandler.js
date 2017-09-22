@@ -170,6 +170,7 @@ exports.postRes = function(request, response) {
           tosave.save(function(err, success) {
             if (err) {
             } else {
+              console.log(success);
               emailTemplates.sendOrderSuccessEmail(success);
               removeEntryFromTempOrder(JsonRes.order_id);
               response.cookie("orderId", JsonRes.order_id, { maxAge: 900000 });
