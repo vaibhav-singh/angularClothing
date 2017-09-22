@@ -1,4 +1,5 @@
-angular.module('mainApp').controller("homePageCtrl", ["$scope", '$timeout', function($scope, $timeout){
+angular.module('mainApp').controller("homePageCtrl", ["$scope", '$timeout', '$rootScope',function($scope, $timeout, $rootScope){
+    $rootScope.hideCartFromNavBar = false;
     $(document).ready(function () {
         $(".owl-carousel.homePage").owlCarousel({
             items: 1,
