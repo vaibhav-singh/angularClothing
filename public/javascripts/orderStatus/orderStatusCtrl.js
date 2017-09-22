@@ -1,16 +1,9 @@
-angular.module("mainApp").controller("orderStatusCtrl", [
-  "$scope",
-  "$stateParams",
-  "CommonServices",
-  "$rootScope",
-  "$cookies",
-  "$cookieStore",
-  function($scope, $stateParams, CommonServices, $rootScope, $cookies, $cookieStore) {
+angular.module("mainApp").controller("orderStatusCtrl", ["$scope", "$stateParams", "CommonServices", "$rootScope", "$cookies", "$cookieStore", function($scope, $stateParams, CommonServices, $rootScope, $cookies, $cookieStore) {
     $rootScope.hideCartFromNavBar = true;
     var orderId = "";
     if ($stateParams.orderId === "" || $stateParams.orderId === undefined || $stateParams.orderId === null) {
       orderId = $cookies.get("orderId");
-      $rootScope.hideCartFromNavBar = false;
+      // $rootScope.hideCartFromNavBar = false;
     } else {
       orderId = $stateParams.orderId;
     }
