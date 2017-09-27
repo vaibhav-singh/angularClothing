@@ -164,6 +164,16 @@ button[disabled]{
     width: 100%;
   }
 }
+/*.owl-carousel.productDetails .owl-item img{
+    width: 480px;
+    height: 560px;
+}
+@media (max-width: 500px){
+.owl-carousel.productDetails .owl-item img,.owl-carousel.productDetails .owl-stage-outer, .owl-carousel.productDetails .owl-stage{
+    width: 360px;
+    height: 360px;
+}
+}*/
 @media (max-width: 767px){
   .buttonsinProductDetails button{
       margin: 10px 0;

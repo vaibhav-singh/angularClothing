@@ -176,11 +176,11 @@
 
 .tilesParent{
     margin: 40px auto;
-    max-width: 1000px
+    max-width: 1180px
 }
 .tilesParent .tile{
     cursor: pointer;
-    height: 450px;
+    height: 525px;
     /*max-width: 450px;*/
     /*border: 1px solid #ddd;*/
     background: #f8f8f8;
@@ -250,14 +250,11 @@
     .line_wala_text:after{
         width: 28%;    
     }
-    .tileOuter.left{
-        padding: 20px 0 0 0;
-    }
+  
     .tileOuter.right{
         padding: 20px 0 0 0;
     }
     .tilesParent .tile{
-     
         height: 400px;
 
     }
@@ -282,6 +279,9 @@
     .letsShop a{
         font-size: 16px;
     }
+    .tilesParent .tile {
+        height: 300px;
+    }
     
 }
 @media screen and (min-width: 350px) and (max-width: 900px){
@@ -301,6 +301,11 @@
 @media screen and (min-width: 500px) and (max-width: 900px){
     .text{
         font-size: 42px;
+    }
+}
+@media screen and (max-width: 750px){
+      .tileOuter.left{
+        padding: 20px 0 0 0;
     }
 }
 @media screen and (min-width: 900px){
