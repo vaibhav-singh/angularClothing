@@ -94,7 +94,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
                             $scope.showLoading = true;
                             $scope.makePayment().then(function(response) { 
                                 document.getElementById("placeHere").innerHTML = response.data;
-                                document.getElementById("nonseamless").submit();
+                                // document.getElementById("nonseamless").submit();
                                 }, function(){
 
                                 });
