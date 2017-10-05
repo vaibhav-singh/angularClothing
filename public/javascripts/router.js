@@ -6,6 +6,11 @@ angular.module('mainApp').config(['$stateProvider','$locationProvider', '$urlRou
         templateUrl: './html/homePage.html'
     });
     $stateProvider.state({
+        name: 'blog',
+        url:'/blog',
+        templateUrl: './html/blogHome.html'
+    });
+    $stateProvider.state({
         name: 'products',
         url:'/products?gender&superCategory&subCategory&src&tags&header',
         templateUrl: './html/products.html'

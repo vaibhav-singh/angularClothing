@@ -93,11 +93,8 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
                             localStorage.setItem('orderid', $scope.orderId);
                             $scope.showLoading = true;
                             $scope.makePayment().then(function(response) { 
-                                // var url = response.data.split("src")[2].split("\"")[1];
-                                // console.log(url)
-                                // $sce.trustAsResourceUrl(url);
                                 document.getElementById("placeHere").innerHTML = response.data;
-                                // document.getElementById("nonseamless").submit();
+                                document.getElementById("nonseamless").submit();
                                 }, function(){
 
                                 });

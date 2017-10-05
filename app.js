@@ -14,6 +14,7 @@ var error = require('./routes/error');
 var users = require('./routes/users');
 var apiCalls = require('./routes/apiCalls');
 var payment = require('./routes/payments/payments');
+var blogs = require('./routes/blog');
 var mail1 = require('./routes/sendMail');
 
 var app = express();
@@ -35,6 +36,7 @@ var apiCall = app.use('/api', apiCalls);
 var admin = app.use('/admin', admin);
 var errorPage = app.use('/notfound', error);
 var payment = app.use('/payment', payment);
+var blog = app.use('/blogs', blogs);
 var sendMail = app.use('/mail', mail1);
 var pageRequest = app.use('/', index);
 
