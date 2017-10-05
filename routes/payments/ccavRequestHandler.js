@@ -24,7 +24,7 @@ exports.postReq = function(request,response){
     });
 				
     request.on('end', function () {
-        response.writeHeader(200, {"Content-Type": "text/html"});
+        response.writeHeader(200, {"Content-Type": "text/html", "X-Frame-Options": "ALLOW-FROM https://secure.ccavenue.com/"});
 	response.write(formbody);
 	response.end();
     });
