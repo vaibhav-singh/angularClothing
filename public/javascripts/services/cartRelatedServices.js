@@ -24,7 +24,7 @@ angular.module("mainApp").service("cartRelatedServices", [
         method: "POST",
         url: "/payment/start",
         data: payload,
-        headers: { "Content-Type": "application/x-www-form-urlencoded;charset=utf-8;" }
+        headers: { "Content-Type": "application/x-www-form-urlencoded;charset=utf-8;", "X-Frame-Options": "ALLOW-FROM https://secure.ccavenue.com/" }
       });
     };
     this.saveTempOrder = function(cart, address, total) {

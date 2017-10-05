@@ -1,4 +1,4 @@
-angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', '$rootScope', '$state', 'productService', 'cartRelatedServices', '$q', '$sce', function ($scope, $stateParams, $rootScope, $state, productService, cartRelatedServices, $q, $sce) {
+angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', '$rootScope', '$state', 'productService', 'cartRelatedServices', '$q', function ($scope, $stateParams, $rootScope, $state, productService, cartRelatedServices, $q) {
     $scope.cartDetails = JSON.parse(localStorage.getItem('finalCart'));
     $scope.cartDetailsRefined = [];
     $scope.forms = {};
@@ -93,9 +93,9 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
                             localStorage.setItem('orderid', $scope.orderId);
                             $scope.showLoading = true;
                             $scope.makePayment().then(function(response) { 
-                                var url = response.data.split("src")[2].split("\"")[1];
-                                console.log(url)
-                                $sce.trustAsResourceUrl(url);
+                                // var url = response.data.split("src")[2].split("\"")[1];
+                                // console.log(url)
+                                // $sce.trustAsResourceUrl(url);
                                 document.getElementById("placeHere").innerHTML = response.data;
                                 // document.getElementById("nonseamless").submit();
                                 }, function(){
