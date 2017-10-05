@@ -24,7 +24,7 @@ exports.postReq = function(request,response){
     });
 				
     request.on('end', function () {
-        response.writeHeader(200, {"Content-Type": "text/html", "X-Frame-Options": "ALLOW-FROM https://secure.ccavenue.com/"});
+        response.writeHeader(200, {"Content-Type": "text/html", "X-Frame-Options": "ALLOW-FROM https://www.orangeclips.com/"});
 	response.write(formbody);
 	response.end();
     });
