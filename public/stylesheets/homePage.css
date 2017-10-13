@@ -319,7 +319,7 @@
     }
 }
 
-@media screen and (min-width: 768px && max-width: 1400px){
+@media screen and (min-width: 768px) and (max-width: 1400px){
     .slideHome_1{
         background: url('./../images/coexp.jpg') center no-repeat;
         background-size: cover;
