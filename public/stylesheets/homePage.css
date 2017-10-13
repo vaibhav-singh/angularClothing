@@ -334,8 +334,17 @@
     }
 }
 @media screen and (min-width: 1400px){
+    .slideHome_1{
+        background: url('./../images/coexp.jpg') center no-repeat;
+        background-size: cover;
+    }
     .slideHome_2{
+        background: url('./../images/coll5.jpg') top no-repeat;
         background-size: 100% 840px;
+    }
+    .slideHome_3{
+        background: url('./../images/tshirtDesc.jpg') center no-repeat;
+        background-size: cover;
     }
 }
 @media screen and (min-width: 900px){
