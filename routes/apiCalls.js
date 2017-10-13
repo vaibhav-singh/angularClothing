@@ -135,6 +135,7 @@ router.post('/saveTempOrder', function(req, res){
         if (err) {
           res.send({ success: false, response: err });
         } else {
+            console.log("tempOrder saved");
             // timeout
           (function(orderId) {
             //   1200000
@@ -155,7 +156,7 @@ router.post('/saveTempOrder', function(req, res){
                   } 
                 }
               });
-            }, 1200000);
+            }, 1800000);
           })(details.orderId);
           // timeout ends
           res.send({ success: true, response: response });

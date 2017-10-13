@@ -69,6 +69,24 @@ h2.shake,
         color: #525ece;
     }
 }
+@keyframes instaBackCol{
+    0% {
+        background: #525ece;
+    }
+
+    25% {
+        background: #df2d74;
+    }
+    50% {
+        background: #f78547;
+    }
+    75% {
+        background: #df2d74;
+    }
+    100% {
+        background: #525ece;
+    }
+}
 footer{
     border-top: 2px solid #eee;
     /*position: relative;*/
@@ -103,6 +121,12 @@ footer nav a{
     animation: instacol 8s infinite;
     -webkit-animation: instacol 8s infinite;
     -moz-animation: instacol 8s infinite;
+}
+.instagramBack{
+    animation: instaBackCol 3s infinite;
+    -webkit-animation: instaBackCol 3s infinite;
+    -moz-animation: instaBackCol 3s infinite;
+    color:white !important;
 }
 footer a.instagram:before {
     content: '';

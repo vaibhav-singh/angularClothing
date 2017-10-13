@@ -7,7 +7,6 @@
         <li class="breadcrumb-item active">Data</li>
 </ol>
     </div>-->
-    <div class="topDisplayCat" ng-if="params.subCategory">{{params.subCategory}} <span>({{totalCount}})</span></div>
     <!--<div class="col-xs-12 hidden-sm hidden-md hidden-lg no-padding">Categories</div>
         <div class="owl-carousel categories owl-theme col-xs-12 hidden-sm hidden-md hidden-lg no-padding">
                 <div ng-repeat="tag in tags" ng-click="changeTags(tag)">
@@ -24,11 +23,15 @@
                 </li>
             </ul>
         </div>-->
+
+
+
+        <!--temp-->
+    <div class="topDisplayCat" ng-if="params.subCategory">{{params.subCategory}} <span>({{totalCount}})</span></div>
     <div class=" col-sm-12 col-xs-12 container">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 productContainer" id={{product.id}}{{$index}} ng-repeat="product in productsToDisplay track by $index"
             ng-if="productsToDisplay.length>0">
             <a ng-click="openProduct(product.url, product.id, $index)">
-                <!--<span class="designerName">Design By {{product.designedBy}}</span>-->
                 <div class="displayimage">
                     <img ng-init="product.temp = product.images.display" ng-mouseover="product.temp=product.images.additional[1]" ng-mouseleave="product.temp=product.images.additional[0]"
                         ng-src="{{product.temp}}" alt="" class="img-responsive">
@@ -53,4 +56,20 @@
         <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
         <div>TOP</div>
     </div>
+
+
+    <!--<div class="col-xs-12">
+            <div class="descriptionHome text-center" style="max-width: 550px;max-height: 500px;">
+               <img src="./images/charkha.jpg" alt="" class="img-responsive">
+            </div>
+            <div class="descriptionHome text-center" style="max-width: 550px;max-height: 500px;">
+                Spinning It.
+            </div>
+            
+            <div class="descriptionHome text-center" style="max-width: 550px;max-height: 500px;">
+                Launching On 15 Nov.
+            </div>
+
+            <div class="line_wala_text dressQuote text-center" style="margin-bottom: 30px; max-width: 550px;"> &nbsp&nbsp Good Things Take Time. &nbsp&nbsp</div>
+    </div>-->
 </div>
