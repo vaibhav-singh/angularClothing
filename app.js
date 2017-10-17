@@ -18,7 +18,7 @@ var blogs = require('./routes/blog');
 var mail1 = require('./routes/sendMail');
 
 var app = express();
-
+app.use(require('prerender-node').set('prerenderToken', 'cAqVcvX9Iy0VZSlLRfVa'));
 app.use(cors());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
