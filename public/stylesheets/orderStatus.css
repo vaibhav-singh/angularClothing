@@ -49,3 +49,8 @@
 .trackingDetails{
     padding: 15px 0;
 }
+.thanksImage{
+    width: 100px;
+    height: 100px;
+    float: left !important;
+}
