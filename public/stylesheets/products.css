@@ -7,15 +7,25 @@
     -webkit-transition: all 0.2s;
 }
 .displayImage{
-        height: 430px;
+        /*height: 420px;*/
+
 }
+.displayImage img{
+        margin: 0 auto;
+    /*object-fit: cover;*/
+}
+/*@media (max-width: 500px) {
+    .displayImage{
+            height: 360px;
+    }
+}*/
 .productContainer:hover{
     margin-top: -2px;
     margin-bottom: 12px;
 }
 .productContainer img{
-     width:100%;
-     height: 100%;
+     /*width:100%;
+     height: 100%;*/
 }
 .productDesctiption{
     /*font-size: 12px;*/

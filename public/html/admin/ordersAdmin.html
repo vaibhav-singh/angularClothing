@@ -7,7 +7,8 @@
      <div class=" col-sm-12 col-xs-12 container">
         <div class="col-xs-12 productContainer" style="border: 1px solid #ddd" ng-repeat="order in orderDetails"
             ng-if="orderDetails.length>0">
-            <h1 ng-if="order.shipped==='false'" style="text-align: center; background: #d9534f;margin-top: 0; color:white">YET TO SHIP</h1>
+            <h1 ng-if="order.paymentStatus!=='Success'" style="text-align: center; background: #d9534f;margin-top: 0; color:white">PAYMENT NOT RECEIVED</h1>
+            <h1 ng-if="order.shipped==='false' && order.paymentStatus==='Success'" style="text-align: center; background: #d9534f;margin-top: 0; color:white">YET TO SHIP</h1>
             <div class="col-xs-12 col-md-4"> Id - <b>{{order.orderId}}</b></div>
             <div class="col-xs-12 col-md-4">Date - <b>{{order.date | date: 'h:mm:ss a  dd-MMM-yy'}}</b></div>
             <div class="col-xs-12 col-md-4">Payment Status -<span ng-style="order.paymentStatus==='Success' && {'color': 'green'} || order.paymentStatus!=='Success' && {'color': 'red'}"> <b>{{order.paymentStatus}}</b></span></div>
