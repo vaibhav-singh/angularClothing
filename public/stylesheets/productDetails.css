@@ -195,6 +195,6 @@ button[disabled]{
 }
 @media (max-width: 767px){
     .productDetailsImage{
-        height: 500px;
+        height: 371px;
     }
 }
