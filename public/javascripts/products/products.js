@@ -3,9 +3,12 @@ angular.module("mainApp").controller("productsCtrl", ['$scope', '$stateParams', 
         // tags from local storage
         // fetch products 
         pageNo++;
+        $scope.productsToDisplay = [];
         localStorage.setItem('pageNo', pageNo);
         $rootScope.hideCartFromNavBar = false;
+        $scope.loading = true;
         productService.getproductsToDisplay(gender, superCategory, subCategory, src, tagsSelected, pageNo).then(function(response){
+            $scope.loading = false;
             $scope.productsToDisplay = response.data.products;
             $scope.totalCount = response.data.totalCount;
             localStorage.setItem('totalProducts', $scope.totalCount);
