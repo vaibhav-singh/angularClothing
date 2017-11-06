@@ -55,7 +55,7 @@ router.get('/fetchProducts', function(req, res){
   }
   if(tagsArray.length>0){
         productsDb.productCollection.count({'categoryInfo.filters' : {$in: tagsArray}}, function(err, count){
-        productsDb.productCollection.find({'categoryInfo.filters' : {$in: tagsArray}}, null, {skip: skipProducts, limit:6}, function(err, response){
+        productsDb.productCollection.find({'categoryInfo.filters' : {$in: tagsArray}}, null, {skip: skipProducts, limit:6, sort:{updatedAt: -1}}, function(err, response){
             if(err){
                 res.send({success: false, data: err})
             } else{
@@ -65,7 +65,7 @@ router.get('/fetchProducts', function(req, res){
     });
 } else{
     productsDb.productCollection.count({}, function(err, count){
-        productsDb.productCollection.find({}, null, {skip: skipProducts, limit:6}, function(err, response){
+        productsDb.productCollection.find({}, null, {skip: skipProducts, limit:6, sort:{updatedAt: -1}}, function(err, response){
             if(err){
                 res.send({success: false, data: err})
             } else{

@@ -16,6 +16,7 @@ router.post('/login', function(req, res){
 });
 router.post("/addProduct", function(req, res){
     var productDetails = req.body.productDetails;
+    productDetails.updatedAt = new Date();
     var toSave = new productsDb.productCollection(productDetails);
     toSave.save(function(err, response){
         if(err){
@@ -27,6 +28,7 @@ router.post("/addProduct", function(req, res){
 });
 router.post("/updateProduct", function(req, res){
     var productDetails = req.body.productDetails;
+    productDetails.updatedAt = new Date();
     delete productDetails._id;
     productsDb.productCollection.findOne({id: productDetails.id}, function(err, response){
         if(err){
@@ -68,7 +70,7 @@ router.post("/saveChangesInOrder", function(req, res){
 router.get("/fetchProducts", function(req, res){
     var pageNumber = req.query.pageNumber;
     var skipProducts = pageNumber*10;
-    productsDb.productCollection.find({}, null, {skip: skipProducts, limit:10}, function(err, response){
+    productsDb.productCollection.find({}, null, {skip: skipProducts, limit:10, sort:{updatedAt: -1}}, function(err, response){
         if(err){
             res.send({success: false, data: err})
         } else{
