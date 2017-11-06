@@ -193,7 +193,7 @@ button[disabled]{
     height: 100%;
     /*object-fit: cover;*/
 }
-@media (mix-width: 767px){
+@media (max-width: 767px){
     .productDetailsImage{
         height: 500px;
     }
