@@ -1,5 +1,5 @@
 angular.module('mainApp')
-.controller("headerCtrl", ['$scope', '$rootScope', '$stateParams', 'locale', 'CommonServices', 'cartRelatedServices', '$state', function($scope, $rootScope, $stateParams, locale, CommonServices, cartRelatedServices, $state){
+.controller("headerCtrl", ['$scope', '$rootScope', '$stateParams', 'locale', 'CommonServices', 'cartRelatedServices', '$state', 'productService', function($scope, $rootScope, $stateParams, locale, CommonServices, cartRelatedServices, $state, productService){
     $rootScope.brandName = locale.brandName;
     $rootScope.cart = {};
     $scope.showComingSoon = function(){
@@ -29,6 +29,12 @@ angular.module('mainApp')
     }
     $scope.redirectTo = function(){
       $rootScope.goingToHeader = true;  
+    }
+    $scope.notifyWomen = function(){
+        productService.sendRequestForSize($scope.notifyEmail, "womenNotify", "-").then(function(response){
+                $scope.notified=true;
+                $scope.notifyEmail = "";
+            })
     }
     $rootScope.cart.cartDetails = JSON.parse(localStorage.getItem('cartDetails')) ? JSON.parse(localStorage.getItem('cartDetails')) : [];
     cartRelatedServices.cartDetails = $rootScope.cart.cartDetails;

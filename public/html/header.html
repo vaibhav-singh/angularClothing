@@ -27,7 +27,7 @@
                             <!--<a class="tab-border hidden-xs hidden-sm" ng-style="selectedMenu === 1 &amp;&amp; hovering &amp;&amp; {'width':'115px', 'left':'20px'}  || selectedMenu === 2 &amp;&amp; hovering &amp;&amp; {'width':'84.66px', 'left':'15px'} || selectedMenu === 3 &amp;&amp; hovering &amp;&amp; {'width':'90.13px', 'left':'99.66px'} || selectedMenu === 4 &amp;&amp; hovering &amp;&amp; {'width':'141px', 'left':'325px'} || selectedMenu === 5 &amp;&amp; hovering &amp;&amp; {'width':'119px', 'left':'337px'}"></a>-->
                             <!--<li ng-mouseover="selectedMenu = 1" ng-click="$parent.hideCart();hideToggleMenu()"><a href="/products?gender=unisex&superCategory=all&subCategory=all&src=chef">CHEF'S CHOICE<span class="sr-only">(current)</span></a></li>-->
                             <li ng-mouseover="selectedMenu = 2" ng-click="$parent.hideCart();hideToggleMenu()"><a ng-click="redirectTo()" href="/products?gender=unisex&superCategory=topwear&subCategory=t-shirt">UNISEX</a></li>
-                            <li ng-mouseover="selectedMenu = 3" ng-click="$parent.hideCart();hideToggleMenu()"><a href="#" data-toggle="modal" data-target="#womenNotify">WOMEN</a></li>
+                            <li ng-mouseover="selectedMenu = 3" ng-click="$parent.hideCart();hideToggleMenu()"><a href="#" data-toggle="modal" data-target="#womenNotify" ng-click="notified=false">WOMEN</a></li>
                             <li ng-mouseover="selectedMenu = 2" ng-click="$parent.hideCart();hideToggleMenu()"><a ng-click="redirectTo()" href="/products?gender=unisex&superCategory=topwear&subCategory=OC-Bold&tags=solid"><span style="font-weight: bolder;font-size: 18px;">OC BOLD</span></a></li>
                             <li ng-mouseover="selectedMenu = 4" ng-click="$parent.hideCart();hideToggleMenu()"><a ng-click="redirectTo()" href="/products?gender=unisex&superCategory=topwear&subCategory=OC-select&tags=ocselect" class="instagram">OC Select</a></li>
                             <li class="hidden-sm hidden-md hidden-lg" ng-mouseover="selectedMenu = 5" ng-click="$parent.hideCart();hideToggleMenu()"><a ng-click="redirectTo()" href="https://www.instagram.com/orangeclipsofficial/" target="_blank" class="instagramBack">Follow us on Instagram</a></li>
@@ -70,12 +70,26 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-body">
-        <img src="images/ladiesTshirt.jpg" alt="">
+        <div  data-dismiss="modal" style="background-color: transparent;
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    cursor: pointer;
+    font-weight: bolder;
+    padding: 2px;
+    border-radius: 5px;">X</div>
+        <img  data-dismiss="modal"  src="images/ladiesTshirt.jpg" alt="">
         <div class="notifyWomen">
             <form name="notifyMeForm" novalidate>
                 <span class="textInNotify">We're almost ready for you, ladies.</span>
-                <input type="email" ng-model="notifyEmail" class="form-control notifyMeField" name="emailid" placeholder="Email Address" required>
-            <button ng-disabled="!notifyMeForm.$valid" class="btn buyNowBtn">Notify Me</button>
+                <div ng-if="notified" style="color: white">Got It <img src="./images/thumbsUp.png" style="    width: 27px;
+    height: 27px;
+    position: relative;
+    top: -4px;" alt=""></div>
+                <div ng-if="!notified"> 
+                    <input type="email" ng-model="notifyEmail" class="form-control notifyMeField" name="emailid" placeholder="Email Address" required>
+                    <button ng-disabled="!notifyMeForm.$valid" class="btn buyNowBtn" ng-click="notifyWomen()">Notify Me</button>
+                </div>
             </form>
         </div>
      </div>

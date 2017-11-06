@@ -185,3 +185,13 @@ button[disabled]{
     border-left: 6px solid orange;
     padding-left: 5px;
 }
+.productDetailsImage{
+    /*width: 450px;*/
+    /*height: 500px;*/
+    height: 600px;
+}
+.productDetailsImage img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

@@ -176,11 +176,11 @@
 
 .tilesParent{
     margin: 40px auto;
-    max-width: 1180px
+    max-width: 900px
 }
 .tilesParent .tile{
     cursor: pointer;
-    height: 525px;
+    height: 476px;
     /*max-width: 450px;*/
     /*border: 1px solid #ddd;*/
     background: #f8f8f8;

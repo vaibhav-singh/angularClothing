@@ -1,13 +1,13 @@
 .productContainer{
     display: inline-block;
     margin-bottom: 10px;
-    padding: 5px;
+    padding: 7px;
     /*height: 530px;*/
     transition: all 0.2s;
     -webkit-transition: all 0.2s;
 }
 .displayImage{
-        /*height: 420px;*/
+        height: 430px;
 
 }
 .displayImage img{
@@ -24,8 +24,8 @@
     margin-bottom: 12px;
 }
 .productContainer img{
-     /*width:100%;
-     height: 100%;*/
+     width:100%;
+     height: 100%;
 }
 .productDesctiption{
     /*font-size: 12px;*/
@@ -108,5 +108,21 @@
 @media (max-width: 767px){
     .productContainer, .container.productDetailContainer{
         padding: 0;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px){
+    .productDetailContainer{
+        /*width: 95%;*/
+        /*margin: 0 auto;   */
+    }
+}
+@media (min-width: 1024px){
+    .productDetailContainer{
+        /*width: 77%;*/
+        /*margin: 0 auto;   */
+    }
+    .displayImage {
+        height: 390px;
     }
 }

@@ -1,4 +1,4 @@
-angular.module('mainApp').config(['$stateProvider','$locationProvider', '$urlRouterProvider',function($stateProvider, $locationProvider, $urlRouterProvider){
+angular.module('mainApp').config(['$stateProvider','$locationProvider', '$urlRouterProvider', function($stateProvider, $locationProvider, $urlRouterProvider){
     $urlRouterProvider.otherwise('/');
     $stateProvider.state({
         name: 'homePage',

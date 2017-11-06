@@ -27,8 +27,8 @@
 
 
     <div class="topDisplayCat" ng-if="params.subCategory">{{params.subCategory}} <span>({{totalCount}})</span></div>
-    <div class=" col-sm-12 col-xs-12 container">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 productContainer" id={{product.id}}{{$index}} ng-repeat="product in productsToDisplay track by $index"
+    <div class="col-sm-12 col-xs-12">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 productContainer" id={{product.id}}{{$index}} ng-repeat="product in productsToDisplay track by $index"
             ng-if="productsToDisplay.length>0">
             <a ng-click="openProduct(product.url, product.id, $index)">
                 <div class="displayimage">
