@@ -5,11 +5,11 @@ angular.module('mainApp').controller("homePageCtrl", ["$scope", '$timeout', '$ro
             items: 1,
             // nav: true,
             loop: true,
-            // autoplay: true,
-            // autoplayTimeout: 6000,
-            // smartSpeed:650,
+            autoplay: true,
+            autoplayTimeout: 4000,
+            smartSpeed:650,
             dots: true,
-            // autoplayHoverPause: true,
+            autoplayHoverPause: true,
             // navText: ['<i class="fa fa-chevron-left" aria-hidden="true"></i>', '<i class="fa fa-chevron-right" aria-hidden="true"></i>']
         });
         // var waypoint = new Waypoint({

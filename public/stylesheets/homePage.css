@@ -102,16 +102,65 @@
     color: #313a44;
 }
 .letsShop a{
-    padding: 10px;
-    background-color: white;
+    padding: 10px 35px;
+    text-transform: uppercase;
+    /*background-color: white;*/
+    background: black;
+    color: white;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 17px;
     box-shadow: 0px 6px 8px rgba(0,0,0,0.2), 0px 1px 0px rgba(0,0,0,0.1) inset;
+    border-radius: 0; font-size: 23px;
 }
 .letsShop a:hover{
     text-decoration: none;
-    color: #313a44;
+    color: white;
 }
+.letsShopSide{
+    top: 100px;
+    right: 82px;
+    width: initial;
+    font-size: 35px;
+    text-align: left;
+}
+.letsShopSide div{
+    font-weight: 500;
+    margin: 10px 0 ;
+}
+.letsShopSide a{
+    padding: 10px 35px;
+    background-color: black;
+    border-radius: 0px;
+    font-size: 17px;
+    color: white;
+    box-shadow: 0px 6px 8px rgba(0,0,0,0.2), 0px 1px 0px rgba(0,0,0,0.1) inset;
+}
+.letsShopSide a:hover{
+    text-decoration: none;
+    color: white;
+}
+.letsShopTop{
+       position: absolute;
+    top: 0px;
+    right: 20px;
+    width: initial;
+    font-size: 20px;
+    text-align: left;
+}
+.letsShopTop div{
+    font-weight: 500;
+    margin: 10px 0 ;
+}
+.letsShopTop a{
+    padding: 6px 14px;
+    background-color: black;
+    border-radius: 0px;
+    font-size: 13px;
+    color: white;
+    text-transform: uppercase;
+    box-shadow: 0px 6px 8px rgba(0,0,0,0.2), 0px 1px 0px rgba(0,0,0,0.1) inset;
+}
+
 .cottonBall{
     max-width:350px;
     width:100%; 
@@ -272,32 +321,28 @@
         padding: 0;
     }
     .letsShop a{
-        font-size: 30px;
-    }
-    .orangeColor{
-        /*min-height: 400px;*/
-    }
-    /*.text{
-            font-size: 2.6em;
-    }*/
-    .letsShop a{
-        font-size: 16px;
+        padding: 6px 16px;
+        font-size: 13px;
+        background: black;
+        color: white;
+        font-weight: bold;
     }
     .tilesParent .tile {
         height: 300px;
     }
-    
+    footer nav {
+        margin-top: 70px;
+    }
 }
 @media screen and (min-width: 350px) and (max-width: 900px){
-    /*.text{
-        font-size: 29px;
-    }*/
-        .orangeColor{
-        /*min-height: 500px;*/
+    footer nav {
+        margin-top: 70px;
     }
-    /*.owl-carousel.homePage .owl-item img{
-        width: 100%;
-    }*/
+    .letsShop a{
+        font-size: 13px;
+        /*font-weight: bold;*/
+        padding: 6px 16px;
+    }
     .orangeColor{
         font-size: 13px;
     }
@@ -321,7 +366,7 @@
 
 @media screen and (min-width: 768px) and (max-width: 1400px){
     .slideHome_1{
-        background: url('./../images/coexp.jpg') center no-repeat;
+        background: url('https://lh3.googleusercontent.com/R86AYhezT2mmLuIRP-UaID3ZolJQdyT40NDM7jmh5V4tQ3Dt_1YH1XlT6H6c9ApY0SVUQUpyFl-Sk7M67-mTumnl96UKnVS6z0tWlxxtCb78wo6PwNzuCvLUH_BFKCoTbMmCsmejkT0saiNizhndF-nwcEU4EvpGgYc3-N6l5gFrHWvJiznVvUe75iQRI3-6uB6qz8RwziF1dMkN_1dJlGyon5xZHRSmMJUGvDfWr-k8b7cLIbRYZE31VMF7qf7CZ7IITItUVNyyBUVJtK0scWIQNw3SKrNeuph5ujPv7d4cAQpRS3YiB0k1nwgfliNLpOWYqHol1XTp-YF7wKHpjfv_QJJXvLHd-s1wYUn1uDAHW12vOnDo-K8mozjY-797wO_F_HIlFzL8HC-vHojElGBJERmro1RIGklMOu-W_rO6iOh8l52IAZHdEmgC9I_byvsqc93N-BN2-DNAEbCCtO66eKjJWOdDtirtg0v6S2X-i7dmUbm46Sm9ZpPV_5UnUjarzrEsC1Gx-vlxU32932z-Uug-p6NI0T9Mvs17iNkao6_NEvjdJU07LeZIi6so=w1366-h677') center no-repeat;
         background-size: cover;
     }
     .slideHome_2{
@@ -335,7 +380,7 @@
 }
 @media screen and (min-width: 1400px){
     .slideHome_1{
-        background: url('./../images/coexp.jpg') center no-repeat;
+        background: url('https://lh3.googleusercontent.com/R86AYhezT2mmLuIRP-UaID3ZolJQdyT40NDM7jmh5V4tQ3Dt_1YH1XlT6H6c9ApY0SVUQUpyFl-Sk7M67-mTumnl96UKnVS6z0tWlxxtCb78wo6PwNzuCvLUH_BFKCoTbMmCsmejkT0saiNizhndF-nwcEU4EvpGgYc3-N6l5gFrHWvJiznVvUe75iQRI3-6uB6qz8RwziF1dMkN_1dJlGyon5xZHRSmMJUGvDfWr-k8b7cLIbRYZE31VMF7qf7CZ7IITItUVNyyBUVJtK0scWIQNw3SKrNeuph5ujPv7d4cAQpRS3YiB0k1nwgfliNLpOWYqHol1XTp-YF7wKHpjfv_QJJXvLHd-s1wYUn1uDAHW12vOnDo-K8mozjY-797wO_F_HIlFzL8HC-vHojElGBJERmro1RIGklMOu-W_rO6iOh8l52IAZHdEmgC9I_byvsqc93N-BN2-DNAEbCCtO66eKjJWOdDtirtg0v6S2X-i7dmUbm46Sm9ZpPV_5UnUjarzrEsC1Gx-vlxU32932z-Uug-p6NI0T9Mvs17iNkao6_NEvjdJU07LeZIi6so=w1366-h677') center no-repeat;
         background-size: cover;
     }
     .slideHome_2{
@@ -352,7 +397,7 @@
         width: 100%;
     }
     .letsShop a{
-        font-size: 30px;
+        font-size: 17px;
     }
     .teeImg img{
       top: -100px;
