@@ -1,6 +1,5 @@
 // email service
 var nodemailer = require("nodemailer");
-console.log("mailer tan chal pya")
 let transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
