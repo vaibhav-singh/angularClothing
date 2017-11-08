@@ -20,6 +20,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
         $scope.getSizes($scope.productIds); 
     }
     $scope.saveTempOrder = function() {
+        console.log($scope.totalAmount)
         return cartRelatedServices.saveTempOrder($scope.finalCartAvailable, $scope.addressDetails, $scope.totalAmount, $scope.promoCode);
     };
     $scope.getSizes = function(productIds){
@@ -95,6 +96,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
                     if(response.data.codeAccepted){
                         $scope.originalAmount = $scope.totalAmount;
                         $scope.totalAmount = response.data.updatedAmount;
+                        $scope.discount = $scope.originalAmount - $scope.totalAmount;
                         $scope.promoCodeSuccess=response.data.message;
                     } else{
                         $scope.promoCodeError = response.data.message;
@@ -119,6 +121,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
         $scope.promo.promocodeApplied = false;
     }
     $scope.makePayment = function(){
+        console.log($scope.totalAmount)
         return cartRelatedServices.makePayment($scope.finalCartAvailable, $scope.addressDetails, $scope.totalAmount, $scope.orderId);
     }
     $scope.placeOrderAndPayButtonClicked = function(){
@@ -129,7 +132,8 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
             // check availability and hold products for some time 
             $scope.getSizes($scope.productIds).then(function(res){
                 if(!res.sizeUnavailableAtFinalStage){
-                    if($scope.originalAmount) $scope.totalAmount = $scope.originalAmount;
+                    console.log($scope.originalAmount)
+                    if($scope.originalAmount) $scope.totalAmount = $scope.originalAmount - $scope.discount;
                     $scope.saveTempOrder().then(function(response){
                         if(response.data.success){
                             $scope.orderId = response.data.response.orderId;
