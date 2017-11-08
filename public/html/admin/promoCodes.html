@@ -1,0 +1,47 @@
+<div ng-controller="promoCodesCtrl" class="container productDetailContainer">
+    <div>
+        <h1>Add Code</h1>
+        <form name="promoCodeForm" style="display: inline-grid;">
+            <span>Code</span><input type="" name="" ng-model="promoDetails.code" value="" required>
+            <span>Method</span><select type="" name="" ng-model="promoDetails.reducePriceMethod" required>
+                <option value="amount">amount</option>
+                <option value="percentage">percentage</option>
+            </select>
+            <span>Minimum Cart Amount</span><input type="number" name="" ng-model="promoDetails.minimumCartAmount" value="" required>
+            <span>Offer value (% or amount)</span><input type="number" name="" ng-model="promoDetails.reduceAmount" value="" required>
+            <br>
+            <button ng-click="addPromoCode()" ng-disabled="promoCodeForm.$invalid" type="submit">Add Code</button>
+        </form>
+    </div>
+    <h1>Codes</h1>
+    <table>
+        <thead>
+        <tr>
+            <th style="border:1px solid; padding: 5px">CODE</th>
+            <th style="border:1px solid; padding: 5px">Method</th>
+            <th style="border:1px solid; padding: 5px">Minimum Cart Value</th>
+            <th style="border:1px solid; padding: 5px">Reduction Amount</th>
+            <th style="border:1px solid; padding: 5px">Delete</th>
+        </tr>
+        </thead>
+        <tbody >
+            <tr ng-repeat="code in promo.codes" >
+                <td style="border:1px solid; padding: 5px">
+                    {{code.code}}
+                </td>
+                <td style="border:1px solid; padding: 5px">
+                    {{code.reducePriceMethod}}
+                </td>
+                <td style="border:1px solid; padding: 5px">
+                    {{code.minimumCartAmount}}
+                </td>
+                <td style="border:1px solid; padding: 5px">
+                    {{code.reduceAmount}}
+                </td>
+                <td style="border:1px solid; padding: 5px">
+                    <button ng-click="deleteCode(code.code)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

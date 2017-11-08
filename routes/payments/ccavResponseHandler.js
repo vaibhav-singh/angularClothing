@@ -107,6 +107,7 @@ exports.postRes = function(request, response) {
       paymentStatus: JsonRes.order_status,
       payment_mode: JsonRes.payment_mode,
       bank_ref_no: JsonRes.bank_ref_no,
+      promoCode: successResponse.promoCode,
       orderedBy: {
         name: JsonRes.billing_name,
         emailId: JsonRes.billing_email,

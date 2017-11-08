@@ -3,6 +3,7 @@ var router = express.Router();
 var shortid = require('shortid')
 var productsDb = require('../schema/productsDb');
 var ordersDb = require('../schema/ordersDb');
+var promoCodeModel = require('../schema/promoCodeSchemaDb');
 
 /* GET home page. */
 // router.get('/', function(req, res, next) {
@@ -163,4 +164,28 @@ router.post('/saveTempOrder', function(req, res){
         }
     });
 });
+router.get('/validatePromoCode', function(req, res){
+    var promoCode = req.query.promoCode;
+    var totalAmount = parseInt(req.query.totalAmount, 10);
+    promoCodeModel.findOne({code: promoCode.toLowerCase()} , (err, result) => {
+        if(err){
+            res.send({success: false, message: "Error In Finding Promo Code"});
+            return;
+        }
+        if(result){
+            if(totalAmount < result.minimumCartAmount){
+                var message = "Shop For "+ (result.minimumCartAmount - totalAmount) +" Rs more to use this Promo Code";
+                res.send({success: true, codeAccepted: false, message: message});
+            } else if(result.reducePriceMethod === "percentage"){
+                var updatedAmount  = (totalAmount - (totalAmount * result.reduceAmount)/100 ).toFixed(0);
+                res.send({success: true, codeAccepted: true, updatedAmount: updatedAmount, message: "Whoa! You saved "+ (totalAmount - updatedAmount) +" Rs"})
+            } else if(result.reducePriceMethod === "amount"){
+                var updatedAmount  = (totalAmount - result.reduceAmount).toFixed(0);
+                res.send({success: true, codeAccepted: true, updatedAmount: updatedAmount, message: "Whoa! You saved "+ (totalAmount - updatedAmount) +" Rs"})
+            }
+        } else{
+            res.send({success: true, codeAccepted: false, message: "Invalid Promo Code"})
+        }
+    })
+})
 module.exports = router;

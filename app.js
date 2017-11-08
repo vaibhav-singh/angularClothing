@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', users);
 var apiCall = app.use('/api', apiCalls);
-var admin = app.use('/admin', admin);
+var admin = app.use('/adminVeera', admin);
 var errorPage = app.use('/notfound', error);
 var payment = app.use('/payment', payment);
 var blog = app.use('/blogs', blogs);

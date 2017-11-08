@@ -10,6 +10,9 @@ angular.module("mainAdminApp").controller('parentAdminCtrl',['$scope', '$rootSco
     $scope.showAllProducts = function(){
         $state.go("products", {pageNumber: 0});
     }
+    $scope.showPromocodes = function(){
+        $state.go("promoCodes");
+    }
     $scope.showAllOrders = function(){
         $state.go('ordersDisplay', {pageNumber: 0});
     }

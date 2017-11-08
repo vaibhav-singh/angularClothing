@@ -3,6 +3,7 @@ var path  = require('path')
 var router = express.Router();
 var adminCollections = require('../schema/adminSchemas');
 var productsDb = require('../schema/productsDb');
+var promoCodesModel = require('../schema/promoCodeSchemaDb');
 var ordersDb = require('../schema/ordersDb');
 
 router.post('/login', function(req, res){
@@ -23,6 +24,16 @@ router.post("/addProduct", function(req, res){
             res.send({success: false, data: err})
         } else{
             res.send({success: true, data: response})
+        }
+    })
+});
+router.post("/deleteProduct", function(req, res){
+    var productDetails = req.body.productDetails;
+    productsDb.productCollection.remove({id: productDetails.id}, function(err, response){
+        if(err){
+            res.send({success: false, data: err});
+        } else{
+            res.send({success: true, data: "deleted"})
         }
     })
 });
@@ -97,6 +108,36 @@ router.get('/fetchProductDetails', function(req, res){
             res.send({success: false, data: err});
         } else{
             res.send({success: true, productDetails: response});
+        }
+    })
+})
+router.get('/fetchAllPromoCodes', function(req, res){
+    promoCodesModel.find({}, function(err, response){
+        if(err){
+            res.send({success: false, data: err});
+        } else{
+            res.send({success: true, promoCodes: response});
+        }
+    })
+})
+router.get('/deletePromoCodes', function(req, res){
+    var code = req.query.code;
+    promoCodesModel.remove({code: code}, function(err, response){
+        if(err){
+            res.send({success: false, data: err});
+        } else{
+            res.send({success: true, promoCodes: response});
+        }
+    })
+})
+router.post('/addPromoCode', function(req, res){
+    var details = req.body.promoDetails;
+    var toSave = new promoCodesModel(details);
+    toSave.save((err, response) => {
+        if(err){
+            res.send({success: false, data: err});
+        } else{
+            res.send({success: true, details: details});
         }
     })
 })

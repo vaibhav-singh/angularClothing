@@ -27,13 +27,14 @@ angular.module("mainApp").service("cartRelatedServices", [
         headers: { "Content-Type": "application/x-www-form-urlencoded;charset=utf-8;"}
       });
     };
-    this.saveTempOrder = function(cart, address, total) {
+    this.saveTempOrder = function(cart, address, total, promoCode) {
       return $http({
         method: "POST",
         url: "/api/saveTempOrder",
         data: {
           details: {
             products: cart,
+            promoCode: promoCode,
             address: address,
             total: total,
             time: new Date()
@@ -81,5 +82,11 @@ angular.module("mainApp").service("cartRelatedServices", [
       });
       localStorage.setItem("cartDetails", JSON.stringify(this.cartDetails));
     };
+    this.validatePromoCode = function(promoCode, totalAmount){
+      return $http({
+        method: "GET",
+        url: "/api/validatePromoCode?promoCode="+promoCode+"&totalAmount="+totalAmount
+      });
+    }
   }
 ]);

@@ -22,7 +22,7 @@
                 <span class="saperator">.</span><span>{{product.size}}</span>
             </div>
             <div class="totalAmount">
-                <i class="fa fa-inr" aria-hidden="true"></i> {{totalAmount}}
+                <span ng-if="originalAmount" style="color: #ddd; text-decoration: line-through"><i class="fa fa-inr" aria-hidden="true"></i> {{originalAmount}}</span> <span ng-if="originalAmount" >&nbsp</span> <i class="fa fa-inr" aria-hidden="true"></i> {{totalAmount}}
             </div>
             <section class="addressForm" ng-if="newAddress">
                 <form name="forms.addressForm" novalidate>
@@ -77,7 +77,21 @@
                 <button class="btn differentAddressBtn" ng-click="differentAddressButton()">Different Address?</button>
             </div>
         </section>
-        <button class="btn buyNowBtn checkoutAndPay" ng-click="placeOrderAndPayButtonClicked()" ng-if="finalCartAvailable.length > 0">Place Order and Pay</button>
+        <div  ng-if="finalCartAvailable.length > 0">
+            <br>
+            <div  class="col-sm-8 col-xs-12">
+                <input type="text" class="checkout" ng-disabled="promo.promocodeApplied" ng-model="promo.code" placeholder="Enter promo code">
+            </div>
+            <div  class="col-sm-4 col-xs-12">
+                <button class="btn buyNowBtn checkoutAndPay promocodeApply" ng-if="!promo.promocodeApplied" ng-disabled="promo.promocodeApplied" ng-click="applyPromoCode()">Apply</button>
+                <button class="btn buyNowBtn checkoutAndPay promocodeApply" ng-if="promo.promocodeApplied" ng-click="removePromoCode()">Remove</button>
+            </div>
+            <div  class="col-sm-8 col-xs-12" style="    height: 14px;">
+            {{promoCodeError}}
+            {{promoCodeSuccess}}
+            </div>
+        </div>
+        <button style="font-size: 16px;" class="btn buyNowBtn checkoutAndPay" ng-click="placeOrderAndPayButtonClicked()" ng-if="finalCartAvailable.length > 0">Place Order and Pay - <i class="fa fa-inr" aria-hidden="true"></i> {{totalAmount}}</button>
         <div style="text-align: center; font-size: 20px">
             <a href="/products?gender=unisex&superCategory=topwear&subCategory=t-shirt" ng-if="finalCartAvailable.length === 0">Add Products</a>
         </div>

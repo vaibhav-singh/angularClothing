@@ -10,7 +10,6 @@ var fs = require('fs'),
     ccavResHandler = require('./ccavResponseHandler');
 
 router.post('/start', function (request, response){
-        console.log("paymentStart")
 	ccavReqHandler.postReq(request, response);
 });
 router.post('/ccavResponseHandler', function (request, response){

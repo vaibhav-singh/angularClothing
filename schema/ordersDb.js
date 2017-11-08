@@ -12,6 +12,7 @@ var placedOrdersSchema = mongooseObject.Schema({
   date: Date,
   amount: String,
   paymentStatus: String,
+  promoCode: {type: String, default: ""},
   orderStatus: {type: String, default: "processing"},
   shipped: {type:Boolean, default: false},
   tracking_id_payment: String,

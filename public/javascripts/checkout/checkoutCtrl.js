@@ -2,6 +2,8 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
     $scope.cartDetails = JSON.parse(localStorage.getItem('finalCart'));
     $scope.cartDetailsRefined = [];
     $scope.forms = {};
+    $scope.promo = {};
+    $scope.promo.code = "";
     $scope.showLoading = false;
     $scope.availableProducts = 0;
     $scope.fewProductsUnavailable = false;
@@ -18,7 +20,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
         $scope.getSizes($scope.productIds); 
     }
     $scope.saveTempOrder = function() {
-        return cartRelatedServices.saveTempOrder($scope.finalCartAvailable, $scope.addressDetails, $scope.totalAmount);
+        return cartRelatedServices.saveTempOrder($scope.finalCartAvailable, $scope.addressDetails, $scope.totalAmount, $scope.promoCode);
     };
     $scope.getSizes = function(productIds){
         var promiseForSize = $q.defer();
@@ -38,8 +40,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
             for (var i = 0; i < $scope.cartDetails.length; i++) {
                 console.log($scope.cartDetails[i])
               if($scope.sizesObject[$scope.cartDetails[i].productId][$scope.cartDetails[i].size] >= $scope.cartDetails[i].quantity){
-                  console.log(i);
-                  $scope.cartDetails[i].available = true;
+                   $scope.cartDetails[i].available = true;
                   $scope.availableProducts++;
                   $scope.totalAmount += $scope.cartDetails[i].quantity * $scope.cartDetails[i].productDetails.price;
                   $scope.finalCartAvailable.push($scope.cartDetails[i]);
@@ -76,6 +77,48 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
             $scope.newAddress = true;
         }
     };
+    // $scope.$watch('promo.code', function(new1, old){
+    //     console.log(new1, old)
+    //     // if(new1 === "" && !$scope.promocodeApplied){
+            
+    //     // }
+    // })
+    $scope.applyPromoCode = function(){
+        $scope.promoCodeSuccess = "";
+        $scope.promoCodeError = "";
+        $scope.promo.promocodeApplied = true;
+        if(!$scope.promo.code){
+            $scope.promoCodeError = "Enter Promo Code";
+            $scope.promo.promocodeApplied = false;
+        } else{
+            cartRelatedServices.validatePromoCode($scope.promo.code, $scope.totalAmount).then( (response)=>{
+                if(response.data.success){
+                    if(response.data.codeAccepted){
+                        $scope.originalAmount = $scope.totalAmount;
+                        $scope.totalAmount = response.data.updatedAmount;
+                        $scope.promoCodeSuccess=response.data.message;
+                    } else{
+                        $scope.promoCodeError = response.data.message;
+                    }
+                } else{
+                    $scope.promo.promocodeApplied = false;
+                    $scope.promoCodeError = "Promo Code Invalid";
+                }
+            } , ()=>{
+                 $scope.promo.promocodeApplied = false;
+            })
+        }
+    }
+    $scope.removePromoCode = () => {
+        $scope.promo.code = "";
+        $scope.promoCodeError = "";
+        $scope.promoCodeSuccess = "";
+        if($scope.originalAmount) {
+            $scope.totalAmount = $scope.originalAmount;
+            $scope.originalAmount = undefined;
+        }
+        $scope.promo.promocodeApplied = false;
+    }
     $scope.makePayment = function(){
         return cartRelatedServices.makePayment($scope.finalCartAvailable, $scope.addressDetails, $scope.totalAmount, $scope.orderId);
     }

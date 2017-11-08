@@ -4,7 +4,8 @@ angular.module("mainAdminApp").controller("productDetailsCtrl", [
   "$rootScope",
   "$stateParams",
   "$timeout",
-  function($scope, adminServices, $rootScope, $stateParams, $timeout) {
+  "$window",
+  function($scope, adminServices, $rootScope, $stateParams, $timeout, $window) {
     $scope.productDetails = {};
     $scope.$watch("productDetails.images.display", function() {
       $timeout(function() {
@@ -32,6 +33,7 @@ angular.module("mainAdminApp").controller("productDetailsCtrl", [
     };
     $scope.init = function() {
       if ($stateParams.src === "newProduct") {
+        $scope.source = 'newProduct';
         $scope.productDetails.id = $scope.createId();
         $scope.productDetails.categoryInfo = {};
         $scope.productDetails.images = {
@@ -51,6 +53,7 @@ angular.module("mainAdminApp").controller("productDetailsCtrl", [
       } else {
         // else src will be product id
         $scope.fetchProductDetails($stateParams.src);
+        $scope.source = 'oldProduct';
       }
     };
     $scope.addProduct = function() {
@@ -65,6 +68,19 @@ angular.module("mainAdminApp").controller("productDetailsCtrl", [
         adminServices.updateProduct($scope.productDetails).then(function(response) {}, function() {});
       }
     };
+    $scope.deleteProduct = function(){
+      if(confirm("Delete ?")){
+        adminServices.deleteProduct($scope.productDetails).then(
+            function(response) {
+              if(response.data.success){
+                alert("Deleted");
+                $window.history.back();
+              }
+            },
+            function(response) {}
+          );
+      }
+    }
     $scope.pushInFilters = function(value){
       if(!$scope.productDetails.categoryInfo.filters){
         $scope.productDetails.categoryInfo.filters = [];
