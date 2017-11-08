@@ -45,7 +45,6 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
                   $scope.totalAmount += $scope.cartDetails[i].quantity * $scope.cartDetails[i].productDetails.price;
                   $scope.finalCartAvailable.push($scope.cartDetails[i]);
               } else{
-                  console.log(i);
                   $scope.cartDetails[i].available = false;
                   $scope.fewProductsUnavailable = true;
                   $scope.cartDetails[i].remainingQuantity = $scope.sizesObject[$scope.cartDetails[i].productId][$scope.cartDetails[i].size];
@@ -130,6 +129,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
             // check availability and hold products for some time 
             $scope.getSizes($scope.productIds).then(function(res){
                 if(!res.sizeUnavailableAtFinalStage){
+                    if($scope.originalAmount) $scope.totalAmount = $scope.originalAmount;
                     $scope.saveTempOrder().then(function(response){
                         if(response.data.success){
                             $scope.orderId = response.data.response.orderId;
