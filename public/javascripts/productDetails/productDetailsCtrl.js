@@ -7,7 +7,7 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
                 $(".owl-carousel.productDetails").owlCarousel({
                     items:1,
                     nav:true,
-                    dots: false,
+                    dots: true,
                     navText: ['<i class="fa fa-chevron-left" aria-hidden="true"></i>','<i class="fa fa-chevron-right" aria-hidden="true"></i>']
                 });
                 $scope.owl = $('.owl-carousel');

@@ -27,7 +27,9 @@
             <!--error messages-->
         </div>
         <div class="sizes col-xs-12">
-            <div>SIZE:</div>
+            <div>SIZE: &nbsp&nbsp
+                 <!--<span style="color: grey; font-size: 15px; cursor: pointer;" data-toggle="modal" data-target="#sizeChartModal"><u>SIZE CHART</u></span>-->
+                 </div>
             <div>
                 <ul ng-class="{shake: buyNowOrAddToCartClicked && !selectedSize, showErrorBorder: buyNowOrAddToCartClicked && !selectedSize}">
                     <li ng-repeat="(key, size) in details.sizes">
@@ -69,9 +71,41 @@
         <h1>Shipping</h1>
         <div ng-bind-html="details.shippingDescription"></div>
     </div>
+    <div class="container additionalDetails">
+        <h1>Payments
+             <img style="float: right; width: 130px;" src="./images/ccavenue.png" alt="">
+            </h1>
+        <div>
+            Digital Payments for digital India. We accept almost all types of digital payment methods - Debit cards, Credit cards, Net-banking, Digital wallets, UPI. In case of any query feel free to reach us at  <a href="mailto:contact@orangeclips.com">contact@orangeclips.com</span>. 
+        </div>
+    </div>
     <!--<div class="photos col-xs-12 col-lg-12">
             <div style="width:50%; height:600px" class="imageDiv  col-xs-6" ng-repeat="img in details.images.additional">
                 <img style="width:100%; height:100%" class="imagein" ng-src={{"https://images.bewakoof.com/t540/"+img.name}}>
             </div>
     </div>-->
+
+
+    <!--size chart model-->
+    <div id="sizeChartModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body" style="padding: 0">
+                    <div data-dismiss="modal" style="background-color: transparent;
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    cursor: pointer;
+    font-weight: bolder;
+    padding: 2px;
+    border-radius: 5px;">X</div>
+                    <img data-dismiss="modal" src="images/sizeChart.png" alt="">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </div>
