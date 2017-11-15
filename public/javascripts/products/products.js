@@ -94,8 +94,13 @@ if(!$stateParams.src){
     var anchor = $stateParams.src;
     $scope.productsToDisplay = JSON.parse(localStorage.getItem('products'));
     $(document).ready(function () {
-      $location.hash(anchor);
-      $anchorScroll();
+    //   $location.hash(anchor);
+    //   $anchorScroll();
+    var old = $location.hash();
+    $location.hash(anchor);
+    $anchorScroll();
+    //reset to old to keep any additional routing logic from kicking in
+    $location.hash(old);
     })
     $scope.totalCount = localStorage.getItem('totalProducts');
     if($scope.totalCount > $scope.productsToDisplay.length){
