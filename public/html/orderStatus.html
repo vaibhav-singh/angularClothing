@@ -48,16 +48,19 @@
                 </div>
             </div>
             <div ng-if="orderDetails.shipped" class="no-padding">
-                <div class="shippingDates">
-                    <div class="col">
+                <div class="trackingDetails">
+                    <!-- <div class="col"> -->
                         <div>Shipped</div>
                         <b>{{orderDetails.shippingDetails.shippedOn | date:'LLLL d'}}</b>
+                    <!-- </div> -->
+                    <!-- <div class="col"> -->
+                        <!-- </div> -->
                     </div>
-                    <div class="col">
+                    <div class="trackingDetails">
                         <div>Arriving</div>
                         <b>{{orderDetails.shippingDetails.expectedDelivery | date:'LLLL d'}}</b>
                     </div>
-                </div>
+                
                 <div class="trackingDetails">
                     <div>Courier</div>
                     <b>{{(orderDetails.shippingDetails.couriourName ? orderDetails.shippingDetails.couriourName : "-")}}</b>
