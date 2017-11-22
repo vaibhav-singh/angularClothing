@@ -4,6 +4,7 @@ var shortid = require('shortid')
 var productsDb = require('../schema/productsDb');
 var ordersDb = require('../schema/ordersDb');
 var promoCodeModel = require('../schema/promoCodeSchemaDb');
+var mailService = require('../services/commonServices');
 
 /* GET home page. */
 // router.get('/', function(req, res, next) {
@@ -104,6 +105,7 @@ router.get('/getOrderDetails', function(req, res){
 })
 router.post("/fetchAvailableSizes", function(req, res){
     var productidArray = req.body.productIds;
+    mailService.sendMail("shivanubhateja31@gmail.com", "subject", "checkout page te aya koi"+ productidArray.join(','));
     productsDb.productCollection.find({id: {$in:productidArray}}, 'id sizes',function(err, response){
         if(err){
             res.send({success: false, data: err});
