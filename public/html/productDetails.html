@@ -13,7 +13,8 @@
         <div class="col-xs-12 col-sm-6 productDescriptionClass">
         <div class="col-xs-12 margin_t_20 padding_big">
             <!--name-->
-            <div class="item_name nameDisplay">{{details.name}}</div>
+            <div class="item_name nameDisplay" style="margin-bottom: 4px;">{{details.name}}</div>
+            <p class="no-padding no-margin" ng-if="currentViews > 0"><img style="width: 34px;margin-right: 10px;margin-top: -4px;" src="images/eyeIcon.png">{{currentViews}} people viewing this OC-Tee right now</p>
             <div class="item_fit belowName no-padding">
                 <p class="no-padding no-margin">{{details.fit}}</p>
                 <!--<p class="no-padding no-margin">{{details.fit_description}}</p>-->

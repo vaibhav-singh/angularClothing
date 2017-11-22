@@ -303,3 +303,7 @@ nav.navbar.navbar-fixed-top.navbar-default{
         max-width: 43%;        
     }
 }
+
+.navbar-fixed-top {
+    top: 21px;
+}

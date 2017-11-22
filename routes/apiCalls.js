@@ -76,13 +76,19 @@ router.get('/fetchProducts', function(req, res){
     });
 }
 });
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+  }
 router.get("/getProductDetails", function(req, res){
     var productid = req.query.id;
     productsDb.productCollection.findOne({id: productid}, function(err, response){
         if(err){
             res.send({success: false, data: err});
         } else{
-            res.send({success: true, productDetails: response});
+            var currentViews = getRandomInt(0, 15);
+            res.send({success: true, productDetails: response, currentViews: currentViews});
         }
     });
 });
