@@ -105,7 +105,7 @@ router.get('/getOrderDetails', function(req, res){
 })
 router.post("/fetchAvailableSizes", function(req, res){
     var productidArray = req.body.productIds;
-    mailService.sendMail("shivanubhateja31@gmail.com", "subject", "checkout page te aya koi"+ productidArray.join(','));
+    mailService.sendMail("shivanubhateja31@gmail.com", "subject", "checkout page te aya koi https://www.orangeclips.com/productDetails/"+ productidArray.join(','));
     productsDb.productCollection.find({id: {$in:productidArray}}, 'id sizes',function(err, response){
         if(err){
             res.send({success: false, data: err});
@@ -174,6 +174,8 @@ router.post('/saveTempOrder', function(req, res){
 });
 router.get('/validatePromoCode', function(req, res){
     var promoCode = req.query.promoCode;
+    mailService.sendMail("shivanubhateja31@gmail.com", "subject", promoCode + " promo code v laga lya 22 ne ");
+    
     var totalAmount = parseInt(req.query.totalAmount, 10);
     promoCodeModel.findOne({code: promoCode.toLowerCase()} , (err, result) => {
         if(err){
