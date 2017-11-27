@@ -65,7 +65,14 @@ angular.module("mainAdminApp").controller("productDetailsCtrl", [
           function(response) {}
         );
       } else {
-        adminServices.updateProduct($scope.productDetails).then(function(response) {}, function() {});
+        adminServices.updateProduct($scope.productDetails).then(function(response) {
+          if(response.success)
+            alert("success");
+          else
+            alert("failed");
+        }, function() {
+          alert("failed");          
+        });
       }
     };
     $scope.deleteProduct = function(){
