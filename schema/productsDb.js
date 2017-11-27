@@ -2,6 +2,7 @@ var mongooseObject = require("../mongooseConfig");
 
 var productsSchema = mongooseObject.Schema({
   id: { type: String, required: true, unique: true },
+  clicks: {type: Number, default: 0},
   name: { type: String, required: true },
   price: { type: Number, required: true },
   fit: { type: String, default: "Fits just right - not too tight, not too loose." },

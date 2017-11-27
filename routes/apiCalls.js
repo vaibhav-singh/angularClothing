@@ -92,6 +92,11 @@ router.get("/getProductDetails", function(req, res){
             res.send({success: true, productDetails: response, currentViews: currentViews});
         }
     });
+    productsDb.productCollection.update({id: productid}, {$inc: {"clicks": 1}}, (err, success)=> {
+        if(err)
+        console.log(err);
+        else console.log(success);
+    })
 });
 router.get('/getOrderDetails', function(req, res){
     var orderId = req.query.orderId;
