@@ -64,7 +64,7 @@
         <div ng-repeat="product in hotsellers">
             <a ng-click="openProduct(product.url, product.id, $index)">
                 <div class="displayimage" style="    height: auto;">
-                    <img style="height: 275px;    object-fit: cover;" ng-init="product.temp = product.images.display" ng-mouseover="product.temp=product.images.additional[1]" ng-mouseleave="product.temp=product.images.additional[0]"
+                    <img style="height: 275px;    object-fit: cover;" ng-init="product.temp = product.images.display"
                     ng-src="{{product.temp}}" alt="" class="img-responsive">
                 </div>
                 <div class="productDesctiption" style="    text-align: center;">
