@@ -286,10 +286,10 @@
     /*background-size: contain;*/
 }
 .hotsellers.owl-theme .owl-nav .owl-next{
-    padding: 0;
+    padding: 15px 4px 40px 100px;
 }
 .hotsellers.owl-theme .owl-nav .owl-prev{
-    padding: 0;
+    padding: 15px 100px 40px 4px;
 }
 .hotsellers a:hover{
     text-decoration: none;
