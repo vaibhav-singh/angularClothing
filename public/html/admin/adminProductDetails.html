@@ -5,6 +5,12 @@
             <label for="productid">Product Id</label>
             <input id="productid" class="form-control" type="" name="id" ng-model="productDetails.id" value="" ng-disabled=true>
         </div>
+        <!--clicks-->
+        <div class="form-group">
+                <label for="productid">Clicks</label>
+                <input id="clicks" class="form-control" type="" name="clicks" ng-model="productDetails.clicks" value="" ng-disabled=true>
+                <button ng-click="productDetails.clicks = 0">Reset</button>
+        </div>
         <!--product name-->
         <div class="form-group">
             <label for="productName">Name(Heading for product)</label>
