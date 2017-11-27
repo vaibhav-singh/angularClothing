@@ -1,4 +1,4 @@
-angular.module('mainApp').controller("homePageCtrl", ["$scope", '$timeout', '$rootScope',function($scope, $timeout, $rootScope){
+angular.module('mainApp').controller("homePageCtrl", ["$scope", '$timeout', '$rootScope', '$state', '$location', function($scope, $timeout, $rootScope, $state, $location){
     $rootScope.hideCartFromNavBar = false;
     $(document).ready(function () {
         $(".owl-carousel.homePage").owlCarousel({
@@ -23,6 +23,9 @@ angular.module('mainApp').controller("homePageCtrl", ["$scope", '$timeout', '$ro
         // })
         $scope.owl = $('.owl-carousel');
     });
+    $scope.gotoUrl = function(url){
+        $location.url(url);
+    }
     $timeout(function(){
         $scope.pageLoaded = true;
     }, 1000)
