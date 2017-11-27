@@ -66,7 +66,7 @@ angular.module("mainAdminApp").controller("productDetailsCtrl", [
         );
       } else {
         adminServices.updateProduct($scope.productDetails).then(function(response) {
-          if(response.success)
+          if(response.data.success)
             alert("success");
           else
             alert("failed");
