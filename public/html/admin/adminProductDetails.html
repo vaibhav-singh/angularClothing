@@ -205,7 +205,7 @@
                 value="">
             <br>
         </div>
-        <button class="btn btn-success" style="border-radius: 0; width: 100%" ng-click="productDetailsForm.$valid && addProduct()">Add/Save Product</button>
+        <button style="position: fixed;bottom: 0;" class="btn btn-success" style="border-radius: 0; width: 100%" ng-click="productDetailsForm.$valid && addProduct()">Add/Save Product</button>
         <button class="btn btn-danger" ng-if="source === 'oldProduct'" style="border-radius: 0; margin: 20px 0; width: 100%" ng-click="deleteProduct()">Delete Product</button>
         <div ng-repeat="src in productDetails.images.additional" style="display: inline-flex">
             <img style="width: 400px; height: 400px" ng-src={{src}} alt="">
