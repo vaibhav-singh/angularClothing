@@ -206,7 +206,7 @@ nav.navbar.navbar-fixed-top.navbar-default{
     height: 120px;
 }
 .cart-button{
-    padding: 10px;
+    padding: 10px 5px 10px 10px;
     font-size: 28px;
     color: #313a44;
     cursor: pointer;
