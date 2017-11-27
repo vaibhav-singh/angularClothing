@@ -285,6 +285,19 @@
     height: 550px;
     /*background-size: contain;*/
 }
+.hotsellers.owl-theme .owl-nav .owl-next{
+    padding: 0;
+}
+.hotsellers.owl-theme .owl-nav .owl-prev{
+    padding: 0;
+}
+.hotsellers a:hover{
+    text-decoration: none;
+    color: initial;
+}
+.hotsellers{
+    cursor: pointer;
+}
 @media screen and (max-width: 500px){
     .line_wala_text.dressQuote{
             max-width: 300px;
