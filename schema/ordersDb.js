@@ -3,7 +3,8 @@ var mongooseObject = require("../mongooseConfig");
 var tempOrdersSchema = mongooseObject.Schema({
   orderId: String,
   products: [],
-  date: Date
+  date: Date, 
+  promoCode: {type: String, default: "N/A"}
 });
 
 var placedOrdersSchema = mongooseObject.Schema({

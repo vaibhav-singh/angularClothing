@@ -121,8 +121,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
         $scope.promo.promocodeApplied = false;
     }
     $scope.makePayment = function(){
-        console.log($scope.totalAmount)
-        return cartRelatedServices.makePayment($scope.finalCartAvailable, $scope.addressDetails, $scope.totalAmount, $scope.orderId);
+        return cartRelatedServices.makePayment($scope.finalCartAvailable, $scope.addressDetails, $scope.totalAmount, $scope.orderId, $scope.promo.code);
     }
     $scope.placeOrderAndPayButtonClicked = function(){
         $scope.showErrors = true;

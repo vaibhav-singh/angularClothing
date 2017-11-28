@@ -13,6 +13,7 @@
             <div class="col-xs-12 col-md-4">Date - <b>{{order.date | date: 'h:mm:ss a  dd-MMM-yy'}}</b></div>
             <div class="col-xs-12 col-md-4">Payment Status -<span ng-style="order.paymentStatus==='Success' && {'color': 'green'} || order.paymentStatus!=='Success' && {'color': 'red'}"> <b>{{order.paymentStatus}}</b></span></div>
             <div class="col-xs-12 col-md-4">Amount Paid - <b>{{order.amount}}</b></div>
+            <div class="col-xs-12 col-md-4">Promo Code - <b>{{order.promoCode}}</b></div>
             <div class="col-xs-12 col-md-4">tracking_id_payment - <b>{{order.tracking_id_payment}}</b></div>
             <div class="col-xs-12 col-md-4">phoneNo - <b>{{order.orderedBy.phoneNo}}</b></div>
             <div class="col-xs-12 col-md-4">Address - <b><u>{{order.deliveryDetails.address}}</u></b></div>
