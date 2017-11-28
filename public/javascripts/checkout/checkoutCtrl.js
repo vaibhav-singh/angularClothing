@@ -21,7 +21,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
     }
     $scope.saveTempOrder = function() {
         console.log($scope.totalAmount)
-        return cartRelatedServices.saveTempOrder($scope.finalCartAvailable, $scope.addressDetails, $scope.totalAmount, $scope.promoCode);
+        return cartRelatedServices.saveTempOrder($scope.finalCartAvailable, $scope.addressDetails, $scope.totalAmount, $scope.promo.code);
     };
     $scope.getSizes = function(productIds){
         var promiseForSize = $q.defer();
