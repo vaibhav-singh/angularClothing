@@ -13,11 +13,14 @@ angular.module('mainApp')
         $scope.hideToggleMenu();
     }
     $scope.scrollToId = function(id){
-        var old = $location.hash();
-        $location.hash(id);
-        $anchorScroll();
-        //reset to old to keep any additional routing logic from kicking in
-        $location.hash(old);
+        $state.go('homePage');
+        $(document).ready(function () {
+            var old = $location.hash();
+            $location.hash(id);
+            $anchorScroll();
+            //reset to old to keep any additional routing logic from kicking in
+            $location.hash(old);
+        });
     }
     $scope.hideToggleMenu = function(){
         CommonServices.hideToggleMenu();
