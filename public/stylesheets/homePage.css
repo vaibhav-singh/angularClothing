@@ -299,12 +299,13 @@
     cursor: pointer;
 }
 .donation_desc{
-    line-height: 2;
-    margin: 40px 64px 30px 64px;
+    line-height: 1.7;
+    margin: 30px 64px 30px 64px;
+    font-size: 15px;
 }
 @media screen and (max-width: 500px){
     .donation_desc{
-        margin: 40px 20px 30px 20px;        
+        margin: 30px 20px 30px 20px;        
     }
     .line_wala_text.dressQuote{
             max-width: 300px;
