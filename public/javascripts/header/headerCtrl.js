@@ -1,5 +1,5 @@
 angular.module('mainApp')
-.controller("headerCtrl", ['$scope', '$rootScope', '$stateParams', 'locale', 'CommonServices', 'cartRelatedServices', '$state', 'productService', function($scope, $rootScope, $stateParams, locale, CommonServices, cartRelatedServices, $state, productService){
+.controller("headerCtrl", ['$scope', '$rootScope', '$stateParams', 'locale', 'CommonServices', 'cartRelatedServices', '$state', 'productService', '$anchorScroll', '$location', function($scope, $rootScope, $stateParams, locale, CommonServices, cartRelatedServices, $state, productService, $anchorScroll, $location){
     $rootScope.brandName = locale.brandName;
     $rootScope.cart = {};
     $scope.showComingSoon = function(){
@@ -11,6 +11,13 @@ angular.module('mainApp')
         // console.log($rootScope.cart.cartDetails)
         $rootScope.cartDropDownVisible = !$rootScope.cartDropDownVisible;
         $scope.hideToggleMenu();
+    }
+    $scope.scrollToId = function(id){
+        var old = $location.hash();
+        $location.hash(id);
+        $anchorScroll();
+        //reset to old to keep any additional routing logic from kicking in
+        $location.hash(old);
     }
     $scope.hideToggleMenu = function(){
         CommonServices.hideToggleMenu();
