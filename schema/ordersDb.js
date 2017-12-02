@@ -4,7 +4,8 @@ var tempOrdersSchema = mongooseObject.Schema({
   orderId: String,
   products: [],
   date: Date, 
-  promoCode: {type: String, default: "N/A"}
+  promoCode: {type: String, default: "N/A"},
+  cod: {type: Boolean, default: false}
 });
 
 var placedOrdersSchema = mongooseObject.Schema({
@@ -16,9 +17,9 @@ var placedOrdersSchema = mongooseObject.Schema({
   promoCode: {type: String, default: ""},
   orderStatus: {type: String, default: "processing"},
   shipped: {type:Boolean, default: false},
-  tracking_id_payment: String,
+  tracking_id_payment: {type: String, default: "N/A"},
   payment_mode: String,
-  bank_ref_no: String,
+  bank_ref_no: {type: String, default: "N/A"},
   orderedBy: {
     name: String,
     emailId: String,
@@ -28,14 +29,14 @@ var placedOrdersSchema = mongooseObject.Schema({
     address: String,
     city: String,
     state: String,
-    country: String,
+    country: {type: String, default: "India"},
     pinCode: String,
     preferredTiming: String
   },
   shippingDetails: {
     shippedOn: {type: Date, default: new Date()},
     expectedDelivery: {type: Date, default: new Date()},
-    couriourName: {type: String, default: "Yet To Ship"},
+    couriourName: {type: String, default: "Delhivery"},
     tracking_number: {type: String, default: "-"},
     tracking_url: {type: String, default: "yet to ship"}
   }

@@ -3,8 +3,11 @@ var router = express.Router();
 var shortid = require('shortid')
 var productsDb = require('../schema/productsDb');
 var ordersDb = require('../schema/ordersDb');
+var https = require("https");
 var promoCodeModel = require('../schema/promoCodeSchemaDb');
 var mailService = require('../services/commonServices');
+var emailTemplates = require('./../services/emailTemplates');
+
 
 /* GET home page. */
 // router.get('/', function(req, res, next) {
@@ -93,9 +96,9 @@ router.get("/getProductDetails", function(req, res){
         }
     });
     productsDb.productCollection.update({id: productid}, {$inc: {"clicks": 1}}, (err, success)=> {
-        if(err)
-        console.log(err);
-        else console.log(success);
+        // if(err)
+        // console.log(err);
+        // else console.log(success);
     })
 });
 router.get('/getOrderDetails', function(req, res){
@@ -110,7 +113,7 @@ router.get('/getOrderDetails', function(req, res){
 })
 router.post("/fetchAvailableSizes", function(req, res){
     var productidArray = req.body.productIds;
-    mailService.sendMail("shivanubhateja31@gmail.com", "subject", "checkout page te aya koi https://www.orangeclips.com/productDetails/"+ productidArray.join(','));
+    // mailService.sendMail("shivanubhateja31@gmail.com", "subject", "checkout page te aya koi https://www.orangeclips.com/productDetails/"+ productidArray.join(','));
     productsDb.productCollection.find({id: {$in:productidArray}}, 'id sizes',function(err, response){
         if(err){
             res.send({success: false, data: err});
@@ -124,10 +127,8 @@ router.post('/saveTempOrder', function(req, res){
     shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_');
     details.orderId = shortid.generate();
     var saveIt = ordersDb.tempOrderCollection(details);
-    // var productIdsArray = [];
-    // console.log(details.products)
+    // reduce qauntity of each product
     for (var i = 0; i < details.products.length; i++) {
-        // productIdsArray.push(details.products[i].productId);
         (function(i){
             productsDb.productCollection.findOne({id: details.products[i].productId}, function(err, response){
                 if(err){
@@ -152,7 +153,6 @@ router.post('/saveTempOrder', function(req, res){
             console.log("tempOrder saved");
             // timeout
           (function(orderId) {
-            //   1200000
             setTimeout(function() {
               ordersDb.tempOrderCollection.findOne({ orderId: orderId }, function(err, tempOrder) {
                 if (err) {
@@ -177,6 +177,45 @@ router.post('/saveTempOrder', function(req, res){
         }
     });
 });
+router.post('/placeCodOrder', function(req, response){
+    var details = req.body.details;
+    shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_');
+    details.orderId = shortid.generate();
+    var saveIt = ordersDb.placedOrdersCollection(details);
+    // reduce quantities
+    for (var i = 0; i < details.products.length; i++) {
+        (function(i){
+            productsDb.productCollection.findOne({id: details.products[i].productId}, function(err, response){
+                if(err){
+                    res.send({success: false, details: err});
+                } else{
+                    response.sizes[details.products[i].size] = response.sizes[details.products[i].size] - details.products[i].quantity;
+                    response.save(function(err, success) {
+                    if (err) {
+                        res.send({ success: false, details: err });
+                    } else {
+                        //   continue;
+                    }
+                    });
+                }
+            });
+        }(i))
+    }
+    // 
+    saveIt.save(function(err, success){
+        if(err){
+            response.send({success: false, message: "failed to place order"})
+        } else{
+            var messageBody = "Hi, \nWe know you gonna love your tees. Just hold on till we deliver it to you. Total order amount = " + details.amount+".\n You can track your order by clicking below link \n https://orangeclips.com/orderStatus?orderId=" + details.orderId;
+            messageBody = encodeURI(messageBody);
+            https.get("https://control.msg91.com/api/sendhttp.php?authkey=139030Ag218mR2QtxS59351252&mobiles=" + details.orderedBy.phoneNo + "&message=" + messageBody + "&sender=OCshop&route=4&country=91", function(res) {});
+            // https.get("https://control.msg91.com/api/sendhttp.php?authkey=139030Ag218mR2QtxS59351252&mobiles=" + '9876665556,9940181302,7338706206,9566260113' + "&message=" + 'Order Aya Order Aya Order Aya' + "&sender=OCshop&route=4&country=91", function(res) {});
+            emailTemplates.sendOrderSuccessEmail(success);            
+            response.send({success: true, message: "order placed successfully", orderid: details.orderId});
+        }
+    })
+    
+})
 router.get('/validatePromoCode', function(req, res){
     var promoCode = req.query.promoCode;
     mailService.sendMail("shivanubhateja31@gmail.com", "subject", promoCode + " promo code v laga lya 22 ne ");

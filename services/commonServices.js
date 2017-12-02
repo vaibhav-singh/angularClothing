@@ -25,7 +25,7 @@ exports.sendMail = function(sendMailTo, subject, mailContent) {
     if (error){
     } 
     else{
-      console.log("sent")
+      // console.log("sent")
     } 
   });
 };

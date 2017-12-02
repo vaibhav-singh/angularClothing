@@ -22,7 +22,9 @@
                 <span class="saperator">.</span><span>{{product.size}}</span>
             </div>
             <div class="totalAmount">
-                <span ng-if="originalAmount" style="color: #ddd; text-decoration: line-through"><i class="fa fa-inr" aria-hidden="true"></i> {{originalAmount}}</span> <span ng-if="originalAmount" >&nbsp</span> <i class="fa fa-inr" aria-hidden="true"></i> {{totalAmount}}
+                <span ng-if="originalAmount" style="color: #ddd; text-decoration: line-through">
+                    <i class="fa fa-inr" aria-hidden="true"></i> {{originalAmount + payment.codCharges}}</span> 
+                    <span ng-if="originalAmount" >&nbsp</span> <i class="fa fa-inr" aria-hidden="true"></i> {{totalAmount + payment.codCharges}}
             </div>
             <section class="addressForm" ng-if="newAddress">
                 <form name="forms.addressForm" novalidate>
@@ -86,16 +88,24 @@
                 <button class="btn buyNowBtn checkoutAndPay promocodeApply" ng-if="!promo.promocodeApplied" ng-disabled="promo.promocodeApplied" ng-click="applyPromoCode()">Apply</button>
                 <button class="btn buyNowBtn checkoutAndPay promocodeApply" ng-if="promo.promocodeApplied" ng-click="removePromoCode()">Remove</button>
             </div>
-            <div  class="col-sm-8 col-xs-12" style="    height: 14px;">
-            {{promoCodeError}}
-            {{promoCodeSuccess}}
+            <div  class="col-sm-8 col-xs-12">
+            <p> {{promoCodeError}}
+                {{promoCodeSuccess}}
+            </p>
             </div>
         </div>
-
+        <div ng-if="finalCartAvailable.length > 0" class="col-xs-12 codDiv" ng-click="toggleCod()">
+            <input type="checkbox" ng-model="payment.cashOnDelivery" ng-click="toggleCod()"> <span>Cash On Delivery</span>
+            <div style="color:grey; margin-left:30px;">(Charges - <i class="fa fa-inr" aria-hidden="true"></i> 29 )</div>
+        </div>
+            
         <div class="col-xs-12">
-        <button class="btn buyNowBtn checkoutAndPay" style="padding: 13px 0;" ng-click="placeOrderAndPayButtonClicked()" ng-if="finalCartAvailable.length > 0">
-            <div>Place Order and Pay</div>
-            </button>
+        <button class="btn buyNowBtn checkoutAndPay" style="padding: 13px 0;" ng-click="placeOrderAndPayButtonClicked()" ng-if="finalCartAvailable.length > 0 && !payment.cashOnDelivery">
+            <div>Proceed To Payment</div>
+        </button>
+        <button class="btn buyNowBtn checkoutAndPay" style="padding: 13px 0;" ng-click="placeOrderAndPayButtonClicked()" ng-if="finalCartAvailable.length > 0 && payment.cashOnDelivery === true">
+            <div>Place COD order</div>
+        </button>
         </div>
         <div style="text-align: center; font-size: 20px">
             <a href="/products?gender=unisex&superCategory=topwear&subCategory=t-shirt" ng-if="finalCartAvailable.length === 0">Add Products</a>

@@ -172,7 +172,6 @@ exports.postRes = function(request, response) {
           tosave.save(function(err, success) {
             if (err) {
             } else {
-              console.log(success);
               emailTemplates.sendOrderSuccessEmail(success);
               removeEntryFromTempOrder(JsonRes.order_id);
               response.cookie("orderId", JsonRes.order_id, { maxAge: 900000 });
@@ -193,7 +192,6 @@ exports.postRes = function(request, response) {
         if (err) {
         } else {
           var details = tempOrder;
-          console.log(details)
           if (details !== null) {
             for (var i = 0; i < details.products.length; i++) {
               (function(i) {

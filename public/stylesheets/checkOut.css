@@ -124,6 +124,18 @@ input.checkout:focus{
     margin-left: -1px;
     font-size: 20px;
 }
+.codDiv{
+    padding: 10px 20px;
+    border: 1px dashed #ddd;
+    border-radius: 8px;
+    font-size: 18px;
+    text-align: left;
+    cursor: pointer;
+}
+.codDiv input{
+    margin-right: 10px;
+}
+
 @media only screen and (max-width: 991px){
     .checkOutParent{
         text-align: center;

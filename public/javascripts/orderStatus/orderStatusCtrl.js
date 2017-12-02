@@ -9,14 +9,12 @@ angular.module("mainApp").controller("orderStatusCtrl", ["$scope", "$stateParams
     }
     CommonServices.getOrderStatus(orderId).then(function(response) {
       $scope.orderDetails = response.data.orderDetails[0];
-      console.log($scope.orderDetails);
       if ($scope.orderDetails.orderStatus === "processing") {
         localStorage.removeItem("finalCart");
         // localStorage.removeItem("cartDetails");
       }
     });
     $scope.$on("$stateParamsChangeStart", function(event, toState, toParams, fromState, fromParams, options) {
-      console.log('state change start')
       $rootScope.hideCartFromNavBar = false;
     });
   }
