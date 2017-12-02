@@ -209,7 +209,7 @@ router.post('/placeCodOrder', function(req, response){
             var messageBody = "Hi, \nWe know you gonna love your tees. Just hold on till we deliver it to you. Total order amount = " + details.amount+".\n You can track your order by clicking below link \n https://orangeclips.com/orderStatus?orderId=" + details.orderId;
             messageBody = encodeURI(messageBody);
             https.get("https://control.msg91.com/api/sendhttp.php?authkey=139030Ag218mR2QtxS59351252&mobiles=" + details.orderedBy.phoneNo + "&message=" + messageBody + "&sender=OCshop&route=4&country=91", function(res) {});
-            // https.get("https://control.msg91.com/api/sendhttp.php?authkey=139030Ag218mR2QtxS59351252&mobiles=" + '9876665556,9940181302,7338706206,9566260113' + "&message=" + 'Order Aya Order Aya Order Aya' + "&sender=OCshop&route=4&country=91", function(res) {});
+            https.get("https://control.msg91.com/api/sendhttp.php?authkey=139030Ag218mR2QtxS59351252&mobiles=" + '9876665556,9940181302,7338706206,9566260113' + "&message=" + 'Order aa gya 22 oye COD wala' + "&sender=OCshop&route=4&country=91", function(res) {});
             emailTemplates.sendOrderSuccessEmail(success);            
             response.send({success: true, message: "order placed successfully", orderid: details.orderId});
         }
