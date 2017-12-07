@@ -86,7 +86,7 @@ angular.module('mainApp').controller('checkoutCtrl', ['$scope', '$stateParams', 
             $scope.promoCodeError = "Enter Promo Code";
             $scope.promo.promocodeApplied = false;
         } else {
-            cartRelatedServices.validatePromoCode($scope.promo.code, $scope.totalAmount).then((response) => {
+            cartRelatedServices.validatePromoCode($scope.promo.code, $scope.totalAmount, $scope.addressDetails.emailId).then((response) => {
                 if (response.data.success) {
                     if (response.data.codeAccepted) {
                         $scope.originalAmount = $scope.totalAmount;

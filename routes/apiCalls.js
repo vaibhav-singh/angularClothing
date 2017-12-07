@@ -218,7 +218,8 @@ router.post('/placeCodOrder', function(req, response){
 })
 router.get('/validatePromoCode', function(req, res){
     var promoCode = req.query.promoCode;
-    mailService.sendMail("shivanubhateja31@gmail.com", "subject", promoCode + " promo code v laga lya 22 ne ");
+    var emailid = req.query.emailId;
+    mailService.sendMail("shivanubhateja31@gmail.com", "subject", promoCode + " promo code v laga lya "+emailid+" ne ");
     
     var totalAmount = parseInt(req.query.totalAmount, 10);
     promoCodeModel.findOne({code: promoCode.toLowerCase()} , (err, result) => {

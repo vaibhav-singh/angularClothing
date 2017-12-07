@@ -83,10 +83,10 @@ angular.module("mainApp").service("cartRelatedServices", [
       });
       localStorage.setItem("cartDetails", JSON.stringify(this.cartDetails));
     };
-    this.validatePromoCode = function(promoCode, totalAmount){
+    this.validatePromoCode = function(promoCode, totalAmount, emailId){
       return $http({
         method: "GET",
-        url: "/api/validatePromoCode?promoCode="+promoCode+"&totalAmount="+totalAmount
+        url: "/api/validatePromoCode?promoCode="+promoCode+"&totalAmount="+totalAmount+"&emailId="+emailId
       });
     };
     this.placeCodOrder = function(details){
