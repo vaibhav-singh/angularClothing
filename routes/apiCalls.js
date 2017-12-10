@@ -221,7 +221,12 @@ router.get('/validatePromoCode', function(req, res){
     var emailid = req.query.emailId;
     var phoneNo = req.query.phoneNo;
     mailService.sendMail("shivanubhateja31@gmail.com", "subject", promoCode + " promo code v laga lya "+emailid+ " - " +phoneNo +" ne ");
-    
+    if(promoCode.toLowerCase() === 'swetaoc'){
+        mailService.sendMail("swetakumari2197@gmail.com", "Promo Applied", "Hi Sweta, Your promocode SWETAOC is used on orangeclips.com");
+    }
+    if(promoCode.toLowerCase() === 'monoc'){
+        mailService.sendMail("monithmonu98@gmail.com", "Promo Applied", "Hi Sweta, Your promocode MONOC is used on orangeclips.com");
+    }
     var totalAmount = parseInt(req.query.totalAmount, 10);
     promoCodeModel.findOne({code: promoCode.toLowerCase()} , (err, result) => {
         if(err){
