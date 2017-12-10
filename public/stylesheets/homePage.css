@@ -300,8 +300,9 @@
 }
 .donation_desc{
     line-height: 1.7;
-    margin: 30px 64px 30px 64px;
+     margin: 30px auto;
     font-size: 15px;
+    max-width: 710px;
 }
 @media screen and (max-width: 500px){
     .donation_desc{
