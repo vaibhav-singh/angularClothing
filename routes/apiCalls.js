@@ -225,7 +225,10 @@ router.get('/validatePromoCode', function(req, res){
         mailService.sendMail("swetakumari2197@gmail.com", "Promo Applied", "Hi Sweta, Your promocode SWETAOC is used on orangeclips.com");
     }
     if(promoCode.toLowerCase() === 'monoc'){
-        mailService.sendMail("monithmonu98@gmail.com", "Promo Applied", "Hi Sweta, Your promocode MONOC is used on orangeclips.com");
+        mailService.sendMail("monithmonu98@gmail.com", "Promo Applied", "Hi Amudala Monith, Your promocode MONOC is used on orangeclips.com");
+    } 
+    if(promoCode.toLowerCase() === 'ashuoc'){
+        mailService.sendMail("ashutosh291098@gmail.com", "Promo Applied", "Hi Ashutosh Yadav, Your promocode ASHUOC is used on orangeclips.com");
     }
     var totalAmount = parseInt(req.query.totalAmount, 10);
     promoCodeModel.findOne({code: promoCode.toLowerCase()} , (err, result) => {
