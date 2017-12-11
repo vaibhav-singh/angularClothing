@@ -246,7 +246,7 @@ nav.navbar.navbar-fixed-top.navbar-default{
 .cartwrapper{
   position: fixed;
     right: 0px;
-    top: 100px;
+    top: 74px;
     z-index: 1042;
     background: #f9fafc;
     padding: 0;
@@ -304,6 +304,6 @@ nav.navbar.navbar-fixed-top.navbar-default{
     }
 }
 
-.navbar-fixed-top {
+/* .navbar-fixed-top {
     top: 21px;
-}
+} */
