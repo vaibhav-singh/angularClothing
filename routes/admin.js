@@ -9,7 +9,7 @@ var ordersDb = require('../schema/ordersDb');
 router.post('/login', function(req, res){
     var username = req.body.userName;
     var password = req.body.password;
-    if(username === "admn" && password === "ocselec"){
+    if(username === "admn" && password === "adminocpass"){
         res.send({status: true, data: "login Success"})
     } else{
         res.send({status: false, data: 'login failed'})
@@ -92,7 +92,6 @@ router.get("/fetchProducts", function(req, res){
 router.get('/orders', function(req, res){
     var pageNumber = req.query.pageNumber;
     var skipOrders = pageNumber*10;
-    console.log("afaf")
     ordersDb.placedOrdersCollection.find({}, null, {skip: skipOrders, limit: 10, sort: {date: -1}}, function(err, response){
         if(err){
             res.send({success: false, data: err});

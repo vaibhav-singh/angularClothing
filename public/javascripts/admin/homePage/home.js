@@ -14,11 +14,12 @@ angular.module('mainAdminApp').controller('adminHomeCtrl', ['$scope', 'adminServ
         }, function(response){})
     };
     $scope.init = function(){
-        if(localStorage.getItem("adminLoggedIn") === "true"){
-            $rootScope.adminLoggedIn = true;
-        } else{
-            $rootScope.adminLoggedIn = false;
-        }
+        $rootScope.adminLoggedIn = false;
+        // if(localStorage.getItem("adminLoggedIn") === "true"){
+        //     $rootScope.adminLoggedIn = true;
+        // } else{
+        //     $rootScope.adminLoggedIn = false;
+        // }
     };
     $scope.init();
 }])
