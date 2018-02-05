@@ -89,7 +89,7 @@
         </div> -->
         
     <!--tiles-->
-    <div class="col-xs-12" style="padding: 40px 0;background: #f8f8f8;    margin-top: 50px;">
+    <div class="col-xs-12" style="padding: 40px 0;background: #f8f8f8;">
         <div class="dressQuote distinctive text-center"> &nbsp&nbsp Nothing Stops you from <br> being distinctive &nbsp&nbsp</div>
         <div class="text-center"><img src="https://lh3.googleusercontent.com/iCOlge3PCNoSzlhBv79Y5B5BFUQE9FA6obHBREQWUJGNQ8Bgxcia8Ys-yUTHpb-ah6eo8OYEb9RrwvUxXLefIUFY5IWXb3a2j5P01BrxoxBgN3WJ4Hbt5UvGZk0677dl4xOq4qzyjhT3MBErKRYYA9fQ16RyC1qobt86CVtmAyIHRAE-4bv4zS3wD0WQcpCHTWoMRO7mSRDjki61lUejQnYESvZbFICeTqx_evmiEAcOCGEXv5XfH-i4x2Hs4mDkYnTdQEayzxxI7HmlK4s9P8engzHxvO8cBYON3VzqyRqZ_qAkFVwGUZmPm-mZt9jPjqsQL1SB8bWEzgbqGXEUvYdlydyL_oaLR-k-cC34RnMjTJtcNr4i9PIf8vMbOLNFLbhovICCYbsiV7QaI1U4vxtpk1rT1neGT0JNft8PLPt4f2Ai4Ab2A4DI2SHnQ-zFDTDg-lzTjUH1ak0_5VvoHVa0O5_nZSCPwK1_9cgBmipPBWw2K8iKArZBjhZxwOhoTU4kGcp4RjS-1KndMh4pO8jPjsar-pEar8WixVDs2WFunA5i3ifdW44PvrlLYnUVrCc=w1125-h677"></div>
         <div class="tilesParent">
@@ -111,6 +111,33 @@
             </div>
         </div>
     </div>
+    <!-- hot sellers -->
+    <div ng-controller="productsCtrl" class="container productDetailContainer col-xs-12" style="margin-top:35px">
+        <div class="topDisplayCat">
+                <div class="dressQuote distinctive text-center"> HOT SELLERS</div>
+        <div class="text-center"><img src="https://lh3.googleusercontent.com/iCOlge3PCNoSzlhBv79Y5B5BFUQE9FA6obHBREQWUJGNQ8Bgxcia8Ys-yUTHpb-ah6eo8OYEb9RrwvUxXLefIUFY5IWXb3a2j5P01BrxoxBgN3WJ4Hbt5UvGZk0677dl4xOq4qzyjhT3MBErKRYYA9fQ16RyC1qobt86CVtmAyIHRAE-4bv4zS3wD0WQcpCHTWoMRO7mSRDjki61lUejQnYESvZbFICeTqx_evmiEAcOCGEXv5XfH-i4x2Hs4mDkYnTdQEayzxxI7HmlK4s9P8engzHxvO8cBYON3VzqyRqZ_qAkFVwGUZmPm-mZt9jPjqsQL1SB8bWEzgbqGXEUvYdlydyL_oaLR-k-cC34RnMjTJtcNr4i9PIf8vMbOLNFLbhovICCYbsiV7QaI1U4vxtpk1rT1neGT0JNft8PLPt4f2Ai4Ab2A4DI2SHnQ-zFDTDg-lzTjUH1ak0_5VvoHVa0O5_nZSCPwK1_9cgBmipPBWw2K8iKArZBjhZxwOhoTU4kGcp4RjS-1KndMh4pO8jPjsar-pEar8WixVDs2WFunA5i3ifdW44PvrlLYnUVrCc=w1125-h677"></div>
+                 <!-- <span ng-if="!loading">({{totalCount}})</span> -->
+            <span ng-if="loading"><img src="./images/loading1.gif" style="width: 43px;object-fit: none;" alt=""></span></div>
+        <div class="col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 productContainer" id={{product.id}}{{$index}} ng-repeat="product in productsToDisplay track by $index"
+                ng-if="productsToDisplay.length>0">
+                <a ng-click="openProduct(product.url, product.id, $index)">
+                    <div class="displayimage">
+                        <img ng-init="product.temp = product.images.display" ng-mouseover="product.temp=product.images.additional[1]" ng-mouseleave="product.temp=product.images.additional[0]"
+                            ng-src="{{product.temp}}" alt="" class="img-responsive">
+                    </div>
+                    <div class="productDesctiption">
+                        <div>{{product.name}}</div>
+                        <div><i class="fa fa-inr" aria-hidden="true"></i>{{product.price}}</div>
+                        <div class="size">sizes:&nbsp<span ng-repeat="(key, value) in product.sizes"><span ng-if="value>0">{{key}}&nbsp&nbsp</span></span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="loadMore col-xs-12"><a href="/products?gender=unisex&superCategory=topwear&subCategory=t-shirt" class="btn btn-default">View All</a></div>
+        </div>
+    </div>
+    
     <!-- donation -->
     <div class="col-xs-12" style="margin: 30px 0" id="donation">
         <div class="col-xs-12 col-sm-12" style="text-align:center">
