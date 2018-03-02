@@ -32,6 +32,19 @@ angular.module("mainAdminApp").controller('adminOrderCtrl',['$scope', '$rootScop
         }
       })
     }
+    $scope.deleteOrder = function(order){
+      if(confirm("Are you sure you want to delete this order ?")){
+        adminServices.deleteOrder(order.orderId).then(function(response){
+          if(response.data.success){
+            $scope.fetchOrders($scope.pageNumber);
+            alert("Deleted succesfully");
+          } else{
+            alert("Not able to delete");
+          }
+        }, function(response){
+        })
+      }
+    }
     $scope.totalProducts = 0;
     $scope.pageNumber = 0;
     $scope.init();

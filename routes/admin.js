@@ -78,6 +78,15 @@ router.post("/saveChangesInOrder", function(req, res){
         }
     })
 });
+router.get("/deleteOrderFromDb", function(req, res){
+    ordersDb.placedOrdersCollection.remove({orderId: req.query.orderIdToBeDeleted}, function(err, response){
+        if(err){
+            res.send({success: false, message: "error in deleting order"});
+        } else{
+            res.send({success: true, message: "Order deleted successfully"})
+        }
+    })
+});
 router.get("/fetchProducts", function(req, res){
     var pageNumber = req.query.pageNumber;
     var skipProducts = pageNumber*10;

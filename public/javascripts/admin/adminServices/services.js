@@ -55,6 +55,12 @@ angular.module('mainAdminApp').service('adminServices', function($http){
             data: {orderDetails: order}
         })
     }
+    this.deleteOrder = function(orderId){
+        return $http({
+            "method": "GET",
+            'url': this.backendUrl + '/deleteOrderFromDb?orderIdToBeDeleted='+orderId 
+        })
+    }
     this.fetchAllPromoCodes = function(order){
         return $http({
             method: "GET",
