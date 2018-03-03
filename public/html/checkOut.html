@@ -89,8 +89,8 @@
                 <button class="btn buyNowBtn checkoutAndPay promocodeApply" ng-if="promo.promocodeApplied" ng-click="removePromoCode()">Remove</button>
             </div>
             <div  class="col-sm-8 col-xs-12">
-                <p ng-if="!promoCodeSuccess">
-                    use OCGIFT to get 10% instant discount
+                <p ng-if="!promoCodeSuccess" style="text-align: right">
+                   * use OCGIFT to get 10% instant discount
                 </p>
             <p> {{promoCodeError}}
                 {{promoCodeSuccess}}
