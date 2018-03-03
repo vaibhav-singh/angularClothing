@@ -113,7 +113,7 @@ router.get('/getOrderDetails', function(req, res){
 })
 router.post("/fetchAvailableSizes", function(req, res){
     var productidArray = req.body.productIds;
-    // mailService.sendMail("shivanubhateja31@gmail.com", "subject", "checkout page te aya koi https://www.orangeclips.com/productDetails/"+ productidArray.join(','));
+    mailService.sendMail("shivanubhateja31@gmail.com", "subject", "checkout page te aya koi https://www.orangeclips.com/productDetails/"+ productidArray.join(','));
     productsDb.productCollection.find({id: {$in:productidArray}}, 'id sizes',function(err, response){
         if(err){
             res.send({success: false, data: err});
