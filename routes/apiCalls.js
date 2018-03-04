@@ -113,7 +113,7 @@ router.get('/getOrderDetails', function(req, res){
 })
 router.post("/fetchAvailableSizes", function(req, res){
     var productidArray = req.body.productIds;
-    mailService.sendMail("shivanubhateja31@gmail.com", "subject", "checkout page te aya koi https://www.orangeclips.com/productDetails/"+ productidArray.join(','));
+    mailService.sendMail("contact@orangeclips.com", "subject", "checkout page te aya koi https://www.orangeclips.com/productDetails/"+ productidArray.join(','));
     productsDb.productCollection.find({id: {$in:productidArray}}, 'id sizes',function(err, response){
         if(err){
             res.send({success: false, data: err});
@@ -220,7 +220,7 @@ router.get('/validatePromoCode', function(req, res){
     var promoCode = req.query.promoCode;
     var emailid = req.query.emailId;
     var phoneNo = req.query.phoneNo;
-    mailService.sendMail("shivanubhateja31@gmail.com", "subject", promoCode + " promo code v laga lya "+emailid+ " - " +phoneNo +" ne ");
+    mailService.sendMail("contact@orangeclips.com", "subject", promoCode + " promo code v laga lya "+emailid+ " - " +phoneNo +" ne ");
     if(promoCode.toLowerCase() === 'swetaoc'){
         mailService.sendMail("swetakumari2197@gmail.com", "Promo Applied", "Hi Sweta, Your promocode SWETAOC is used on orangeclips.com");
     }
