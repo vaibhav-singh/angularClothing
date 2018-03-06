@@ -25,7 +25,7 @@ angular.module('mainApp').controller("homePageCtrl", ["$scope", '$timeout', '$ro
             
     });
     $scope.getHotsellers = () => {
-        productService.getproductsToDisplay('men', 'topwear', 'Solids', '', 'ocselect', 1).then(function(response){
+        productService.getproductsToDisplay('men', 'topwear', 'Solids', '', 'ocselect', 1, 6).then(function(response){
             $scope.hotsellers = response.data.products;
             $(document).ready(function () {
                 $('.owl-carousel.hotsellers').owlCarousel({

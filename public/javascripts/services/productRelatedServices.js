@@ -1,8 +1,8 @@
 angular.module('mainApp').service('productService', ['$http', '$q', function ($http, $q) {
     this.backendUrl = "http://localhost:3000/api"
-    this.getproductsToDisplay = function (gender, superCategory, subCategory, src,tagsSelected, pageNo) {
+    this.getproductsToDisplay = function (gender, superCategory, subCategory, src,tagsSelected, pageNo, itemsPerPage) {
         return $http({
-            url: '/api/fetchProducts?tags='+tagsSelected+'&pageNo='+pageNo,
+            url: '/api/fetchProducts?tags='+tagsSelected+'&pageNo='+pageNo+'&itemsPerPage='+itemsPerPage,
             mehtod:'GET'
         });
     };
