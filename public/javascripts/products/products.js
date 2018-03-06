@@ -7,7 +7,7 @@ angular.module("mainApp").controller("productsCtrl", ['$scope', '$stateParams', 
         localStorage.setItem('pageNo', pageNo);
         $rootScope.hideCartFromNavBar = false;
         $scope.loading = true;
-        productService.getproductsToDisplay(gender, superCategory, subCategory, src, tagsSelected, pageNo).then(function(response){
+        productService.getproductsToDisplay(gender, superCategory, subCategory, src, tagsSelected, pageNo, 12).then(function(response){
             $scope.loading = false;
             $scope.productsToDisplay = response.data.products;
             $scope.totalCount = response.data.totalCount;
@@ -29,7 +29,7 @@ angular.module("mainApp").controller("productsCtrl", ['$scope', '$stateParams', 
     $scope.loadMore = function(){
         pageNo++;
         localStorage.setItem('pageNo', pageNo);
-        productService.getproductsToDisplay($scope.params.gender, $scope.params.superCategory, $scope.params.subCategory, $scope.params.src, $scope.tagsSelected, pageNo).then(function(response){
+        productService.getproductsToDisplay($scope.params.gender, $scope.params.superCategory, $scope.params.subCategory, $scope.params.src, $scope.tagsSelected, pageNo, 12).then(function(response){
             var noOfProductsBeforeConctination = $scope.productsToDisplay.length;
             $scope.totalCount = response.data.totalCount;
             localStorage.setItem('totalProducts', $scope.totalCount);
