@@ -3,6 +3,7 @@ var path  = require('path')
 var router = express.Router();
 var adminCollections = require('../schema/adminSchemas');
 var productsDb = require('../schema/productsDb');
+var https = require("https");
 var promoCodesModel = require('../schema/promoCodeSchemaDb');
 var ordersDb = require('../schema/ordersDb');
 
@@ -73,6 +74,11 @@ router.post("/saveChangesInOrder", function(req, res){
                     res.send({success: false, data: err});
                 } else{
                     res.send({success: true, data: saveResponse})
+                    if(orderDetails.orderStatus === 'shipped'){
+                        var messageBody = "Hi "+orderDetails.orderedBy.name+", \nYour order has been shipped by OrangeClips.Track order by clicking below link - \n https://orangeclips.com/orderStatus?orderId="+ orderDetails.orderId;
+                        messageBody = encodeURI(messageBody);
+                        https.get("https://control.msg91.com/api/sendhttp.php?authkey=139030Ag218mR2QtxS59351252&mobiles=" + orderDetails.orderedBy.phoneNo + "&message=" + messageBody + "&sender=OCshop&route=4&country=91", function(res) {});
+                    }
                 }
             });
         }
