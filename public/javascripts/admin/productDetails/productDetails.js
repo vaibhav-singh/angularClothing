@@ -41,6 +41,7 @@ angular.module("mainAdminApp").controller("productDetailsCtrl", [
           additional: []
         };
         $scope.productDetails.categoryInfo.filters = [];
+        $scope.productDetails.sizeVarientsAvailable = true;
         $scope.productDetails.sizes = { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0 };
         $scope.productDetails.fitDescription = "Slim Fit: Fits closer to the body, take your regular size. Size up if a looser fit is desired";
         $scope.productDetails.materialDescription = '<div> 100% cotton Pique Prewashed to impart a softer texture. <div><span><b>WashCare Instructions:</b> Machine wash cold Do not bleach or wash with chlorine based detergent or water Wash/dry inside out Do not iron directly on prints Dry promptly in shade Dry on a flat surface as hanging may cause measurement variations Product color may vary little due to photography Wash with similar clothes. <a href="/care">Know more</a></span>';
@@ -70,7 +71,7 @@ angular.module("mainAdminApp").controller("productDetailsCtrl", [
           else
             alert("failed");
         }, function() {
-          alert("failed");          
+          alert("failed");
         });
       }
     };

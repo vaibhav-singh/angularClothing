@@ -12,6 +12,12 @@ exports.sendOrderSuccessEmail = function(JsonRes) {
   var amount = JsonRes.amount;
   var productsHtml = "";
   for (var i = 0; i < products.length; i++) {
+    var sizeToDisplay;
+    if((products[i].productDetails.sizeVarientsAvailable===false)){
+      sizeToDisplay = "";
+    } else{
+      sizeToDisplay = products[i].size;
+    }
     productsHtml +=
       ` <div>
                     ` +
@@ -19,7 +25,7 @@ exports.sendOrderSuccessEmail = function(JsonRes) {
       ` . ` +
       products[i].productDetails.name +
       ` . ` +
-      products[i].size +
+      `${sizeToDisplay}` +
       `
                     <span class="pull-right"> ` +
       products[i].productDetails.price +
@@ -265,7 +271,7 @@ exports.sendOrderSuccessEmail = function(JsonRes) {
                                                    </div>
                                                    <div>` +
                                                       deliveryDetails.country +
-                                                      ` 
+                                                      `
                                                    </div>
                                                 </div>
                                                 <div class="padding_border">

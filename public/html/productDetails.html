@@ -14,7 +14,7 @@
         <div class="col-xs-12 margin_t_20 padding_big">
             <!--name-->
             <div class="item_name nameDisplay" style="margin-bottom: 10px;">{{details.name}}</div>
-            <p class="no-padding no-margin" ng-if="currentViews > 0"><img style="width: 34px;margin-right: 10px;margin-top: -4px;" src="images/eyeIcon.png"><b>{{currentViews}} people</b> viewing this OC-Tee right now</p>
+            <p class="no-padding no-margin" ng-if="currentViews > 0"><img style="width: 34px;margin-right: 10px;margin-top: -4px;" src="images/eyeIcon.png"><b>{{currentViews}} people</b> viewing this right now</p>
             <div class="item_fit belowName no-padding">
                 <p class="no-padding no-margin">{{details.fit}}</p>
                 <!--<p class="no-padding no-margin">{{details.fit_description}}</p>-->
@@ -27,7 +27,7 @@
             </div>
             <!--error messages-->
         </div>
-        <div class="sizes col-xs-12">
+        <div class="sizes col-xs-12" ng-if="!(details.sizeVarientsAvailable === false)">
             <div>SIZE: &nbsp&nbsp
                  <!--<span style="color: grey; font-size: 15px; cursor: pointer;" data-toggle="modal" data-target="#sizeChartModal"><u>SIZE CHART</u></span>-->
                  </div>
@@ -41,7 +41,7 @@
                 <div ng-if="requestForSizeReceived">Nice Choice! Will be in stock soon. Happy Shopping.😄</div>
                 <div ng-if="showRequestForSizeDiv" class="requestForSizeDiv no-padding col-xs-12 col-sm-7">
 
-                    <span>How should Orange Clips contact you. 
+                    <span>How should Orange Clips contact you.
                         <!--Dont worry we won't use your Email Id or Phone No for Promotions-->
                     </span>
                     <input type="text" class="form-control" ng-model="requestForSizeContact" placeholder="Email Id or Phone No">
@@ -72,12 +72,12 @@
     <div class="container additionalDetails">
             <!-- <h1>Donation</h1> -->
             <div>
-                    Everytime you shop at <b>orangeclips.com</b>, 
-                    we contribute 5% of your purchases to NGO - <u><a href="http://tjfoundation.in/">Tj Foundation</a></u>, 
-                    Enabling deprived children, their families and their communities to meet their basic needs 
+                    Everytime you shop at <b>orangeclips.com</b>,
+                    we contribute 5% of your purchases to NGO - <u><a href="http://tjfoundation.in/">Tj Foundation</a></u>,
+                    Enabling deprived children, their families and their communities to meet their basic needs
                     and to increase their ability to participate in and benefit from their societies.
-                    Promoting the rights and interests of the world's children.                
-    
+                    Promoting the rights and interests of the world's children.
+
             </div>
         </div>
     <div class="container additionalDetails">
@@ -96,10 +96,10 @@
             <img style="width: 250px; margin-bottom: 15px;" src="./images/payments.png" alt="">
         </div>
         <div>
-            Digital Payments for digital India. We accept almost all types of digital payment methods - Debit cards, Credit cards, Net-banking, Digital wallets, UPI. In case of any query feel free to reach us at  <a href="mailto:contact@orangeclips.com">contact@orangeclips.com</a>. 
+            Digital Payments for digital India. We accept almost all types of digital payment methods - Debit cards, Credit cards, Net-banking, Digital wallets, UPI. In case of any query feel free to reach us at  <a href="mailto:contact@orangeclips.com">contact@orangeclips.com</a>.
         </div>
     </div>
-    
+
     <!--<div class="photos col-xs-12 col-lg-12">
             <div style="width:50%; height:600px" class="imageDiv  col-xs-6" ng-repeat="img in details.images.additional">
                 <img style="width:100%; height:100%" class="imagein" ng-src={{"https://images.bewakoof.com/t540/"+img.name}}>
@@ -115,13 +115,13 @@
             <div class="modal-content">
                 <div class="modal-body" style="padding: 0">
                     <div data-dismiss="modal" style="background-color: transparent;
-    position: absolute;
-    right: 12px;
-    top: 10px;
-    cursor: pointer;
-    font-weight: bolder;
-    padding: 2px;
-    border-radius: 5px;">X</div>
+                                                                    position: absolute;
+                                                                    right: 12px;
+                                                                    top: 10px;
+                                                                    cursor: pointer;
+                                                                    font-weight: bolder;
+                                                                    padding: 2px;
+                                                                    border-radius: 5px;">X</div>
                     <img data-dismiss="modal" src="images/sizeChart.png" alt="">
                 </div>
             </div>

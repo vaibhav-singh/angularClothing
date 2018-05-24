@@ -15,12 +15,13 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
                 $('html, body').animate({ scrollTop: 0 }, 'slow');
             });
         }, function(response){
-            
+
         });
     };
-    
+
     $scope.selectSize = function(size){
         $scope.selectedSize = size;
+        console.log($scope.selectedSize);
     }
     $scope.nextImage = function(){
         $scope.owl.trigger('next.owl.carousel');
@@ -30,6 +31,9 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
     }
     // add to cart
     $scope.addToCart = function(product, selectedSize){
+        if($scope.details.sizeVarientsAvailable === false){
+          selectedSize = "XS"
+        }
         $scope.buyNowOrAddToCartClicked = true;
         if(selectedSize){
             productToAdd = {productId: product.id, quantity: 1, size: selectedSize, productDetails: product};
@@ -50,8 +54,12 @@ angular.module('mainApp').controller('productDetailsCtrl', ['$scope', '$statePar
         }, 1000);
     };
     $scope.buyItNow = function(product, selectedSize){
+          if($scope.details.sizeVarientsAvailable === false){
+            selectedSize = "XS"
+          }
+
          $scope.buyNowOrAddToCartClicked = true;
-          if(selectedSize){
+          if(selectedSize || !($scope.details.requestForSizeReceived === false)){
             productToAdd = {productId: product.id, quantity: 1, size: selectedSize, productDetails: product};
             $scope.showSizeError = false;
             $scope.buyNowOrAddToCartClicked = false;

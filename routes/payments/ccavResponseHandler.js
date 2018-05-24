@@ -7,11 +7,11 @@ ordersDb = require("./../../schema/ordersDb");
 productsDb = require("./../../schema/productsDb");
 var https = require("https");
 var emailTemplates = require('./../../services/emailTemplates');
-      
-// 
+
+//
 // emailTemplates.sendOrderSuccessEmail({
 //       orderId:"1212",
-//       products:  [ 
+//       products:  [
 //         {
 //             "productId" : "e2302f4e-4b02-aece-b804-ecb94df9b31a",
 //             "quantity" : 1,
@@ -30,10 +30,10 @@ var emailTemplates = require('./../../services/emailTemplates');
 //                 "__v" : 0,
 //                 "images" : {
 //                     "display" : "https://images.bewakoof.com/t540/goddess-t-shirt-dress-women-s-printed-basic-t-shirt-dress-1504171151.jpg",
-//                     "additional" : [ 
-//                         "https://images.bewakoof.com/t540/goddess-t-shirt-dress-women-s-printed-basic-t-shirt-dress-1504171151.jpg", 
-//                         "https://images.bewakoof.com/t540/goddess-t-shirt-dress-women-s-printed-basic-t-shirt-dress-1504171155.jpg", 
-//                         "https://images.bewakoof.com/t540/goddess-t-shirt-dress-women-s-printed-basic-t-shirt-dress-1504171157.jpg", 
+//                     "additional" : [
+//                         "https://images.bewakoof.com/t540/goddess-t-shirt-dress-women-s-printed-basic-t-shirt-dress-1504171151.jpg",
+//                         "https://images.bewakoof.com/t540/goddess-t-shirt-dress-women-s-printed-basic-t-shirt-dress-1504171155.jpg",
+//                         "https://images.bewakoof.com/t540/goddess-t-shirt-dress-women-s-printed-basic-t-shirt-dress-1504171157.jpg",
 //                         "https://images.bewakoof.com/t540/goddess-t-shirt-dress-women-s-printed-basic-t-shirt-dress-1504171159.jpg"
 //                     ]
 //                 },
@@ -83,7 +83,7 @@ var emailTemplates = require('./../../services/emailTemplates');
 
 
 
-    // 
+    //
 function readModuleFile(path, callback) {
   try {
     var filename = require.resolve(path);
@@ -132,7 +132,7 @@ exports.postRes = function(request, response) {
         response.sizes[details.products[i].size] = response.sizes[details.products[i].size] + details.products[i].quantity;
         response.save(function(err, success) {
           if (err) {
-           
+
           } else {
             //   continue;
           }
@@ -161,7 +161,7 @@ exports.postRes = function(request, response) {
     );
     if (JsonRes.order_status === "Success") {
 
-      var messageBody = "Hi, \nWe know you gonna love your tees. Just hold on till we deliver it to you. You can track your order by clicking below link \n https://orangeclips.com/orderStatus?orderId=" + JsonRes.order_id;
+      var messageBody = "Hi, \nWe know you gonna love our products. Just hold on till we deliver it to you. You can track your order by clicking below link \n https://orangeclips.com/orderStatus?orderId=" + JsonRes.order_id;
       messageBody = encodeURI(messageBody);
       https.get("https://control.msg91.com/api/sendhttp.php?authkey=139030Ag218mR2QtxS59351252&mobiles=" + JsonRes.billing_tel + "&message=" + messageBody + "&sender=OCshop&route=4&country=91", function(res) {});
       https.get("https://control.msg91.com/api/sendhttp.php?authkey=139030Ag218mR2QtxS59351252&mobiles=" + '9876665556' + "&message=" + 'Order Aya Order Aya Order Aya' + "&sender=OCshop&route=4&country=91", function(res) {});
@@ -204,7 +204,7 @@ exports.postRes = function(request, response) {
           } else {
             tempOrder = { products: [] };
           }
-          
+
           var tosave = saveOrder(JsonRes, tempOrder);
           tosave.save(function(err, success) {});
         }

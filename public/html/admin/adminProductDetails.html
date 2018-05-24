@@ -35,7 +35,7 @@
         <!--fit desctiption-->
         <div class="form-group">
             <label for="fitDescription">Fit Desctiption will be shown below the product and buy now</label>
-            <input id="fitDescription" class="form-control" type="text" name="fitDescription" ng-model="productDetails.fitDescription"
+            <input id="fitDescription" class="form-control" type="text" name="fitDescription" ng-model="productDetails.categoryInfo.fabric"
                 required>
         </div>
         <!--limited Edition-->
@@ -83,6 +83,9 @@
                 <label class="radio-inline">
                     <input type="radio" name="superCategory" id="inlineRadio2" value="bottom-wear" ng-model="productDetails.categoryInfo.superCategory" required> BOTTOM WEAR
                 </label>
+              <label class="radio-inline">
+                <input type="radio" name="superCategory" id="inlineRadio2" value="bottom-wear" ng-model="productDetails.categoryInfo.superCategory" required> Art
+            </label>
             </div>
         </div>
         <!--subCategory-->
@@ -104,6 +107,12 @@
                 <label class="radio-inline">
                     <input type="radio" name="subCategory" id="inlineRadio2" value="shoes" ng-model="productDetails.categoryInfo.subCategory" required> SHOES
                 </label>
+                <label class="radio-inline">
+                  <input type="radio" name="subCategory" id="inlineRadio2" value="poster" ng-model="productDetails.categoryInfo.subCategory" required> Poster
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="subCategory" id="inlineRadio2" value="paintByNumber" ng-model="productDetails.categoryInfo.subCategory" required> Paint By Number
+                </label>
             </div>
         </div>
         <!--sleeve-->
@@ -122,6 +131,10 @@
                 <label class="radio-inline">
                     <input type="radio" name="sleeve" id="inlineRadio2" value="sleeve-less" ng-model="productDetails.categoryInfo.sleeve" required> NO-SLEEVES
                 </label>
+                <label class="radio-inline">
+                    <input type="radio" name="sleeve" id="inlineRadio2" value="N/A" ng-model="productDetails.categoryInfo.sleeve" required> N/A
+                </label>
+
             </div>
         </div>
         <!--printed-->
@@ -139,7 +152,7 @@
         <div class="form-group">
             <label for="Tags">Filters &nbsp</label>
             <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox1" ng-click="pushInFilters('ocselect')" ng-checked="productDetails.categoryInfo.filters.indexOf('ocselect')>=0">OC select 
+            <input type="checkbox" id="inlineCheckbox1" ng-click="pushInFilters('ocselect')" ng-checked="productDetails.categoryInfo.filters.indexOf('ocselect')>=0">OC select
             </label>
             <label class="checkbox-inline">
             <input type="checkbox" id="inlineCheckbox2" ng-click="pushInFilters('solid')" ng-checked="productDetails.categoryInfo.filters.indexOf('solid')>=0">Solids
@@ -147,12 +160,31 @@
             <label class="checkbox-inline">
             <input type="checkbox" id="inlineCheckbox2" ng-click="pushInFilters('printed')" ng-checked="productDetails.categoryInfo.filters.indexOf('printed')>=0">Printed
             </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" id="inlineCheckbox2" ng-click="pushInFilters('poster')" ng-checked="productDetails.categoryInfo.filters.indexOf('poster')>=0">Poster
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" id="inlineCheckbox2" ng-click="pushInFilters('paintByNumber')" ng-checked="productDetails.categoryInfo.filters.indexOf('paintByNumber')>=0">Paint By Number
+            </label>
+
+        </div>
+        <!--limited Edition-->
+        <div class="form-group">
+            <label for="limitedEdition">Sizes applicable?</label>
+            <div id="limitedEdition">
+                <label class="radio-inline">
+                    <input type="radio" name="limitedEdition" id="inlineRadio1" ng-model="productDetails.sizeVarientsAvailable" ng-value=true> TRUE
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="limitedEdition" id="inlineRadio2" ng-model="productDetails.sizeVarientsAvailable" ng-value=false> FALSE
+                </label>
+            </div>
         </div>
         <!--sizes-->
         <div class="availableSizes" style="display: inline-flex">
-            <div ng-repeat="(key, value) in productDetails.sizes">
+            <div ng-repeat="(key, value) in productDetails.sizes"  ng-show="!(productDetails.sizeVarientsAvailable === false) || key==='XS'">
                 <div>
-                    <span>{{key}}: </span><input style="width: 50px;" type="number" ng-model="productDetails.sizes[key]" required>&nbsp&nbsp&nbsp&nbsp
+                    <span>{{(!(productDetails.sizeVarientsAvailable === false)) ? key : 'Quantity'}}: </span><input style="width: 50px;" type="number" ng-model="productDetails.sizes[key]" required>&nbsp&nbsp&nbsp&nbsp
                 </div>
             </div>
         </div>

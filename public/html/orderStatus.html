@@ -22,7 +22,7 @@
             </div>
             <div class="padding_border">
                 <div ng-repeat="product in orderDetails.products">
-                    {{product.quantity}} . {{product.productDetails.name}} . {{product.size}}
+                    {{product.quantity}} . {{product.productDetails.name}} <span ng-if="!(product.productDetails.sizeVarientsAvailable===false)">. {{product.size}}</span>
                     <span class="pull-right"><i class="fa fa-inr" aria-hidden="true"></i> {{product.productDetails.price}}</span>
                 </div>
             </div>
@@ -40,7 +40,7 @@
             <div class="heading">
                 <b>Orange Clips</b>
                 <span class="pull-right" style="font-size: 12px;margin-top: 2px;">Order: {{orderDetails.orderId}}</span>
-            
+
             </div>
             <div ng-if="!orderDetails.shipped">
                 <div class="trackingDetails">
@@ -60,7 +60,7 @@
                         <div>Arriving</div>
                         <b>{{orderDetails.shippingDetails.expectedDelivery | date:'LLLL d'}}</b>
                     </div>
-                
+
                 <div class="trackingDetails">
                     <div>Courier</div>
                     <b>{{(orderDetails.shippingDetails.couriourName ? orderDetails.shippingDetails.couriourName : "-")}}</b>

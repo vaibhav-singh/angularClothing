@@ -108,13 +108,13 @@ router.get('/getOrderDetails', function(req, res){
         if(err){
             res.send({success: false, response: err});
         } else{
-            res.send({success: true, orderDetails: order}); 
+            res.send({success: true, orderDetails: order});
         }
     })
 })
 router.post("/fetchAvailableSizes", function(req, res){
     var productidArray = req.body.productIds;
-    mailService.sendMail("contact@orangeclips.com", "subject", "checkout page te aya koi https://www.orangeclips.com/productDetails/"+ productidArray.join(','));
+    // mailService.sendMail("contact@orangeclips.com", "subject", "checkout page te aya koi https://www.orangeclips.com/productDetails/"+ productidArray.join(','));
     productsDb.productCollection.find({id: {$in:productidArray}}, 'id sizes',function(err, response){
         if(err){
             res.send({success: false, data: err});
@@ -168,7 +168,7 @@ router.post('/saveTempOrder', function(req, res){
                         }
                       })(i);
                     }
-                  } 
+                  }
                 }
               });
             }, 1800000);
@@ -202,20 +202,20 @@ router.post('/placeCodOrder', function(req, response){
             });
         }(i))
     }
-    // 
+    //
     saveIt.save(function(err, success){
         if(err){
             response.send({success: false, message: "failed to place order"})
         } else{
-            var messageBody = "Hi, \nWe know you gonna love your tees. Just hold on till we deliver it to you. Total order amount = " + details.amount+".\n You can track your order by clicking below link \n https://orangeclips.com/orderStatus?orderId=" + details.orderId;
+            var messageBody = "Hi, \nWe know you gonna love our products. Just hold on till we deliver it to you. Total order amount = " + details.amount+".\n You can track your order by clicking below link \n https://orangeclips.com/orderStatus?orderId=" + details.orderId;
             messageBody = encodeURI(messageBody);
             https.get("https://control.msg91.com/api/sendhttp.php?authkey=139030Ag218mR2QtxS59351252&mobiles=" + details.orderedBy.phoneNo + "&message=" + messageBody + "&sender=OCshop&route=4&country=91", function(res) {});
             https.get("https://control.msg91.com/api/sendhttp.php?authkey=139030Ag218mR2QtxS59351252&mobiles=" + '9876665556' + "&message=" + 'Order aa gya 22 oye COD wala' + "&sender=OCshop&route=4&country=91", function(res) {});
-            emailTemplates.sendOrderSuccessEmail(success);            
+            emailTemplates.sendOrderSuccessEmail(success);
             response.send({success: true, message: "order placed successfully", orderid: details.orderId});
         }
     })
-    
+
 })
 router.get('/validatePromoCode', function(req, res){
     var promoCode = req.query.promoCode;
@@ -227,7 +227,7 @@ router.get('/validatePromoCode', function(req, res){
     }
     if(promoCode.toLowerCase() === 'monoc'){
         mailService.sendMail("monithmonu98@gmail.com", "Promo Applied", "Hi Amudala Monith, Your promocode MONOC is used on orangeclips.com");
-    } 
+    }
     if(promoCode.toLowerCase() === 'ashuoc'){
         mailService.sendMail("ashutosh291098@gmail.com", "Promo Applied", "Hi Ashutosh Yadav, Your promocode ASHUOC is used on orangeclips.com");
     }

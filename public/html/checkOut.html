@@ -7,7 +7,7 @@
             <div ng-repeat="product in finalCartNotAvailable" class="">
                 <span class="productQuantity">{{product.quantity}}
             <span class="saperator">.</span>{{product.productDetails.name}}
-                <span class="saperator">.</span>{{product.size}}
+                <span class="saperator" ng-if="!product.productDetails.sizeVarientsAvailable===false">.</span><span ng-if="!product.productDetails.sizeVarientsAvailable===false">{{product.size}}</span>
                 <!--<div ng-if='product.remainingQuantity>0'><button class="btn btn-primary"> Only, we have {{product.remainingQuantity}} pcs available</button></div>-->
             </div>
         </div>
@@ -19,11 +19,11 @@
             <div ng-repeat="product in finalCartAvailable" class="">
                 <span class="productQuantity">{{product.quantity}}</span>
                 <span class="saperator">.</span><span>{{product.productDetails.name}}</span>
-                <span class="saperator">.</span><span>{{product.size}}</span>
+                <span class="saperator" ng-if="!product.productDetails.sizeVarientsAvailable===false">.</span><span ng-if="!product.productDetails.sizeVarientsAvailable===false">{{product.size}}</span>
             </div>
             <div class="totalAmount">
                 <span ng-if="originalAmount" style="color: #ddd; text-decoration: line-through">
-                    <i class="fa fa-inr" aria-hidden="true"></i> {{originalAmount + payment.codCharges}}</span> 
+                    <i class="fa fa-inr" aria-hidden="true"></i> {{originalAmount + payment.codCharges}}</span>
                     <span ng-if="originalAmount" >&nbsp</span> <i class="fa fa-inr" aria-hidden="true"></i> {{totalAmount + payment.codCharges}}
             </div>
             <section class="addressForm" ng-if="newAddress">
@@ -101,7 +101,7 @@
             <input type="checkbox" ng-model="payment.cashOnDelivery" ng-click="toggleCod()"> <span>Cash On Delivery</span>
             <div style="color:grey; margin-left:30px;">(Charges - <i class="fa fa-inr" aria-hidden="true"></i> 29 )</div>
         </div>
-            
+
         <div class="col-xs-12">
         <button class="btn buyNowBtn checkoutAndPay" style="padding: 13px 0;" ng-click="placeOrderAndPayButtonClicked()" ng-if="finalCartAvailable.length > 0 && !payment.cashOnDelivery">
             <div>Proceed To Payment</div>
@@ -115,12 +115,12 @@
         </div>
         </div>
         <div style="text-align: center; font-size: 20px">
-            <a href="/products?gender=unisex&superCategory=topwear&subCategory=t-shirt" ng-if="finalCartAvailable.length === 0">Add Products</a>
+            <a href="/products?gender=unisex&superCategory=topwear&subCategory=t-shirt&tags=solid,ocselect,printed" ng-if="finalCartAvailable.length === 0">Add Products</a>
         </div>
         <!--dont remove this div-->
     </div>
     <div id="placeHere"></div>
-    <div ng-if="showLoading" style="height: 600px;"> 
+    <div ng-if="showLoading" style="height: 600px;">
         <div class="checkoutHeader">
             <h1>Taking you to payment page...</h1>
         </div>

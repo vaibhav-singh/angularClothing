@@ -7,6 +7,7 @@ var productsSchema = mongooseObject.Schema({
   price: { type: Number, required: true },
   fit: { type: String, default: "Fits just right - not too tight, not too loose." },
   fitDescription: { type: String, required: true },
+  sizeVarientsAvailable: { type: Boolean, default: true },
   materialDescription: String,
   shippingDescription: String,
   limitedEdition: { type: Boolean, default: false },
