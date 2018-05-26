@@ -122,7 +122,7 @@
         <span ng-if="loading"><img src="./images/loading1.gif" style="width: 43px;object-fit: none;" alt=""></span>
         </div>
         <div class="col-sm-12 col-xs-12" style="padding: 0 30px;">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 productContainer" id={{product.id}}{{$index}} ng-repeat="product in productsToDisplay track by $index"
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 productContainer" id={{product.id}}{{$index}} ng-repeat="product in productsToDisplay | limitTo:6 track by $index "
                 ng-if="productsToDisplay.length>0">
                 <a ng-click="openProduct(product.url, product.id, $index)">
                     <div class="displayimage">
@@ -130,8 +130,12 @@
                             ng-src="{{product.temp}}" alt="" class="img-responsive">
                     </div>
                     <div class="productDesctiption">
-                        <div>{{product.name}}</div>
-                        <div><i class="fa fa-inr" aria-hidden="true"></i>{{product.price}}</div>
+                        <div class="text-ellipsis">{{product.name}}</div>
+                        <span ng-if="product.price !== product.mrp" style="color: #ddd; text-decoration: line-through">
+                            <i class="fa fa-inr" aria-hidden="true"></i> {{product.mrp}}
+                        </span>
+                        <span ng-if="product.price !== product.mrp">&nbsp <i class="fa fa-inr" aria-hidden="true"></i> {{product.price}}</span>
+                        <span ng-if="product.price === product.mrp"><i class="fa fa-inr" aria-hidden="true"></i>{{product.price}}</span>
                         <!-- <div class="size">sizes:&nbsp<span ng-repeat="(key, value) in product.sizes"><span ng-if="value>0">{{key}}&nbsp&nbsp</span></span> -->
                         </div>
                     </div>
