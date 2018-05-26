@@ -22,7 +22,7 @@
                 <span class="saperator" ng-if="!product.productDetails.sizeVarientsAvailable===false">.</span><span ng-if="!product.productDetails.sizeVarientsAvailable===false">{{product.size}}</span>
             </div>
             <div class="totalAmount">
-                <span ng-if="originalAmount" style="color: #ddd; text-decoration: line-through">
+                <span ng-if="originalAmount" style="color: gray; text-decoration: line-through">
                     <i class="fa fa-inr" aria-hidden="true"></i> {{originalAmount + payment.codCharges}}</span>
                     <span ng-if="originalAmount" >&nbsp</span> <i class="fa fa-inr" aria-hidden="true"></i> {{totalAmount + payment.codCharges}}
             </div>

@@ -131,7 +131,7 @@
                     </div>
                     <div class="productDesctiption">
                         <div class="text-ellipsis">{{product.name}}</div>
-                        <span ng-if="product.price !== product.mrp" style="color: #ddd; text-decoration: line-through">
+                        <span ng-if="product.price !== product.mrp" style="color: gray; text-decoration: line-through">
                             <i class="fa fa-inr" aria-hidden="true"></i> {{product.mrp}}
                         </span>
                         <span ng-if="product.price !== product.mrp">&nbsp <i class="fa fa-inr" aria-hidden="true"></i> {{product.price}}</span>
