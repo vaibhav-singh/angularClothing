@@ -61,6 +61,11 @@ angular.module("mainAdminApp").controller("productDetailsCtrl", [
       if ($stateParams.src === "newProduct") {
         adminServices.addProduct($scope.productDetails).then(
           function(response) {
+            if(response.data.success)
+              alert("success");
+            else{
+              alert("failure");
+            }
           },
           function(response) {}
         );
