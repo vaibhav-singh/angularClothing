@@ -30,7 +30,7 @@
              <!-- <span ng-if="!loading">({{totalCount}})</span> -->
         <span ng-if="loading"><img src="./images/loading1.gif" style="width: 43px;object-fit: none;" alt=""></span></div>
     <div class="col-sm-12 col-xs-12">
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 productContainer" id={{product.id}}{{$index}} ng-repeat="product in productsToDisplay track by $index"
+        <div style="cursor: pointer;" class="col-lg-4 col-md-4 col-sm-6 col-xs-12 productContainer" id={{product.id}}{{$index}} ng-repeat="product in productsToDisplay track by $index"
             ng-if="productsToDisplay.length>0">
             <a ng-click="openProduct(product.url, product.id, $index)">
                 <div class="displayimage">
