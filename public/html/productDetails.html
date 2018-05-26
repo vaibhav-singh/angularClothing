@@ -23,8 +23,13 @@
             </div>
             <!--price-->
             <div class="margin-t-20">
-                <span class="priceDiv"><i class="fa fa-inr" aria-hidden="true"></i>{{details.price}}</span>
+                <span ng-if="details.price !== details.mrp" class="priceDiv" style="color: #ddd; text-decoration: line-through">
+                    <i class="fa fa-inr" aria-hidden="true"></i> {{details.mrp}}
+                </span>
+                <span ng-if="details.price !== details.mrp"  class="priceDiv">&nbsp <i class="fa fa-inr" aria-hidden="true"></i> {{details.price}}</span>
+                <span ng-if="details.price === details.mrp" class="priceDiv"><i class="fa fa-inr" aria-hidden="true"></i>{{details.price}}</span>
             </div>
+            <div ng-if="details.price !== details.mrp">&nbsp&nbsp&nbsp&nbsp {{((details.mrp - details.price)/details.mrp) * 100 | number:0}}% discount</div>
             <!--error messages-->
         </div>
         <div class="sizes col-xs-12" ng-if="!(details.sizeVarientsAvailable === false)">

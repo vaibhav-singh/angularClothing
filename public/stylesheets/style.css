@@ -45,7 +45,7 @@ h2.shake,
 	-webkit-animation-duration: 0.5s;
 	-webkit-transform-origin:50% 50%;
 	-webkit-animation-iteration-count: infinite;
-	-webkit-animation-timing-function: linear;    
+	-webkit-animation-timing-function: linear;
 }
 .shake:hover,
 .shake:focus {
@@ -163,7 +163,7 @@ footer nav a .dot {
     text-align: left;
 }
 .article h2{
-    font-family: "Montserrat-Light", Georgia, serif;  
+    font-family: "Montserrat-Light", Georgia, serif;
         font-weight: 300;
     font-size: 3.25em;
     line-height: 1.2em;
@@ -232,4 +232,10 @@ a {
 #care a{
     color: #23527c;
     cursor: pointer;
+}
+
+.text-ellipsis{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

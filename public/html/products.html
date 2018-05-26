@@ -38,8 +38,14 @@
                         ng-src="{{product.temp}}" alt="" class="img-responsive">
                 </div>
                 <div class="productDesctiption">
-                    <div>{{product.name}}</div>
-                    <div><i class="fa fa-inr" aria-hidden="true"></i>{{product.price}}</div>
+                    <div class="text-ellipsis">{{product.name}}</div>
+                    <span ng-if="product.price !== product.mrp" style="color: #ddd; text-decoration: line-through">
+                        <i class="fa fa-inr" aria-hidden="true"></i> {{product.mrp}}
+                    </span>
+                    <span ng-if="product.price !== product.mrp">&nbsp <i class="fa fa-inr" aria-hidden="true"></i> {{product.price}}</span>
+                    <span ng-if="product.price === product.mrp"><i class="fa fa-inr" aria-hidden="true"></i>{{product.price}}</span>
+
+
                     <div ng-if="product.sizeVarientsAvailable" class="size" >sizes:&nbsp<span ng-repeat="(key, value) in product.sizes"><span ng-if="value>0">{{key}}&nbsp&nbsp</span></span>
                     </div>
                 </div>
